@@ -112,7 +112,7 @@ main .termsarea table tr td{
     padding: 20px 10px;
     border-bottom: 1px solid #dedede;
 }
-#terms {
+.terms {
     width: 100%;
     height: 100%;
     padding: 5px;

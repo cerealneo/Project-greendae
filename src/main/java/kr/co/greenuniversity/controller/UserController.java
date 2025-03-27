@@ -15,6 +15,12 @@ public class UserController {
         return"/user/login";
     }
 
+    @GetMapping("/user/terms")
+    public String terms() {
+
+        return "/user/terms";
+    }
+
 
 
 }
