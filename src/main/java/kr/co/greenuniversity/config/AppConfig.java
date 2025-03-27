@@ -1,4 +1,3 @@
-/*
 package kr.co.greenuniversity.config;
 
 import org.modelmapper.ModelMapper;
@@ -29,6 +28,4 @@ public class AppConfig {
 
 }
 
-
- */
 

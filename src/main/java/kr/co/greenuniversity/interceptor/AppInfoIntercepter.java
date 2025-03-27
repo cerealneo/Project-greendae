@@ -1,4 +1,3 @@
-
 /*package kr.co.greenuniversity.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,5 +42,4 @@ public class AppInfoIntercepter implements HandlerInterceptor {
 
     }
 }
-
 */
