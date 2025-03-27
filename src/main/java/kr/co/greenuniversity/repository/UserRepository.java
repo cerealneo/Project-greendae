@@ -1,3 +1,4 @@
+/*
 package kr.co.greenuniversity.repository;
 
 import kr.co.greenuniversity.dto.UserDTO;
@@ -6,3 +7,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, String> {
 }
+*/

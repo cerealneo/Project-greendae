@@ -1,3 +1,4 @@
+/*
 package kr.co.greenuniversity.config;
 
 
@@ -20,3 +21,6 @@ public class AppInfo {
     private String appVersion;
 
 }
+
+
+ */

@@ -34,7 +34,7 @@ spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         password: Qwerty123@
-        url: jdbc:mysql://3.34.99.164:3306/greenuniversity
+        url: jdbc:mysql://3.34.99.164:3306/Greenuniversity
         username: greenuniversity
     devtools:
         livereload:
