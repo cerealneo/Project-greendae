@@ -1,3 +1,4 @@
+/*
 package kr.co.greenuniversity.security;
 
 import kr.co.greenuniversity.entity.User;
@@ -66,4 +67,4 @@ public class MyUserDetails implements UserDetails {
 }
 
 //수정 필요
-
+*/

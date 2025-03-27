@@ -1,3 +1,4 @@
+/*
 package kr.co.greenuniversity.config;
 
 import kr.co.greenuniversity.interceptor.AppInfoIntercepter;
@@ -20,3 +21,6 @@ public class WebMVCConfig implements WebMvcConfigurer {
 
 
 }
+
+
+ */
