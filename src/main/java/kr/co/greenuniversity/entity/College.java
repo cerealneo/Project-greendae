@@ -1,17 +1,21 @@
-package kr.co.greenuniversity.dto;
+package kr.co.greenuniversity.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Data
+@Getter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CollegeDTO {
+@Entity
+@Table(name = "College")
+public class College {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int no;
+
     private String college_name;
     private String college_eng_name;
     private String info_title;

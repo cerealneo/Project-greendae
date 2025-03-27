@@ -1,4 +1,3 @@
-/*
 package kr.co.greenuniversity.config;
 
 
@@ -22,5 +21,3 @@ public class AppInfo {
 
 }
 
-
- */

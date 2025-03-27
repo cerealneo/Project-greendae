@@ -1,9 +1,8 @@
-/*
+
 package kr.co.greenuniversity.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,17 +27,19 @@ public class SecurityConfig {
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/user/login?code=101"));
 
-        /*
+      /*
             인가 설정
              - MyUserDetails 권한 목록 생성하는 메서드 (getAuthorities)
              에서 접두어로 ROLE_ 입력해야 haRole, hasAnyRole 권한 처리됨
              - Spring Security는 기본적으로 인가 페이지에 대해
                                 login 페이지로 redirect 수행
-         */
+
+
+       */
 
 
 
-/*
+
         //인가 설정
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/").permitAll()
@@ -62,5 +63,3 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
-
-        */

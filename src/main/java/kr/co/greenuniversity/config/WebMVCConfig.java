@@ -1,5 +1,4 @@
-/*
-package kr.co.greenuniversity.config;
+/*package kr.co.greenuniversity.config;
 
 import kr.co.greenuniversity.interceptor.AppInfoIntercepter;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +20,4 @@ public class WebMVCConfig implements WebMvcConfigurer {
 
 
 }
-
-
- */
+*/
