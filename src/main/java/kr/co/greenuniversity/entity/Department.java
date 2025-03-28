@@ -1,19 +1,26 @@
-package kr.co.greenuniversity.dto;
+package kr.co.greenuniversity.entity;
 
-import kr.co.greenuniversity.entity.College;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Data
+import javax.naming.Name;
+
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DepartmentDTO {
+@Entity
+@Table(name = "Department")
+public class Department {
 
+    @Id
     private int no;
-    private String collegeName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "collehe_name", referencedColumnName = "college_name")
+    private College college;
     private String department_name;
     private String department_eng_name;
     private String establishment_date;
