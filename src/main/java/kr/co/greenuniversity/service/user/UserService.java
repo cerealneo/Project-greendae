@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.service;
+package kr.co.greenuniversity.service.user;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
