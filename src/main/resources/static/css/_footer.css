@@ -87,7 +87,7 @@ footer {
     height: 36px;
     appearance: none;
     border: none;
-    background: url('/static/common/images/bg-related-arr-open.png') no-repeat right center;
+    background: url('/images/bg-related-arr-open.png') no-repeat right center;
     background-position: calc(100% - 10px) center;
     background-color: #121721;
     text-align: left;

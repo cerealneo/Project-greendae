@@ -25,17 +25,17 @@ public class MyUserDetails implements UserDetails {
         //권한 목록 생성
         List<GrantedAuthority> authorities = new ArrayList<>();
         //계정 권한 앞에 접두어 ROLE_ 붙여야 됨
-        authorities.add(new SimpleGrantedAuthority("Role_" + user.getUid()));
+        authorities.add(new SimpleGrantedAuthority("Role_" + user.getId()));
         return authorities;                                     //getUid -> get???변경필요(ex.role)
     }
     @Override
     public String getPassword() {
-        return user.getUid();
+        return user.getId();
     }               //getPass로 변경해야함
 
     @Override
     public String getUsername() {
-        return user.getUid();
+        return user.getId();
     }
 
     @Override
