@@ -1,7 +1,6 @@
 package kr.co.greenuniversity.service;
 
 import kr.co.greenuniversity.dto.CollegeDTO;
-import kr.co.greenuniversity.dto.UserDTO;
 import kr.co.greenuniversity.entity.College;
 import kr.co.greenuniversity.repository.CollegeRepository;
 import lombok.RequiredArgsConstructor;

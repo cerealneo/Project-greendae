@@ -15,5 +15,6 @@ import lombok.*;
 public class User {
 
     @Id
-    private String uid;
+    private String id;
+    private String name;
 }
