@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>대학 및 학과 등록</title>
-    <link rel="stylesheet" href="/css/Management/_manageheader.css">
+    <link rel="stylesheet" th:href="@{/css/Management/_manageheader.css}">
     <link rel="stylesheet" href="/css/Management/ManageDepartRegist.css">
     <link rel="stylesheet" href="/css/Management/_managefooter.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,22 +80,22 @@
                     <img src="/images/bullet-h4.png">
                     <h3>대학 정보 입력</h3>
                 </div>
-                <form class="university">
+                <form class="university" name="infoRegister" th:action="@{/Management/ManageDepartregist}" method="post">
                     <table>
                         <tr>
                             <td>대학명</td>
-                            <td><input type="text" class="name" placeholder="예) 인문사회대학"></td>
+                            <td><input type="text" name="college_name" class="name" placeholder="예) 인문사회대학"></td>
                         </tr>
                         <tr>
                             <td>대학 영문명</td>
-                            <td><input type="text" class="EngName" placeholder="예) Humanities And Social Sciences"></td>
+                            <td><input type="text" name="college_eng_name" class="EngName" placeholder="예) Humanities And Social Sciences"></td>
                         </tr>
                         <tr>   
                             <td>대학 소개</td>
                             <td>
-                                <input type="text" class="title" placeholder="대학 소개 제목입력">
-                                <input type="text" class="content" placeholder="대학 소개 내용입력"><br>
-                                <input type="file" class="file"><span>대학·대학원 소개 페이지 출력 이미지(320 x 240) 첨부</span>
+                                <input type="text" name="info_title" class="title" placeholder="대학 소개 제목입력">
+                                <input type="text" name="info_context" class="content" placeholder="대학 소개 내용입력"><br>
+                                <input type="file" name="file" class="file"><span>대학·대학원 소개 페이지 출력 이미지(320 x 240) 첨부</span>
                             </td>
                         </tr>
                     </table>
