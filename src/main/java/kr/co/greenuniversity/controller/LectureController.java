@@ -14,19 +14,5 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LectureController {
 
-    private final LectureService lectureService;
 
-    @GetMapping("/Management/ManageDepartRegist")
-    public String lecRegister(){
-        return "/Management/ManageDepartRegist";
-    }
-
-    @PostMapping("/Management/ManageDepartRegist")
-    public String lecRegister(HttpServletRequest req, LectureDTO lectureDTO) {
-
-        lectureService.registerLecture(lectureDTO);
-        log.info("lectureDTO: {}", lectureDTO);
-
-        return "redirect:/Management/ManageDepartregist";
-    }
 }
