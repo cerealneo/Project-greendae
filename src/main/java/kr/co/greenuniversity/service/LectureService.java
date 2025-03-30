@@ -16,15 +16,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LectureService {
 
-    private final LectureRepository lectureRepository;
-    private final ModelMapper modelMapper;
 
-    public void registerLecture(LectureDTO lectureDTO){
 
-        Lecture lecture = modelMapper.map(lectureDTO, Lecture.class);
-        log.info("college : {}", lecture);
-
-        lectureRepository.save(lecture);
-
-    }
 }
