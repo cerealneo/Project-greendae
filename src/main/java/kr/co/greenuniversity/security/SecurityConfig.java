@@ -3,23 +3,29 @@ package kr.co.greenuniversity.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-//@EnableLoadTimeWeaving(prePostEnabled = true)  추후 수정
+
+@EnableWebSecurity
+//@EnableLoadTimeWeaving(prePostEnabled = true)
 @Configuration
 public class SecurityConfig {
+
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
         //로그인 설정
-        http.formLogin(login -> login.loginPage("/user/login")
+        http.formLogin(login -> login
+                .loginPage("/user/login")
                 .defaultSuccessUrl("/")
                 .failureUrl("/user/login?code=100")
-                .usernameParameter("uid")
+                .usernameParameter("id")
                 .passwordParameter("password"));
 
         //로그아웃 설정
