@@ -1,10 +1,10 @@
-package kr.co.greenuniversity.controller.community;
+package kr.co.greenuniversity.controller.community1;
 
 
 import kr.co.greenuniversity.dto.PageRequestDTO;
 import kr.co.greenuniversity.dto.PageResponseDTO;
 import kr.co.greenuniversity.dto.community.CommunityDTO;
-import kr.co.greenuniversity.service.community.CommunityService;
+import kr.co.greenuniversity.service.community1.CommunityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

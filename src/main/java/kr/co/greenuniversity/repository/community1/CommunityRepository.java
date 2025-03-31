@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.repository.community;
+package kr.co.greenuniversity.repository.community1;
 
 import kr.co.greenuniversity.entity.community.Community;
 import kr.co.greenuniversity.repository.custom.CommunityRepositoryCustom;
