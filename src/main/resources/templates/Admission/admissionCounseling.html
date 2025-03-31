@@ -4,41 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>입학안내</title>
-    <link rel="stylesheet" href="/css/_header.css">
-    <link rel="stylesheet" href="/css/_footer.css">
-    <link rel="stylesheet" href="/css/homebar.css">
-    <link rel="stylesheet" href="/css/admission.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <th:block th:include="/_headerLink"/>
+    <link rel="stylesheet" th:href="@{/css/homebar.css}">
+    <link rel="stylesheet" th:href="@{/css/admission.css}">
 </head>
 <!---------------------헤더------------------------------->
 <body>
     <div id="wrapper">
-        <th:block th:include="/Admission/_header"></th:block>
+        <th:block th:include="/common/__header"/>
         
         <div class="homebar">
             <article class="inline">
-                <a href="/common/"><img src="/common/images/ico-home.png" alt="homeico"></a>
-                <img src="/common/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/Admission/notice">입학안내</a>
-                <img src="/common/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/Admission/admissionCounseling">입학상담</a>
+                <a th:href="@{/main}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/Admission/notice}">입학안내</a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/Admission/admissionCounseling}">입학상담</a>
             </article>
         </div>
 
-
 <!---------------------사이드바------------------------------>
 <main>
-        
     <article class="side">
         <h2>입학안내</h2>
             <ul>
-                <li><a href="/Admission/notice" >공지사항</a></li>
-                <li><a href="/Admission/earlyAdmission" >수시모집</a></li>
-                <li><a href="/Admission/regularAdmission" >정시모집</a></li>
-                <li><a href="/Admission/transferAdmission" >편입학</a></li>
-                <li style="background-color: #3F97F6;"><a href="/Admission/admissionCounseling" class="on" >입학상담</a></li>
+                <li><a th:href="@{/Admission/notice}" >공지사항</a></li>
+                <li><a th:href="@{/Admission/earlyAdmission}" >수시모집</a></li>
+                <li><a th:href="@{/Admission/regularAdmission}" >정시모집</a></li>
+                <li><a th:href="@{/Admission/transferAdmission}" >편입학</a></li>
+                <li style="background-color: #3F97F6;"><a th:href="@{/Admission/admissionCounseling}" class="on" >입학상담</a></li>
             </ul>
     </article>
     <!--본문 -->
@@ -68,7 +62,7 @@
                 <tr>
                     <td>5</td>
                     <td>
-                        <img src="/images/ico-lock.png" alt="iconew">
+                        <img th:src="@{/images/ico-lock.png}" alt="iconew">
                         문의드립니다.
                     </td>
                     <td>홍길동</td>
@@ -85,7 +79,7 @@
                 <tr class="manager">
                     <td>3</td>
                     <td>
-                        <img src="/images/ico-reply.png" alt="iconew">
+                        <img th:src="@{/images/ico-reply.png}" alt="iconew">
                         RE : [답변] 취업 진로 상담
                     </td>
                     <td>담당자</td>
@@ -95,7 +89,7 @@
                 <tr>
                     <td>2</td>
                     <td>
-                        <img src="/images/ico-lock.png" alt="iconew">
+                        <img th:src="@{/images/ico-lock.png}" alt="iconew">
                         취업실전전략1 일반석택 교과목 문의입니다
                     </td>
                     <td>홍길동</td>
@@ -104,7 +98,7 @@
                 </tr>
                 <tr class="manager">
                     <td>1</td>
-                    <td><img src="/images/ico-reply.png" alt="iconew">
+                    <td><img th:src="@{/images/ico-lock.png}" alt="iconew">
                         RE : [답변] 취업실전전략1 일반선택 교과목 문의입니다
                     </td>
                     <td>담당자</td>
@@ -113,23 +107,20 @@
                 </tr>
             </table>
             <article class="pagebtn">
-                <a href=""><img src="/images/btn-first-page.png" alt="firstarr"></a>
-                <a href=""><img src="/images/btn-prev-page.png" alt="firstarr"></a>
+                <a href=""><img th:src="@{/images/btn-first-page.png}" alt="firstarr"></a>
+                <a href=""><img th:0src="@{/images/btn-prev-page.png}" alt="firstarr"></a>
                 <a href="">1</a>
                 <a href="">2</a>
                 <a href="">3</a>
-                <a href=""><img src="/images/btn-next-page.png" alt="firstarr"></a>
-                <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
+                <a href=""><img th:src="@{/images/btn-next-page.png}" alt="firstarr"></a>
+                <a href=""><img th:src="@{/images/btn-last-page.png}" alt="firstarr"></a>
             </article>
         </div>
     </article>
     
 </main>
 <!--------------------------푸터-------------------------------->
-
-
-
-        <th:block th:include="/Admission/_footer"></th:block>
+        <th:block th:include="/common/__footer"/>
 </div>
 </body>
 </html>

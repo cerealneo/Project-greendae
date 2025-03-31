@@ -5,11 +5,10 @@ const reName  = /^[가-힣]{2,10}$/
 const reEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 const reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
 
-
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function(){
 
     // 유효성 검사에 사용할 상태 변수
-    let isIdOk = false;
+    let isUidOk = false;
     let isPassOk = false;
     let isNameOk = false;
     let isEmailOk = false;
@@ -20,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const uidResult = document.getElementsByClassName('uidResult')[0];
 
     btnCheckUid.onclick = function(){
-        const value = formRegister.id.value;
+        const value = formRegister.uid.value;
 
         // 아이디 유효성 검사
         if(!value.match(reUid)){
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 아이디 중복 체크
-        fetch(`/user/id/${value}`)
+        fetch(`/user/uid/${value}`)
             .then(response => response.json())
             .then((data)=>{
                 console.log(data);
@@ -53,14 +52,13 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-
     // 2.비밀번호 유효성 검사
     const passResult = document.getElementsByClassName('passResult')[0];
 
-    formRegister.password2.addEventListener('focusout', function(){
+    formRegister.pass2.addEventListener('focusout', function(){
 
-        const value1 = formRegister.password.value;
-        const value2 = formRegister.password2.value;
+        const value1 = formRegister.pass.value;
+        const value2 = formRegister.pass2.value;
 
         if(!value1.match(rePass)){
             passResult.innerText = '비밀번호는 숫자, 소문자, 대문자, 특수문자 조합 8자리';
@@ -94,35 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }else{
             nameResult.innerText = '';
             isNameOk = true;
-        }
-    });
-
-    // 6.휴대폰 유효성 검사(중복체크 포함)
-    const hpResult = document.getElementsByClassName('hpResult')[0];
-
-    formRegister.phone.addEventListener('focusout', async function(){
-
-        const value = this.value;
-
-        if(!value.match(reHp)){
-            hpResult.innerText = '휴대폰번호가 유효하지 않습니다.(- 포함)';
-            hpResult.style.color = 'red';
-            isHpOk = false;
-            return;
-        }
-
-        // 휴대폰 중복체크
-        const response = await fetch(`/user/phone/${value}`);
-        const data = await response.json();
-
-        if(data.count > 0){
-            hpResult.innerText = '이미 사용중인 휴대폰번호 입니다.';
-            hpResult.style.color = 'red';
-            isHpOk = false;
-        }else{
-            hpResult.innerText = '사용 가능한 휴대폰번호 입니다.';
-            hpResult.style.color = 'green';
-            isHpOk = true;
         }
     });
 
@@ -162,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // 인증 코드 비교
     const btnAuthEmail = document.getElementById('btnAuthEmail');
 
     btnAuthEmail.onclick = async function(){
@@ -177,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // 서버 전송
         const response = await fetch('/user/email/auth', {
             method: 'POST',
-            headers: {'Content-Type' : 'application/json'},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(jsonData)
         });
 
@@ -196,7 +164,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
     } // btnAuthEmail.onclick end
 
+    // 6.휴대폰 유효성 검사(중복체크 포함)
+    const hpResult = document.getElementsByClassName('hpResult')[0];
 
+    formRegister.hp.addEventListener('focusout', async function(){
+
+        const value = this.value;
+
+        if(!value.match(reHp)){
+            hpResult.innerText = '휴대폰번호가 유효하지 않습니다.(- 포함)';
+            hpResult.style.color = 'red';
+            isHpOk = false;
+            return;
+        }
+
+        // 휴대폰 중복체크
+        const response = await fetch(`/user/hp/${value}`);
+        const data = await response.json();
+
+        if(data.count > 0){
+            hpResult.innerText = '이미 사용중인 휴대폰번호 입니다.';
+            hpResult.style.color = 'red';
+            isHpOk = false;
+        }else{
+            hpResult.innerText = '사용 가능한 휴대폰번호 입니다.';
+            hpResult.style.color = 'green';
+            isHpOk = true;
+        }
+    });
 
     // 최종 폼 전송 이벤트
     formRegister.onsubmit = function(e){
@@ -228,8 +223,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         return true; // 폼 전송 시작
-
     }; // 최종 폼 전송 이벤트 끝
-
-
 });

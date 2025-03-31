@@ -80,7 +80,7 @@
                     <img src="/images/bullet-h4.png">
                     <h3>대학 정보 입력</h3>
                 </div>
-                <form class="university" name="infoRegister" th:action="@{/Management/registerCollege}" method="post" enctype="multipart/form-data">
+                <form class="university" name="infoRegister" th:action="@{/Management/registerCollege}" method="post">
                     <table>
                         <tr>
                             <td>대학명</td>
@@ -110,10 +110,7 @@
                     <table>
                         <tr>
                             <td>학과번호</td>
-                            <td>
-                                <span name="no" th:text="${nextNo}">고유 2자리 숫자 자동생성</span>
-                                <input type="hidden" name="no" th:value="${nextNo}" />
-                            </td>
+                            <td><span name="no">고유 2자리 숫자 자동생성</span></td>
                             <td>단과대학</td>
                             <td>
                                 <select name="collegeName">
@@ -135,10 +132,8 @@
                             <td><input type="date" name="establishment_date" class="year"></td>
                             <td>학과장</td>
                             <td>
-                                <select name="pro_name">
-                                    <th:block> <!-- th:each="prof : ${professors}  추후에 추가 예정-->
-                                        <option></option> <!--th:value="${prof.name}" th:text="${prof.name}">  추후에 추가예정-->
-                                    </th:block>
+                                <select>
+                                    <option name="pro_name">선택</option>
                                 </select>
                             </td>
                         </tr>

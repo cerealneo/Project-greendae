@@ -22,22 +22,15 @@ public class DepartmentController {
     private final DepartmentService departmentService;
     private final CollegeRepository collegeRepository;
 
-    @PostMapping("/Management/registerDepart")
-    public String registerDepartment(@ModelAttribute DepartmentDTO departmentDTO) {
-
-        departmentService.registerDepartment(departmentDTO);
-        return "redirect:/Management/ManageDepartRegist";
+    @GetMapping("/Management/ManageDepartregist")
+    public String registerDepartment(){
+        return "/Management/ManageDepartregist";
     }
 
-    @GetMapping("/Management/ManageDepartRegist")
-    public String showDepartmentForm(Model model) {
-        int nextNo = departmentService.getNextDepartmentNo();
+    @PostMapping("/Management/registerDepart")
+    public String registerDepartment(@ModelAttribute DepartmentDTO departmentDTO, @RequestParam("collegeName") String collegeName) {
 
-        if (nextNo < 10) nextNo = 10;
-        String formattedNo = String.format("%02d", nextNo);
-
-        model.addAttribute("nextNo", formattedNo);
-        model.addAttribute("colleges", collegeRepository.findAll());
+        departmentService.registerDepartment(departmentDTO);
 
         return "/Management/ManageDepartRegist";
     }

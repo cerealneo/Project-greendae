@@ -178,11 +178,6 @@ main .register{
     box-sizing: border-box;
 }
 
-.auth {
-    display: none;
-    margin-top: 6px;
-}
-
 .pagebtn {
     display: flex;
     justify-content: flex-end;

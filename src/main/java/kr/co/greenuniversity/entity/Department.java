@@ -19,9 +19,8 @@ public class Department {
     private int no;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "college_name")
+    @JoinColumn(name = "collehe_name", referencedColumnName = "college_name")
     private College college;
-
     private String department_name;
     private String department_eng_name;
     private String establishment_date;
