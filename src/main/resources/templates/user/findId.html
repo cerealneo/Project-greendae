@@ -24,7 +24,14 @@
             <div class="form-hd">
                 <p>아이디 찾기</p>
             </div>
-            <form>
+            <form th:action="@{/resultUserId}">
+                <!--<div class="type-list">
+                    <label><input type="checkbox" name="student" class="checkbox">학부생</label>
+                    <label><input type="checkbox" name="pro" class="checkbox">교직원</label>
+                    <label><input type="checkbox" name="user" class="checkbox">일반</label>
+                    <input type="hidden" name="admin" class="checkbox">
+                </div> -->
+
                 <div class="form-boder">
                     <p>본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p>
                     <div class="name-block">

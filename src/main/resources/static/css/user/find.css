@@ -91,6 +91,10 @@ button {
     left: 7%;
 }
 
+.type-list {
+    display: flex;
+}
+
 form {
     width: 600px;
     margin-top: 20px;

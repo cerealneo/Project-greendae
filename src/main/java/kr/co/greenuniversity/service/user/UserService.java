@@ -16,6 +16,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
@@ -45,14 +47,19 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void findUserId(UserDTO userDTO) {
+    public User findUserId(UserDTO userDTO) {
         log.info("userDTO: {}", userDTO);
 
         User user = modelMapper.map(userDTO, User.class);
 
-        userRepository.findById(user.getId());
+        Optional<User> optUser = userRepository.findByEmail(user.getEmail());
 
+        if(optUser.isPresent()) {
+            User userResult = optUser.get();
 
+            return userResult;
+        }
+        return null;
     }
 
     public long checkUser(String type, String value){
