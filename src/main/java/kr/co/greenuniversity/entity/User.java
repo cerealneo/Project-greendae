@@ -15,5 +15,13 @@ import lombok.*;
 public class User {
 
     @Id
-    private String uid;
+    private String id;
+    private String password;
+    private String name;
+    private String phone;
+    private String email;
+    private String addr1;
+    private String addr2;
+    private String role;
+
 }
