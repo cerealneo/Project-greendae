@@ -41,15 +41,15 @@
   }
 
   .swiper-slide1 {
-      background-image: url("/static/images/bg-main-vi01.jpg");
+      background-image: url("/static/common/images/bg-main-vi01.jpg");
   }
 
   .swiper-slide2 {
-      background-image: url("/static/images/bg-main-vi02.jpg");
+      background-image: url("/static/common/images/bg-main-vi02.jpg");
   }
 
   .swiper-slide3 {
-      background-image: url("/static/images/bg-main-vi03.jpg");
+      background-image: url("/static/common/images/bg-main-vi03.jpg");
   }
 
   .swiper-pagination {
@@ -262,7 +262,7 @@
   }
 
   .club {
-      background-image: url(/static/images/bg-main-banner.gif);
+      background-image: url(/static/common/images/bg-main-banner.gif);
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;

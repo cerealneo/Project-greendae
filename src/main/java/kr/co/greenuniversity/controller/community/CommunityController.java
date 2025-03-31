@@ -4,7 +4,6 @@ package kr.co.greenuniversity.controller.community;
 import kr.co.greenuniversity.dto.PageRequestDTO;
 import kr.co.greenuniversity.dto.PageResponseDTO;
 import kr.co.greenuniversity.dto.community.CommunityDTO;
-import kr.co.greenuniversity.service.UserService;
 import kr.co.greenuniversity.service.community.CommunityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

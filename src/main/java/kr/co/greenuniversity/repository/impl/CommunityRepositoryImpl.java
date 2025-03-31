@@ -47,7 +47,7 @@ public class CommunityRepositoryImpl implements CommunityRepositoryCustom {
                 .select(qCommunity.count())
                 .from(qCommunity)
                 .join(qUser)
-                .on(qCommunity.user.id.eq(qUser.id))
+                .on(qCommunity.user.id.eq(qUser.uid))
                 .where(expression)
                 .fetchOne();
 

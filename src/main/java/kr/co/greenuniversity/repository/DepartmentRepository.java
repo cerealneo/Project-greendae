@@ -7,10 +7,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
 
     List<Department> findByCollege_CollegeName(String collegeName);
 
+    @Query("SELECT MAX(d.no) FROM Department d")
+    Optional<Integer> findMaxNo();
 }
