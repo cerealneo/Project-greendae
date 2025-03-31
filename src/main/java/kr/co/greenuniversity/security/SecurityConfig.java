@@ -19,7 +19,7 @@ public class SecurityConfig {
         http.formLogin(login -> login.loginPage("/user/login")
                 .defaultSuccessUrl("/")
                 .failureUrl("/user/login?code=100")
-                .usernameParameter("id")
+                .usernameParameter("uid")
                 .passwordParameter("password"));
 
         //로그아웃 설정

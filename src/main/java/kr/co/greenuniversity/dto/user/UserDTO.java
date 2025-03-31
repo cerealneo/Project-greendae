@@ -16,6 +16,9 @@ public class UserDTO {
     private String addr1;
     private String addr2;
     private String role;
+    private String regip;
+    private String regDate;
+    private String leaveDate;
 
 
 }
