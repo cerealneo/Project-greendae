@@ -2,14 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>커뮤니티/공지사항</title>
+        <title>커뮤니티/자료실</title>
         <link rel="stylesheet" href="/css/_header.css">
         <link rel="stylesheet" href="/css/_footer.css">
         <link rel="stylesheet" href="/css/homebar.css">
-        <link rel="stylesheet" href="/css/Community/notice.css">
+        <link rel="stylesheet" href="/css/Community/resource.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
     </head>
     <body>
         <div id="wrapper">
@@ -18,28 +19,28 @@
                 <article class="inline">
                     <a href="/main"><img src="/images/ico-home.png" alt="homeico"></a>
                     <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/Community/notice">커뮤니티</a>
+                    <a href="/Community/resource">커뮤니티</a>
                     <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/Community/notice">공지사항</a>
+                    <a href="/Community/resource">자료실</a>
                 </article>
             </div>
             <main>
                 <article class="side">
                     <h4>커뮤니티</h4>
                         <ul>
-                            <li class="on"><a href="/Community/notice" class="on">공지사항</a></li>
+                            <li><a href="/Community/notice">공지사항</a></li>
                             <li><a href="/Community/news">뉴스 및 칼럼</a></li>
                             <li><a href="/Community/job">취업정보</a></li>
                             <li><a href="/Community/free">자유게시판</a></li>
                             <li><a href="/Community/qa">질문과 답변</a></li>
-                            <li><a href="/Community/resource">자료실</a></li>
+                            <li class="on"><a href="/Community/resource" class="on">자료실</a></li>
                         </ul>
                 </article>
                 <article class="notice">
                     <div class="noticetop">
-                        <h4>공지사항</h4>
+                        <h4>자료실</h4>
                     </div>
-                    <form th:action="@{/Community/searchNotice}" class="search">
+                    <form th:action="@{/Community/searchResource}" class="search">
                         <select class="dropdown" name="searchType">
                             <option value="all">전체</option>
                             <option value="title" th:selected="${pageResponseDTO.searchType == 'title'}">제목</option>

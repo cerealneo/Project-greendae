@@ -1,46 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>커뮤니티/자료실</title>
-    <link rel="stylesheet" href="/css/_header.css">
-    <link rel="stylesheet" href="/css/_footer.css">
-    <link rel="stylesheet" href="/css/homebar.css">
-    <link rel="stylesheet" href="/css/Community/resource.css">
+    <title>커뮤니티/자유게시판</title>
+    <link rel="stylesheet" th:href="@{/css/_header.css}">
+    <link rel="stylesheet" th:href="@{/css/_footer.css}">
+    <link rel="stylesheet" th:href="@{/css/homebar.css}">
+    <link rel="stylesheet" th:href="@{/css/Community/free.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <div id="wrapper">
-    <th:block th:include="/Community/_header"></th:block>
+    <th:block th:include="/Community/_header.html"></th:block>
+
     <div class="homebar">
         <article class="inline">
-            <a href="/main"><img src="/images/ico-home.png" alt="homeico"></a>
-            <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/Community/resource">커뮤니티</a>
-            <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/Community/resource">자료실</a>
+            <a th:href="@{/templates/main.html}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+            <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+            <a th:href="@{/templates/Community/free.html}">커뮤니티</a>
+            <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+            <a th:href="@{/Community/free}">자유게시판</a>
         </article>
     </div>
+
     <main>
         <article class="side">
             <h4>커뮤니티</h4>
             <ul>
-                <li><a href="/Community/notice">공지사항</a></li>
-                <li><a href="/Community/news">뉴스 및 칼럼</a></li>
-                <li><a href="/Community/job">취업정보</a></li>
-                <li><a href="/Community/free">자유게시판</a></li>
-                <li><a href="/Community/qa">질문과 답변</a></li>
-                <li class="on"><a href="/Community/resource" class="on">자료실</a></li>
+                <li><a th:href="@{/Community/notice}">공지사항</a></li>
+                <li><a th:href="@{/Community/news}">뉴스 및 칼럼</a></li>
+                <li><a th:href="@{/Community/job}">취업정보</a></li>
+                <li class="on"><a th:href="@{/Community/free}" class="on">자유게시판</a></li>
+                <li><a th:href="@{/Community/qa}">질문과 답변</a></li>
+                <li><a th:href="@{/Community/resource}">자료실</a></li>
             </ul>
         </article>
+
         <article class="notice">
             <div class="noticetop">
-                <h4>자료실</h4>
+                <h4>자유게시판</h4>
             </div>
-            <form th:action="@{/Community/searchResource}" class="search">
+
+            <form th:action="@{/Community/searchFree}" class="search">
                 <select class="dropdown" name="searchType">
                     <option value="all">전체</option>
                     <option value="title" th:selected="${pageResponseDTO.searchType == 'title'}">제목</option>
@@ -50,8 +53,10 @@
                 <input type="text" name="keyword" placeholder="검색어를 입력해 주세요">
                 <button class="searchbtn">검색</button>
             </form>
+
             <div class="noticemain">
                 <table>
+                    <thead>
                     <tr>
                         <th>번호</th>
                         <th>제목</th>
@@ -59,14 +64,18 @@
                         <th>작성일</th>
                         <th>조회</th>
                     </tr>
-                    <tr th:each="community, i:${pageResponseDTO.dtoList}">
+                    </thead>
+                    <tbody>
+                    <tr th:each="article, i:${pageResponseDTO.dtoList}">
                         <td>[[${pageResponseDTO.startNo - i.index}]]</td>
-                        <td><a th:href="@{/Community/view(no=${community.no})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
-                        <td>[[${community.name}]]</td>
-                        <td>[[${community.wdate}]]</td>
-                        <td>[[${community.hit}]]</td>
+                        <td><a th:href="@{/article/view(no=${article.no})}">[[${article.title}]]&#91;[[${article.comment}]]&#93;</a></td>
+                        <td>[[${article.name}]]</td>
+                        <td>[[${article.wdate}]]</td>
+                        <td>[[${article.hit}]]</td>
                     </tr>
+                    </tbody>
                 </table>
+
                 <article class="pagebtn">
                     <th:block th:if="${pageResponseDTO.prev}">
                         <a th:href="@{/Community/list(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>
@@ -83,6 +92,7 @@
             </div>
         </article>
     </main>
+
     <th:block th:include="/Community/_footer.html"></th:block>
 </div>
 </body>
