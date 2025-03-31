@@ -8,10 +8,6 @@
     <link rel="stylesheet" th:href="@{/css/user/login.css}">
 </head>
 <body>
-<<<<<<< HEAD
-<div id="wrapper">
-    <th:block th:include="/common/__header"/>
-=======
     <div id="wrapper">
         <th:block th:include="/common/__header"/>
 
@@ -31,7 +27,7 @@
                     <p>LOGIN</p>
                     <p>로그인을 하시면 더 다양한 서비스를 받으실 수 있습니다.</p>
                 </div>
-                <form action="#">
+                <form method="post" th:action="@{/user/login}">
                     <ul>
                         <div>
                             <li><label><input type="radio" name="rank" class="checkbox">학부생</label></li>
@@ -44,7 +40,7 @@
                     </ul>
                     
                     <input type="text" name="id" placeholder="아이디">   <br>
-                    <input type="text" name="pass" placeholder="비밀번호">  <br>
+                    <input type="password" name="password" placeholder="비밀번호">  <br>
 
                     <input type="submit" value="로그인" class="loginbtn">
                 </form>

@@ -40,8 +40,6 @@ public class MyUserDetailsService implements UserDetailsService {
 }
 
 
-//UserEntity, UserRepository 생성 후 수정 필요.
-
 
 
 

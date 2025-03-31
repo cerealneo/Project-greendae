@@ -41,4 +41,26 @@ public class DepartmentController {
 
         return "/Management/ManageDepartRegist";
     }
+
+    @GetMapping("/department/engineering")
+    public String engineering() {
+        return "/department/engineering";
+    }
+    @GetMapping("/department/graduateSchool")
+    public String graduateSchool() {
+        return "/department/graduateSchool";
+    }
+    @GetMapping("/department/humanities")
+    public String humanities() {
+        return "/department/humanities";
+    }
+    @GetMapping("/department/naturalscience")
+    public String naturalscience() {
+        return "/department/naturalscience";
+    }
+    @GetMapping("/department/teacher")
+    public String teacher() {
+        return "/department/teacher";
+    }
+
 }
