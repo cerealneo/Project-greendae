@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <th:block th:include="/_headerLink"/>
+    <link rel="stylesheet" href="/css/_header.css">
+    <link rel="stylesheet" href="/css/_footer.css">
+    <link rel="stylesheet" href="/css/homebar.css">
     <link rel="stylesheet" href="/css/introduction.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <style>
         .root_daum_roughmap root_daum_roughmap_landing {
             width: 930px;
@@ -15,7 +20,7 @@
 <!---------------------헤더------------------------------->
 <body>
     <div id="wrapper">
-        <th:block th:include="/common/__header"/>
+        <th:block th:include="/Introduction/_header"></th:block>
         
         <div class="homebar">
             <article class="inline">
@@ -78,7 +83,7 @@
     </main>
 <!--------------------------푸터-------------------------------->
 
-        <th:block th:include="/common/__footer"/>
+        <th:block th:include="/Introduction/_footer"></th:block>
 
     </div>
 </body>

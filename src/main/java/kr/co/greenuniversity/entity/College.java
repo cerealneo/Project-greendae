@@ -6,6 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Getter
+@Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +21,7 @@ public class College {
 
     @Column(name = "college_name", unique = true)
     private String collegeName;
+
     private String college_eng_name;
     private String info_title;
     private String info_context;
