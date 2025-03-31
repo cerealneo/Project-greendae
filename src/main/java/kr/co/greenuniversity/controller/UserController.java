@@ -98,14 +98,34 @@ public class UserController {
                 .body(false);
     }
 
+    // 아이디 찾기 페이지
+    @GetMapping("/findId")
+    public String findId(UserDTO userDTO) {
+
+        userService.findUserId(userDTO);
 
 
-    @PostMapping("/findId")
+    @GetMapping("/resultId")
     public String findId() {
-        return "ddd";
+
+        return "redirect:/user/login";
+
     }
 
+    @PostMapping("/findId")
+    public String findId(@RequestBody String Email, UserDTO userDTO) {
 
 
+
+
+        return "/user/findId";
+    }
+
+    // 아이디 찾기 결과 페이지
+    @GetMapping("/resultUserId")
+    public String resultUserId() {
+
+        return "/user/resultUserId";
+    }
 
 }
