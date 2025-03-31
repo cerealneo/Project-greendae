@@ -104,13 +104,12 @@ public class UserController {
 
         userService.findUserId(userDTO);
 
-<<<<<<< HEAD
-=======
+
     @GetMapping("/resultId")
     public String findId() {
 
-
         return "redirect:/user/login";
+
     }
 
     @PostMapping("/findId")
@@ -119,7 +118,6 @@ public class UserController {
 
 
 
->>>>>>> 09aad783420c8d38cd7e828336cc01cb4ef03c88
         return "/user/findId";
     }
 
