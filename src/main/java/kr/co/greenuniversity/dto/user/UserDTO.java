@@ -1,20 +1,13 @@
-package kr.co.greenuniversity.entity;
+package kr.co.greenuniversity.dto.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.*;
 
-@Getter
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(name = "User")
-public class User {
+public class UserDTO {
 
-    @Id
     private String id;
     private String password;
     private String name;
@@ -23,5 +16,9 @@ public class User {
     private String addr1;
     private String addr2;
     private String role;
+    private String regip;
+    private String regDate;
+    private String leaveDate;
+
 
 }

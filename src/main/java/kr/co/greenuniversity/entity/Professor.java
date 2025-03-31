@@ -1,0 +1,41 @@
+package kr.co.greenuniversity.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+@Table(name = "Professor")
+public class Professor {
+
+
+    @Id
+    private int id;
+
+    private String jumin;
+    private String name;
+    private String eng_name;
+    private String gender;
+    private String phone;
+    private String nationality;
+    private String email;
+    private String addr1;
+    private String addr2;
+    private String college_name;
+    private String major;
+    private String end_date;
+    private String degree;
+    private String spot;
+    private String department_name;
+    private String appointment_date;
+    private String empoly_status;
+
+}

@@ -1,7 +1,7 @@
 package kr.co.greenuniversity.security;
 
-import kr.co.greenuniversity.entity.User;
-import kr.co.greenuniversity.repository.UserRepository;
+import kr.co.greenuniversity.entity.user.User;
+import kr.co.greenuniversity.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

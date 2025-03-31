@@ -1,6 +1,6 @@
 package kr.co.greenuniversity.security;
 
-import kr.co.greenuniversity.entity.User;
+import kr.co.greenuniversity.entity.user.User;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
