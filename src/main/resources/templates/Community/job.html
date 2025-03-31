@@ -1,97 +1,102 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>커뮤니티/취업정보</title>
-        <th:block th:include="/_headerLink"/>
-        <link rel="stylesheet" href="/css/Community/job.css">
-    </head>
-    <body>
-        <div id="wrapper">
-            <th:block th:include="/common/__header"/>
-            <div class="homebar">
-                <article class="inline">
-                    <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Community/job.html">커뮤니티</a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Community/job.html">취업정보</a>
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티/취업정보</title>
+    <link rel="stylesheet" href="/css/_header.css">
+    <link rel="stylesheet" href="/css/_footer.css">
+    <link rel="stylesheet" href="/css/homebar.css">
+    <link rel="stylesheet" href="/css/Community/job.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper">
+    <th:block th:include="/common/__header"/>
+    <div class="homebar">
+        <article class="inline">
+            <a href="/static/main"><img src="/images/ico-home.png" alt="homeico"></a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/static/Community/job">커뮤니티</a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/static/Community/job">취업정보</a>
+        </article>
+    </div>
+    <main>
+        <article class="side">
+            <h4>커뮤니티</h4>
+            <ul>
+                <li><a href="/Community/notice">공지사항</a></li>
+                <li><a href="/Community/news">뉴스 및 칼럼</a></li>
+                <li class="on"><a href="/Community/job" class="on">취업정보</a></li>
+                <li><a href="/Community/free">자유게시판</a></li>
+                <li><a href="/Community/qa">질문과 답변</a></li>
+                <li><a href="/Community/resource">자료실</a></li>
+            </ul>
+        </article>
+        <article class="notice">
+            <div class="noticetop">
+                <h4>취업정보</h4>
+            </div>
+            <form class="search">
+                <select class="dropdown">
+                    <option>전체</option>
+                    <option>제목</option>
+                    <option>작성자</option>
+                    <option>내용</option>
+                </select>
+                <input type="text" value="검색어를 입력해 주세요">
+                <button class="searchbtn">검색</button>
+            </form>
+            <div class="noticemain">
+                <table>
+                    <tr>
+                        <th>번호</th>
+                        <th>상태</th>
+                        <th>업체</th>
+                        <th>채용정보</th>
+                        <th>마감일</th>
+                        <th>조회</th>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="recruit">모집중</span></td>
+                        <td>정석수학학원</td>
+                        <td>고등 1학년 수학 (공통수학)만 지도 가능한 …</td>
+                        <td>24.04.09</td>
+                        <td>160</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="recruit">모집중</span></td>
+                        <td>(주)삼성전자</td>
+                        <td>2025 상반기 (주)삼성전자 대학원(석사) 신…</td>
+                        <td>24.04.09</td>
+                        <td>160</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="closed">마감</span></td>
+                        <td>정석수학학원</td>
+                        <td>2025 상반기 (주)삼성전자 대학원(석사) 신…</td>
+                        <td>24.04.09</td>
+                        <td>160</td>
+                    </tr>
+                </table>
+                <article class="pagebtn">
+                    <a href=""><img src="/images/btn-first-page.png" alt="firstarr"></a>
+                    <a href=""><img src="/images/btn-prev-page.png" alt="firstarr"></a>
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href=""><img src="/images/btn-next-page.png" alt="firstarr"></a>
+                    <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
                 </article>
             </div>
-            <main>
-                <article class="side">
-                    <h4>커뮤니티</h4>
-                        <ul>
-                            <li><a href="/static/Community/notice.html">공지사항</a></li>
-                            <li><a href="/static/Community/news.html">뉴스 및 칼럼</a></li>
-                            <li class="on"><a href="/static/Community/job.html" class="on">취업정보</a></li>
-                            <li><a href="/static/Community/free.html">자유게시판</a></li>
-                            <li><a href="/static/Community/qa.html">질문과 답변</a></li>
-                            <li><a href="/static/Community/resource.html">자료실</a></li>
-                        </ul>
-                </article>
-                <article class="notice">
-                    <div class="noticetop">
-                        <h4>취업정보</h4>
-                    </div>
-                    <form class="search">
-                        <select class="dropdown">
-                            <option>전체</option>
-                            <option>제목</option>
-                            <option>작성자</option>
-                            <option>내용</option>
-                        </select>
-                        <input type="text" value="검색어를 입력해 주세요">
-                        <button class="searchbtn">검색</button>
-                    </form>
-                    <div class="noticemain">
-                        <table>
-                            <tr>
-                                <th>번호</th>
-                                <th>상태</th>
-                                <th>업체</th>
-                                <th>채용정보</th>
-                                <th>마감일</th>
-                                <th>조회</th>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><span class="recruit">모집중</span></td>
-                                <td>정석수학학원</td>
-                                <td>고등 1학년 수학 (공통수학)만 지도 가능한 …</td>
-                                <td>24.04.09</td>
-                                <td>160</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><span class="recruit">모집중</span></td>
-                                <td>(주)삼성전자</td>
-                                <td>2025 상반기 (주)삼성전자 대학원(석사) 신…</td>
-                                <td>24.04.09</td>
-                                <td>160</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><span class="closed">마감</span></td>
-                                <td>정석수학학원</td>
-                                <td>2025 상반기 (주)삼성전자 대학원(석사) 신…</td>
-                                <td>24.04.09</td>
-                                <td>160</td>
-                            </tr>
-                        </table>
-                        <article class="pagebtn">
-                            <a href=""><img src="/images/btn-first-page.png" alt="firstarr"></a>
-                            <a href=""><img src="/images/btn-prev-page.png" alt="firstarr"></a>
-                            <a href="">1</a>
-                            <a href="">2</a>
-                            <a href="">3</a>
-                            <a href=""><img src="/images/btn-next-page.png" alt="firstarr"></a>
-                            <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
-                        </article>
-                    </div>
-                </article>
-            </main>
-            <th:block th:include="/common/__footer"/>
-        </div>
-    </body>
+        </article>
+    </main>
+    <th:block th:include="/common/__footer"/>
+</div>
+</body>
 </html>

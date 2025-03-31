@@ -4,7 +4,7 @@ import com.querydsl.core.Tuple;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.greenuniversity.dto.PageRequestDTO;
-import kr.co.greenuniversity.entity.QUser;
+import kr.co.greenuniversity.entity.user.QUser;
 import kr.co.greenuniversity.entity.community.QCommunity;
 import kr.co.greenuniversity.repository.custom.CommunityRepositoryCustom;
 import lombok.RequiredArgsConstructor;

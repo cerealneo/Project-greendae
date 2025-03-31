@@ -1,16 +1,16 @@
-package kr.co.greenuniversity.controller.community;
+package kr.co.greenuniversity.controller.community1;
 
 
 import kr.co.greenuniversity.dto.PageRequestDTO;
 import kr.co.greenuniversity.dto.PageResponseDTO;
 import kr.co.greenuniversity.dto.community.CommunityDTO;
-import kr.co.greenuniversity.service.UserService;
-import kr.co.greenuniversity.service.community.CommunityService;
+import kr.co.greenuniversity.service.community1.CommunityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CommunityController {
 
     private final CommunityService communityService;
+
 
     // 목록
     @GetMapping("Community/notice")
@@ -69,6 +70,7 @@ public class CommunityController {
         return "/Community/search/searchResource";
     }
 
+
     // 글 보기
     @GetMapping("/Community/view")
     public String view(int no, Model model) {
@@ -76,6 +78,23 @@ public class CommunityController {
         model.addAttribute(communityDTO);
         return "/Community/view";
     }
+
+
+    // 글 쓰기
+    @GetMapping("/Community/write")
+    public String write() {
+
+
+
+
+        return "/Community/write";
+    }
+
+    @PostMapping("/Community/write")
+    public String write(CommunityDTO communityDTO) {
+        return "/Community/write";
+    }
+
 
 
     @GetMapping("/Community/job")

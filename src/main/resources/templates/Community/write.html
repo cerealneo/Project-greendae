@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티/글쓰기</title>
+    <link rel="stylesheet" href="/css/_header.css">
+    <link rel="stylesheet" href="/css/_footer.css">
+    <link rel="stylesheet" href="/css/Community/view.css">
+    <link rel="stylesheet" href="/css/homebar.css">
+    <link rel="stylesheet" href="/css/Community/resource.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper">
+    <th:block th:include="/common/__header"/>
+    <div class="homebar">
+        <article class="inline">
+            <a href="/main"><img src="/images/ico-home.png" alt="homeico"></a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/Community/resource">커뮤니티</a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/Community/resource">자료실</a>
+        </article>
+    </div>
+    <main id="article">
+        <section class="view">
+            <article class="notice">
+                <div class="noticetop">
+                    <h4>글쓰기</h4>
+                </div>
+            </article>
+            <form th:action="@{/Community/write}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="writer">
+                <table border="0">
+                    <tr>
+                        <th>제목</th>
+                        <td><input type="text" name="title" readonly/></td>
+                    </tr>
+                    <tr>
+                        <th>작성자</th>
+                        <td><input type="text" name="writer"  readonly/></td>
+                    </tr>
+                    <tr>
+                        <th>파일</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>내용</th>
+                        <td>
+                            <textarea name="content" readonly></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <!--<a th:href="@{|/Community/${}|}" class="btn btnCancel">취소</a>-->
+                    <input type="submit" value="작성완료" class="btn btnComplete"/>
+                </div>
+            </form>
+        </section>
+    </main>
+    <th:block th:include="/common/__footer"/>
+</div>
+</body>
+</html>

@@ -1,13 +1,11 @@
-package kr.co.greenuniversity.service.community;
+package kr.co.greenuniversity.service.community1;
 
 import com.querydsl.core.Tuple;
-import com.querydsl.core.types.dsl.BooleanExpression;
 import kr.co.greenuniversity.dto.PageRequestDTO;
 import kr.co.greenuniversity.dto.PageResponseDTO;
 import kr.co.greenuniversity.dto.community.CommunityDTO;
 import kr.co.greenuniversity.entity.community.Community;
-import kr.co.greenuniversity.entity.community.QCommunity;
-import kr.co.greenuniversity.repository.community.CommunityRepository;
+import kr.co.greenuniversity.repository.community1.CommunityRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;

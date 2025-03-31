@@ -3,8 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>커뮤니티/질문과 답변</title>
-        <th:block th:include="/_headerLink"/>
+        <link rel="stylesheet" href="/css/_header.css">
+        <link rel="stylesheet" href="/css/_footer.css">
+        <link rel="stylesheet" href="/css/homebar.css">
         <link rel="stylesheet" href="/css/Community/qa.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 
     </head>
     <body>
@@ -12,23 +17,23 @@
             <th:block th:include="/common/__header"/>
             <div class="homebar">
                 <article class="inline">
-                    <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
+                    <a href="/main"><img src="/images/ico-home.png" alt="homeico"></a>
                     <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Community/qa.html">커뮤니티</a>
+                    <a href="/Community/qa">커뮤니티</a>
                     <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Community/qa.html">질문과 답변</a>
+                    <a href="/Community/qa">질문과 답변</a>
                 </article>
             </div>
             <main>
                 <article class="side">
                     <h4>커뮤니티</h4>
                         <ul>
-                            <li><a href="/static/Community/notice.html">공지사항</a></li>
-                            <li><a href="/static/Community/news.html">뉴스 및 칼럼</a></li>
-                            <li><a href="/static/Community/job.html">취업정보</a></li>
-                            <li><a href="/static/Community/free.html">자유게시판</a></li>
-                            <li class="on"><a href="/static/Community/qa.html" class="on">질문과 답변</a></li>
-                            <li><a href="/static/Community/resource.html">자료실</a></li>
+                            <li><a href="/Community/notice">공지사항</a></li>
+                            <li><a href="/Community/news">뉴스 및 칼럼</a></li>
+                            <li><a href="/Community/job">취업정보</a></li>
+                            <li><a href="/Community/free">자유게시판</a></li>
+                            <li class="on"><a href="/Community/qa" class="on">질문과 답변</a></li>
+                            <li><a href="/Community/resource">자료실</a></li>
                         </ul>
                 </article>
                 <article class="notice">
