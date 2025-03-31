@@ -24,23 +24,21 @@ public class CollegeController {
     private final DepartmentService departmentService;
     private final CollegeRepository collegeRepository;
 
-    /*
     @GetMapping("/Management/ManageDepartRegist")
     public String showPage(Model model) {
         List<College> colleges = collegeRepository.findAll();
-        model.addAttribute("colleges", colleges);
-        return "/Management/ManageDepartRegist";
+        model.addAttribute("colleges", colleges); //
+        return "Management/ManageDepartRegist"; //
     }
-     */
 
     @PostMapping("/Management/registerCollege")
-    public String registerCollege(CollegeDTO collegeDTO) {
+    public String Departregister(HttpServletRequest req, CollegeDTO collegeDTO) {
 
         collegeService.registerCollege(collegeDTO);
         log.info("collegeDTO: {}", collegeDTO);
 
 
-        return "redirect:/Management/ManageDepartRegist";
+        return "redirect:/Management/ManageDepartregist";
     }
 
 

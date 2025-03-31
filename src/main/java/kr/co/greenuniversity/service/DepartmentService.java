@@ -11,7 +11,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -39,10 +38,5 @@ public class DepartmentService {
 
         return departmentRepository.findByCollege_CollegeName(collegeName);
 
-    }
-
-    public int getNextDepartmentNo() {
-        Optional<Integer> maxNo = departmentRepository.findMaxNo();
-        return (maxNo.orElse(0) + 1) % 100;
     }
 }

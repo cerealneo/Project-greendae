@@ -4,7 +4,6 @@ import jakarta.mail.Message;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import kr.co.greenuniversity.dto.user.UserDTO;
 import kr.co.greenuniversity.entity.user.User;
 import kr.co.greenuniversity.repository.user.UserRepository;
@@ -28,8 +27,6 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender mailSender;
 
-    private final HttpServletRequest request;
-
     public void userRegister(UserDTO userDTO) {
 
         log.info("userDTO: {}", userDTO);
@@ -45,42 +42,6 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void findUserId(UserDTO userDTO) {
-        log.info("userDTO: {}", userDTO);
-
-        User user = modelMapper.map(userDTO, User.class);
-
-        userRepository.findById(user.getId());
-
-
-    }
-
-    public long checkUser(String type, String value){
-        long count = 0;
-        log.info("checkUser: {}", type + value);
-
-
-        if(type.equals("uid")){
-            count = userRepository.countById(value);
-        }else if(type.equals("email")){
-            count = userRepository.countByEmail(value);
-            if(count == 0){
-                String code = sendEmailCode(value);
-
-                // 인증코드 비교를 하기 위해서 세션 저장
-                HttpSession session = request.getSession();
-                session.setAttribute("authCode", code);
-                log.info("authCode : " + code);
-            }
-
-        }else if(type.equals("phone")){
-            count = userRepository.countByPhone(value);
-            log.info("count: {}", count);
-        }
-        return count;
-    }
-
-
     @Value("${spring.mail.username}")
     private String sender;
     public String sendEmailCode(String receiver){
@@ -92,8 +53,8 @@ public class UserService {
         int code = ThreadLocalRandom.current().nextInt(100000, 1000000);
         log.info("code : " + code);
 
-        String subject = "greendae 인증코드 안내";
-        String content = "<h1>greendae 인증코드는 " + code + "입니다.</h1>";
+        String subject = "sboard 인증코드 안내";
+        String content = "<h1>sboard 인증코드는 " + code + "입니다.</h1>";
 
         try {
             // 메일 정보 설정
@@ -109,5 +70,4 @@ public class UserService {
         }
         return String.valueOf(code);
     }
-
 }

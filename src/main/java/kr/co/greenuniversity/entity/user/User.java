@@ -24,7 +24,6 @@ public class User {
     private String addr1;
     private String addr2;
 
-
     @Column(nullable = false)
     private String role;
 
@@ -35,12 +34,5 @@ public class User {
             this.role = "USER";
         }
     }
-
-    private String regip;
-
-    @CreationTimestamp
-    private LocalDateTime regDate;
-
-    private String leaveDate;
 
 }
