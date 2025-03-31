@@ -100,12 +100,20 @@ public class UserController {
 
 
 
-    @PostMapping("/findId")
+    @GetMapping("/resultId")
     public String findId() {
 
 
+        return "redirect:/user/login";
+    }
 
-        return "ddd";
+    @PostMapping("/findId")
+    public String findId(@RequestBody String Email, UserDTO userDTO) {
+
+
+
+
+        return "/user/findId";
     }
 
 

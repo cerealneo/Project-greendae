@@ -50,7 +50,7 @@ public class UserService {
 
         User user = modelMapper.map(userDTO, User.class);
 
-        userRepository.findById(user.getId());
+        
 
 
     }
