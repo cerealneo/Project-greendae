@@ -35,7 +35,7 @@ public class AppInfoIntercepter implements HandlerInterceptor {
         if (modelAndView != null) {
 
             //모든 컨트롤러 요청 후 appInfo 모델 참조
-            modelAndView.addObject(appInfo);
+            modelAndView.addObject("appInfo",appInfo);
 
         }
 

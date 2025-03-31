@@ -4,8 +4,8 @@ import com.querydsl.core.Tuple;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.greenuniversity.dto.PageRequestDTO;
-import kr.co.greenuniversity.entity.QUser;
 import kr.co.greenuniversity.entity.community.QCommunity;
+import kr.co.greenuniversity.entity.user.QUser;
 import kr.co.greenuniversity.repository.custom.CommunityRepositoryCustom;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +47,7 @@ public class CommunityRepositoryImpl implements CommunityRepositoryCustom {
                 .select(qCommunity.count())
                 .from(qCommunity)
                 .join(qUser)
-                .on(qCommunity.user.id.eq(qUser.uid))
+                .on(qCommunity.user.id.eq(qUser.id))
                 .where(expression)
                 .fetchOne();
 
