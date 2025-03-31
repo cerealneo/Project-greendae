@@ -98,12 +98,6 @@ public class UserController {
                 .body(false);
     }
 
-    // 아이디 찾기 페이지
-    @GetMapping("/findId")
-    public String findId(UserDTO userDTO) {
-
-        userService.findUserId(userDTO);
-
 
     @GetMapping("/resultId")
     public String findId() {
