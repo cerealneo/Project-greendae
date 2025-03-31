@@ -3,45 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>수시모집</title>
-    <link rel="stylesheet" href="/css/_header.css">
-    <link rel="stylesheet" href="/css/_footer.css">
-    <link rel="stylesheet" href="/css/homebar.css">
-    <link rel="stylesheet" href="/css/admission.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <title>입학안내 - 수시모집</title>
+    <th:block th:include="/_headerLink"/>
+    <link rel="stylesheet" th:href="@{/css/admission.css}">
 
 </head>
 <!---------------------헤더------------------------------->
 <body>
     <div id="wrapper">
-        <th:block th:include="/Admission/_header"></th:block>
+        <th:block th:include="/common/__header"/>
         
         <div class="homebar">
             <article class="inline">
-
-                <a href="/"><img src="/images/ico-home.png" alt="homeico"></a>
+                <a th:href="@{/}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
                 <img src="/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/Bachelor/BacNotice">입학안내</a>
+                <a th:href="@{/Admission/notice}">입학안내</a>
                 <img src="/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/Bachelor/BacNotice">공지사항</a>
+                <a th:href="@{/Admission/earlyAdmission}">수시모집</a>
             </article>
         </div>
 
 
 <!---------------------사이드바------------------------------>
 <main>
-        
     <section class="sidebar">
         <aside>
             <h2>입학안내</h2>
             <ul class="menu">
-                <li><a href="/Admission/notice" >공지사항</a></li>
-                <li style="background-color: #3F97F6;"><a href="/Admission/earlyAdmission" class="on" >수시모집</a></li>
-                <li><a href="/Admission/regularAdmission" >정시모집</a></li>
-                <li><a href="/Admission/transferAdmission" >편입학</a></li>
-                <li><a href="/Admission/admissionCounseling" >입학상담</a></li>
+                <li><a th:href="@{/Admission/notice}" >공지사항</a></li>
+                <li style="background-color: #3F97F6;"><a th:href="@{/Admission/earlyAdmission}" class="on" >수시모집</a></li>
+                <li><a th:href="@{/Admission/regularAdmission}" >정시모집</a></li>
+                <li><a th:href="@{/Admission/transferAdmission}" >편입학</a></li>
+                <li><a th:href="@{/Admission/admissionCounseling}" >입학상담</a></li>
             </ul>
         </aside>
     </section>
@@ -96,8 +89,7 @@
         
     </main>
 <!--------------------------푸터-------------------------------->
-
-        <th:block th:include="/Admission/_footer"></th:block>
+        <th:block th:include="/common/__footer"/>
 
 </div>
 </body>

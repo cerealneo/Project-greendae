@@ -1,94 +1,94 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>커뮤니티/자유게시판</title>
-        <th:block th:include="/_headerLink"/>
-        <link rel="stylesheet" href="/css/Community/free.css">
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티/자유게시판</title>
+    <th:block th:include="/_headerLink"/>
+    <link rel="stylesheet" href="/css/Community/free.css">
 
-    </head>
-    <body>
-        <div id="wrapper">
-            <th:block th:include="/common/__header"/>
-            <div class="homebar">
-                <article class="inline">
-                    <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Community/free.html">커뮤니티</a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Community/free.html">자유게시판</a>
+</head>
+<body>
+<div id="wrapper">
+    <th:block th:include="/common/__header"/>
+    <div class="homebar">
+        <article class="inline">
+            <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/static/Community/free.html">커뮤니티</a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/static/Community/free.html">자유게시판</a>
+        </article>
+    </div>
+    <main>
+        <article class="side">
+            <h4>커뮤니티</h4>
+            <ul>
+                <li><a href="/static/Community/notice.html">공지사항</a></li>
+                <li><a href="/static/Community/news.html">뉴스 및 칼럼</a></li>
+                <li><a href="/static/Community/job.html">취업정보</a></li>
+                <li class="on"><a href="/static/Community/free.html" class="on">자유게시판</a></li>
+                <li><a href="/static/Community/qa.html">질문과 답변</a></li>
+                <li><a href="/static/Community/resource.html">자료실</a></li>
+            </ul>
+        </article>
+        <article class="notice">
+            <div class="noticetop">
+                <h4>자유게시판</h4>
+            </div>
+            <form class="search">
+                <select class="dropdown">
+                    <option>전체</option>
+                    <option>제목</option>
+                    <option>작성자</option>
+                    <option>내용</option>
+                </select>
+                <input type="text" value="검색어를 입력해 주세요">
+                <button class="searchbtn">검색</button>
+            </form>
+            <div class="noticemain">
+                <table>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                        <th>조회</th>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2024 하반기 도서관 이용자 만족도 조사&#40;추첨을 통해 모…</td>
+                        <td>홍길동</td>
+                        <td>24.04.09</td>
+                        <td>160</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2024 하반기 도서관 이용자 만족도 조사&#40;추첨을 통해 모…</td>
+                        <td>홍길동</td>
+                        <td>24.04.09</td>
+                        <td>160</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2024 하반기 도서관 이용자 만족도 조사&#40;추첨을 통해 모…</td>
+                        <td>홍길동</td>
+                        <td>24.04.09</td>
+                        <td>160</td>
+                    </tr>
+                </table>
+                <article class="pagebtn">
+                    <a href=""><img src="/images/btn-first-page.png" alt="firstarr"></a>
+                    <a href=""><img src="/images/btn-prev-page.png" alt="firstarr"></a>
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href=""><img src="/images/btn-next-page.png" alt="firstarr"></a>
+                    <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
                 </article>
             </div>
-            <main>
-                <article class="side">
-                    <h4>커뮤니티</h4>
-                        <ul>
-                            <li><a href="/static/Community/notice.html">공지사항</a></li>
-                            <li><a href="/static/Community/news.html">뉴스 및 칼럼</a></li>
-                            <li><a href="/static/Community/job.html">취업정보</a></li>
-                            <li class="on"><a href="/static/Community/free.html" class="on">자유게시판</a></li>
-                            <li><a href="/static/Community/qa.html">질문과 답변</a></li>
-                            <li><a href="/static/Community/resource.html">자료실</a></li>
-                        </ul>
-                </article>
-                <article class="notice">
-                    <div class="noticetop">
-                        <h4>자유게시판</h4>
-                    </div>
-                    <form class="search">
-                        <select class="dropdown">
-                            <option>전체</option>
-                            <option>제목</option>
-                            <option>작성자</option>
-                            <option>내용</option>
-                        </select>
-                        <input type="text" value="검색어를 입력해 주세요">
-                        <button class="searchbtn">검색</button>
-                    </form>
-                    <div class="noticemain">
-                        <table>
-                            <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                                <th>조회</th>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>2024 하반기 도서관 이용자 만족도 조사&#40;추첨을 통해 모…</td>
-                                <td>홍길동</td>
-                                <td>24.04.09</td>
-                                <td>160</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2024 하반기 도서관 이용자 만족도 조사&#40;추첨을 통해 모…</td>
-                                <td>홍길동</td>
-                                <td>24.04.09</td>
-                                <td>160</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>2024 하반기 도서관 이용자 만족도 조사&#40;추첨을 통해 모…</td>
-                                <td>홍길동</td>
-                                <td>24.04.09</td>
-                                <td>160</td>
-                            </tr>
-                        </table>
-                        <article class="pagebtn">
-                            <a href=""><img src="/images/btn-first-page.png" alt="firstarr"></a>
-                            <a href=""><img src="/images/btn-prev-page.png" alt="firstarr"></a>
-                            <a href="">1</a>
-                            <a href="">2</a>
-                            <a href="">3</a>
-                            <a href=""><img src="/images/btn-next-page.png" alt="firstarr"></a>
-                            <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
-                        </article>
-                    </div>
-                </article>
-            </main>
-            <th:block th:include="/common/__footer"/>
-        </div>
-    </body>
+        </article>
+    </main>
+    <th:block th:include="/common/__footer"/>
+</div>
+</body>
 </html>

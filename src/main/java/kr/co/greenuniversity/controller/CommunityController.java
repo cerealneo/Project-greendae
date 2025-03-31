@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.controller.community1;
+package kr.co.greenuniversity.controller;
 
 
 import kr.co.greenuniversity.dto.PageRequestDTO;

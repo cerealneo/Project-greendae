@@ -4,6 +4,7 @@ package kr.co.greenuniversity.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableLoadTimeWeaving;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -13,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 
 @EnableWebSecurity
-//@EnableLoadTimeWeaving(prePostEnabled = true)
+@EnableMethodSecurity
 @Configuration
 public class SecurityConfig {
 
@@ -23,7 +24,7 @@ public class SecurityConfig {
         //로그인 설정
         http.formLogin(login -> login
                 .loginPage("/user/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/", true)
                 .failureUrl("/user/login?code=100")
                 .usernameParameter("id")
                 .passwordParameter("password"));
