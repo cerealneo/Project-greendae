@@ -1,4 +1,4 @@
-/*package kr.co.greenuniversity.interceptor;
+package kr.co.greenuniversity.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,7 +19,7 @@ public class AppInfoIntercepter implements HandlerInterceptor {
          - HTTP 요청을 가로채서 요청을 컨트롤러 수행 전과 수행 후에 작업을 수행.
          - 모든 컨트롤러에서 공통의 작업을 처리하는 사용
     */
-/*
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -35,11 +35,10 @@ public class AppInfoIntercepter implements HandlerInterceptor {
         if (modelAndView != null) {
 
             //모든 컨트롤러 요청 후 appInfo 모델 참조
-            modelAndView.addObject(appInfo);
+            modelAndView.addObject("appInfo",appInfo);
 
         }
 
 
     }
 }
-*/
