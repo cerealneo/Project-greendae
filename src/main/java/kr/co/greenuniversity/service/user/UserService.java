@@ -52,7 +52,11 @@ public class UserService {
 
         User user = modelMapper.map(userDTO, User.class);
 
+<<<<<<< HEAD
         Optional<User> optUser = userRepository.findByEmail(user.getEmail());
+=======
+        
+>>>>>>> 09aad783420c8d38cd7e828336cc01cb4ef03c88
 
         if(optUser.isPresent()) {
             User userResult = optUser.get();

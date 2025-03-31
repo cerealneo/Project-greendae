@@ -142,5 +142,10 @@ label {
 
 .auth {
     margin-top: 20px;
+<<<<<<< HEAD
     /*display: none; */
 }
+=======
+    display: none;
+}
+>>>>>>> 09aad783420c8d38cd7e828336cc01cb4ef03c88
