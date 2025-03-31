@@ -1,5 +1,6 @@
-package kr.co.greenuniversity.dto;
+package kr.co.greenuniversity.entity;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,25 +10,32 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProfessorDTO {
+@Entity
+@Table(name = "Student")
+public class Student {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String jumin;
+
     private String name;
+    private String jumin;
     private String eng_name;
     private String gender;
-    private String phone;
     private String nationality;
+    private String phone;
     private String email;
     private String addr1;
     private String addr2;
+    private String reg_year;
+    private String classification;
+    private String end_year;
     private String college_name;
-    private String major;
-    private String end_date;
-    private String degree;
-    private String spot;
     private String department_name;
-    private String appointment_date;
-    private String empoly_status;
+    private String pro_name;
+    private String reg_grade;
+    private String reg_term;
+    private String status;
+
 
 }
