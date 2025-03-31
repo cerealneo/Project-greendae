@@ -1,5 +1,4 @@
-/*package kr.co.greenuniversity.config;
-
+package kr.co.greenuniversity.config;
 import kr.co.greenuniversity.interceptor.AppInfoIntercepter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,4 +19,4 @@ public class WebMVCConfig implements WebMvcConfigurer {
 
 
 }
-*/
+

@@ -18,14 +18,14 @@
         <header>
             <div class="nav">
                 <div class="navbar">
-                    <div class="navbar-item"><a href="/static/main.html">HOME</a></div>
+                    <div class="navbar-item"><a href="/main.html">HOME</a></div>
                     <div class="navbar-item"><a href="#">사이트맵</a></div>
                     <div class="navbar-item"><a href="#">로그아웃</a></div>
                 </div>
             </div>
             <div class="headerbar">
                 <article class="headerbarin">
-                    <a href="/static/Management/Managemain.html"><img src="/images/admin_logo.png" alt="그린대학교"></a>
+                    <a href="/Management/Managemain.html"><img src="/images/admin_logo.png" alt="그린대학교"></a>
                 </article>
             </div>
         </header>
@@ -89,26 +89,26 @@
                                 <td>교수번호</td>
                                 <td>
                                     <input type="text" hidden>
-                                    <span>연도 + 학과 코드 + 순번 조합 자동생성</span>
+                                    <span name="id">연도 + 학과 코드 + 순번 조합 자동생성</span>
                                 </td>
                                 <td>주민등록번호</td>
-                                <td><input type="text" placeholder="- 포함 14자리 입력"></td>
+                                <td><input type="text" name="jumin" placeholder="- 포함 14자리 입력"></td>
                             </tr>
                             <tr>
                                 <td>이름</td>
-                                <td><input type="text" placeholder="교수 이름 입력"></td>
+                                <td><input type="text" name="name" placeholder="교수 이름 입력"></td>
                                 <td>영문명</td>
-                                <td><input type="text" placeholder="여권 등과 동일한 영문 이름"></td>
+                                <td><input type="text" name="eng_name" placeholder="여권 등과 동일한 영문 이름"></td>
                             </tr>
                             <tr>
                                 <td>성별</td>
-                                <td>
+                                <td name="gender">
                                     <label><input type="radio" name="gender" value="male"> 남</label>
                                     <label><input type="radio" name="gender" value="female"> 여</label>
                                 </td>
                                 <td>국적</td>
                                 <td>
-                                    <select  id="nationality">
+                                    <select id="nationality" name="nationality">
                                         <option value="">선택</option>
                                     </select>
                                 </td>
@@ -116,11 +116,11 @@
                             <tr>
                                 <td>휴대폰</td>
                                 <td>
-                                    <input type="text" placeholder="휴대폰 번호 입력">
+                                    <input type="text" name="phone" placeholder="휴대폰 번호 입력">
                                 </td>
                                 <td>이메일</td>
                                 <td>
-                                    <input type="text" placeholder="이메일 입력">
+                                    <input type="text" name="email" placeholder="이메일 입력">
                                 </td>
                             </tr>
                             <tr>
@@ -129,8 +129,8 @@
                                 <td colspan="3">
                                     <input type="text" id="postcode" placeholder="우편번호 선택">
                                     <button type="button" onclick="searchPostcode()">우편번호</button><br>
-                                    <input type="text" id="address" placeholder="기본주소 선택"><br>
-                                    <input type="text" id="detailAddress" placeholder="상세주소 입력">
+                                    <input type="text" name="addr1" id="address" placeholder="기본주소 선택"><br>
+                                    <input type="text" name="addr2" id="detailAddress" placeholder="상세주소 입력">
                                 </td>
                             </tr>
                         </table>
@@ -139,20 +139,19 @@
                             <img src="/images/bullet-h4.png">
                             <h3>학과정보 입력</h3>
                         </div>
-
                         <table class="table-2">
                             <tr>
                                 <td>졸업대학</td>
-                                <td><input type="text" placeholder="대학교 이름 입력"></td>
+                                <td><input type="text" name="college_name" placeholder="대학교 이름 입력"></td>
                                 <td>학문 분야(전공)</td>
-                                <td><input type="text" placeholder="전공입력"></td>
+                                <td><input type="text" name="major" placeholder="전공입력"></td>
                             </tr>
                             <tr>
                                 <td>졸업일</td>
-                                <td><input type="date"></td>
+                                <td><input type="date" name="end_date"></td>
                                 <td>학위</td>
                                 <td>
-                                    <select>
+                                    <select name="degree">
                                         <option>박사</option>
                                         <option>석사</option>
                                         <option>학사</option>
