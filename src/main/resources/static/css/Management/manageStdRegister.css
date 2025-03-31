@@ -173,6 +173,10 @@ td {
     margin-top: 2px;
 }
 
+.addr .addrsearch {
+    font-size: 13px;
+}
+
 .email {
     width: 142px;
 }
@@ -202,7 +206,7 @@ td {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url('/static/common/images/btn-sel-open01.png') no-repeat right center;
+    background: url('/static/images/btn-sel-open01.png') no-repeat right center;
     background-position: calc(100% - 10px) center;
     width: 150px;
     padding: 7px;
