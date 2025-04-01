@@ -34,6 +34,7 @@ public class Professor {
     private String end_date;
     private String degree;
     private String spot;
+    private String gradColName;
     private String department_name;
     private String appointment_date;
     private String empoly_status;
