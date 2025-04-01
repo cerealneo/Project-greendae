@@ -40,6 +40,9 @@ public class DepartmentService {
         return departmentRepository.findByCollege_CollegeName(collegeName);
 
     }
+    public List<Department> getAllDepartments(){
+        return departmentRepository.findAll();
+    }
 
     public int getNextDepartmentNo() {
         Optional<Integer> maxNo = departmentRepository.findMaxNo();

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import javax.naming.Name;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,9 +32,8 @@ public class Department {
     private String dep_number;
     private String office;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Professor_id")
-    private Professor professor;
+    @OneToMany(mappedBy = "department")
+    private List<Professor> professors;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Student_id")
