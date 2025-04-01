@@ -1,5 +1,6 @@
 package kr.co.greenuniversity.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -41,6 +42,7 @@ public class Department {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "lecture_code", nullable = true)
+    @JsonBackReference
     private Lecture lecture;
 
 

@@ -1,12 +1,16 @@
 package kr.co.greenuniversity.service;
 
 import kr.co.greenuniversity.dto.StudentDTO;
+import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Student;
+import kr.co.greenuniversity.repository.DepartmentRepository;
 import kr.co.greenuniversity.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -15,13 +19,33 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
     private final ModelMapper modelMapper;
+    private final DepartmentRepository departmentRepository;
 
-    public void registerStudent(StudentDTO studentDTO) {
+    public void registerStudent(Student student, String departmentName) {
 
-        Student student = modelMapper.map(studentDTO, Student.class);
-        log.info("Registering student {}", student);
-        studentRepository.save(student);
+        Department department = departmentRepository.findByDepartmentName(departmentName)
+                .orElseThrow(() -> new IllegalArgumentException("Department not found"));
+
+        String generatedId = generateStudentId(department);
+        student.setId(generatedId);
+    }
+
+    public String generateStudentId(Department department) {
+
+        String year = String.valueOf(LocalDate.now().getYear());
+        String deptNo = String.format("%02d", department.getNo());
+        int count = studentRepository.countByDepartment(department);
+        String seq = String.format("%02d", count + 1);
+
+        return year + deptNo + seq;
+
     }
 
 
+    public String generateStudentIdPublic(String departmentName) {
+
+        Department dept = departmentRepository.findByDepartmentName(departmentName)
+                .orElseThrow(() -> new IllegalArgumentException("학과 없음"));
+        return generateStudentId(dept);
+    }
 }

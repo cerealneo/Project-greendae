@@ -18,7 +18,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String id;
 
     private String name;
     private String jumin;
@@ -39,8 +39,8 @@ public class Student {
     private String reg_term;
     private String status;
 
-    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
-    private List<Department> departments;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
 
 }

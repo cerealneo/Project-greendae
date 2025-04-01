@@ -32,6 +32,7 @@ public class ProfessorController {
 
     @GetMapping("/Management/ManageProfessor")
     public String showProfessorForm(Model model) {
+        /*
         List<College> colleges = collegeRepository.findAll();
         List<Department> departments = departmentRepository.findAll();
 
@@ -44,6 +45,19 @@ public class ProfessorController {
         model.addAttribute("colleges", colleges);
         model.addAttribute("departments", departments);
         model.addAttribute("generatedId", sampleId); // 👉 미리 보여주기용 id
+
+        return "/Management/ManageProfessor";
+
+         */
+        List<College> colleges = collegeRepository.findAll();
+        model.addAttribute("colleges", colleges);
+
+        // 기본 선택 학과로 ID 미리 생성
+        if (!colleges.isEmpty() && !colleges.get(0).getDepartments().isEmpty()) {
+            Department defaultDept = colleges.get(0).getDepartments().get(0);
+            String generatedId = professorService.generateProfessorId(defaultDept);
+            model.addAttribute("generatedId", generatedId); // <-- View에 전달
+        }
 
         return "/Management/ManageProfessor";
     }
