@@ -5,7 +5,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.greenuniversity.dto.PageRequestDTO;
 
-import kr.co.greenuniversity.entity.community.QCommunity;
+import kr.co.greenuniversity.entity.community.QCommunity1;
 import kr.co.greenuniversity.entity.user.QUser;
 import kr.co.greenuniversity.repository.custom.CommunityRepositoryCustom;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ import java.util.List;
 public class CommunityRepositoryImpl implements CommunityRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
-    private QCommunity qCommunity = QCommunity.community;
+    private QCommunity1 qCommunity = QCommunity1.community1;
     private QUser qUser = QUser.user;
 
     @Override
