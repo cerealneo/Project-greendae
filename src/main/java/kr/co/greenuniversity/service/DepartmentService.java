@@ -28,28 +28,24 @@ public class DepartmentService {
         log.info("Registering department {}", department);
 
         College college = collegeRepository.findByCollegeName(departmentDTO.getCollegeName())
-                        .orElseThrow(() -> new IllegalArgumentException("대학명이 존재하지 않습니다."));
+                .orElseThrow(() -> new IllegalArgumentException("대학명이 존재하지 않습니다."));
 
         department.setCollege(college);
         departmentRepository.save(department);
         log.info("Department {}", department);
     }
 
-    //public List<Department> getDepartmentsByCollegeName(String collegeName){
+    public List<Department> getDepartmentsByCollegeName(String collegeName){
 
-       // return departmentRepository.findByCollege_CollegeName(collegeName);
-
-
-    }
+        return departmentRepository.findByCollege_CollegeName(collegeName);
 
     }
     public List<Department> getAllDepartments(){
         return departmentRepository.findAll();
     }
 
-
-    //public int getNextDepartmentNo() {
-      //  Optional<Integer> maxNo = departmentRepository.findMaxNo();
-       // return (maxNo.orElse(0) + 1) % 100;
-    //}
+    public int getNextDepartmentNo() {
+        Optional<Integer> maxNo = departmentRepository.findMaxNo();
+        return (maxNo.orElse(0) + 1) % 100;
+    }
 }
