@@ -22,7 +22,9 @@ public class Department {
     @JoinColumn(name = "college_name", referencedColumnName = "college_name")
     private College college;
 
-    private String department_name;
+    @Column(name = "department_name")
+    private String departmentName;
+
     private String department_eng_name;
     private String establishment_date;
     private String pro_name;
