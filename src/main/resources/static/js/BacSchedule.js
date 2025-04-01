@@ -1,13 +1,22 @@
-document.addEventListener('DOMContentLoaded', function(){
-
+document.addEventListener('DOMContentLoaded', function() {
     let today = new Date();
-    let currentMonth = today.getMonth();
+    let currentMonth = today.getMonth() + 1;  // JavaScript에서 month는 0부터 시작하므로 +1
     let currentYear = today.getFullYear();
 
-    function renderCalendar(month, year) {
+    function fetchEvents(year, month) {
+        // 절대 URL로 변경하여 요청 보내기
+        fetch(`/api/bachelor/schedule/${year}/${month}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("📅 일정 데이터:", data);
+                renderCalendar(month - 1, year, data); // month -1은 JavaScript의 Date 기준에 맞추기 위함
+            })
+            .catch(error => console.error("데이터 불러오기 실패:", error));
+    }
+
+    function renderCalendar(month, year, events) {
         let firstDay = new Date(year, month, 1).getDay();
         let daysInMonth = new Date(year, month + 1, 0).getDate();
-        let lastMonthDays = new Date(year, month, 0).getDate();
         let calendarBody = document.getElementById("calendar-body");
         let monthYear = document.getElementById("month-year");
 
@@ -21,29 +30,39 @@ document.addEventListener('DOMContentLoaded', function(){
 
         let date = 1;
         let nextMonthDate = 1;
-        let isCurrentMonth = false;
-        
+        let lastMonthDays = new Date(year, month, 0).getDate();
+
         for (let i = 0; i < 6; i++) {
             let row = document.createElement("tr");
 
             for (let j = 0; j < 7; j++) {
                 let cell = document.createElement("td");
 
-                // 이전 달 날짜 표시
+                // 이전 달 날짜
                 if (i === 0 && j < firstDay) {
                     cell.innerText = lastMonthDays - firstDay + j + 1;
                     cell.classList.add("other-month");
                 }
-                // 현재 달 날짜 표시
+                // 현재 달 날짜
                 else if (date <= daysInMonth) {
                     cell.innerText = date;
-                    if (year === today.getFullYear() && month === today.getMonth() && date === today.getDate()) {
-                        cell.classList.add("highlight-today");
+                    cell.dataset.date = `${year}-${monthNames[month]}-${String(date).padStart(2, "0")}`;
+
+                    // 📌 일정이 있는 날짜에 표시 추가
+                    let event = events.find(e => e.eventDate === cell.dataset.date);  // 날짜 비교 수정
+                    console.log("캘린더 날짜:", cell.dataset.date);  // 날짜 로그 추가
+                    console.log("이벤트 날짜:", event ? event.eventDate : "없음");  // 이벤트 로그 추가
+
+                    if (event) {
+                        let eventMarker = document.createElement("div");
+                        eventMarker.classList.add("event-marker");
+                        eventMarker.innerText = event.title;
+                        cell.appendChild(eventMarker);
                     }
+
                     date++;
-                    isCurrentMonth = true;
                 }
-                // 다음 달 날짜 표시
+                // 다음 달 날짜
                 else {
                     cell.innerText = nextMonthDate;
                     cell.classList.add("other-month");
@@ -54,35 +73,31 @@ document.addEventListener('DOMContentLoaded', function(){
             }
             calendarBody.appendChild(row);
         }
-        
-        renderCalendar(currentMonth, currentYear);
     }
 
+
     function prevMonth() {
-        if (currentMonth === 0) {
+        if (currentMonth === 1) {
             currentYear--;
-            currentMonth = 11;
+            currentMonth = 12;
         } else {
             currentMonth--;
         }
-        renderCalendar(currentMonth, currentYear);
+        fetchEvents(currentYear, currentMonth);
     }
 
     function nextMonth() {
-        if (currentMonth === 11) {
+        if (currentMonth === 12) {
             currentYear++;
-            currentMonth = 0;
+            currentMonth = 1;
         } else {
             currentMonth++;
         }
-        renderCalendar(currentMonth, currentYear);
+        fetchEvents(currentYear, currentMonth);
     }
 
-    // ✅ 버튼 클릭 이벤트 추가 (HTML의 onclick 제거 가능)
     document.getElementById("prev-btn").addEventListener("click", prevMonth);
     document.getElementById("next-btn").addEventListener("click", nextMonth);
 
-    // ✅ 페이지 로드 시 캘린더 렌더링
-    renderCalendar(currentMonth, currentYear);
-            
+    fetchEvents(currentYear, currentMonth);
 });

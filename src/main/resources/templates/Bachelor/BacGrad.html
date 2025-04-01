@@ -12,23 +12,23 @@
     <th:block th:include="/common/__header"/>
     <div class="homebar">
         <article class="inline">
-            <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
-            <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/Bachelor/Bacgrad.html">학사안내</a>
-            <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/Bachelor/Bacgrad.html">수료 및 졸업</a>
+            <a th:href="@{/}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+            <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+            <a th:href="@{/Bachelor/BacNotice}">학사안내</a>
+            <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+            <a th:href="@{/Bachelor/Bacgrad}">수료 및 졸업</a>
         </article>
     </div>
     <main>
         <article class="side">
             <h4>학사안내</h4>
             <ul>
-                <li><a href="/static/Bachelor/BacNotice.html">공지사항</a></li>
-                <li><a href="/static/Bachelor/BacSchedule.html">학사일정</a></li>
-                <li><a href="/static/Bachelor/BacSubscribe.html">수강신청</a></li>
-                <li><a href="/static/Bachelor/BacResult.html">성적</a></li>
-                <li><a href="/static/Bachelor/BacGrad.html">수료 및 졸업</a></li>
-                <li><a href="/static/Bachelor/BacQuestion.html">자주묻는질문</a></li>
+                <li><a th:href="@{/Bachelor/BacNotice}">공지사항</a></li>
+                <li><a th:href="@{/Bachelor/BacSchedule}">학사일정</a></li>
+                <li><a th:href="@{/Bachelor/BacSubscribe}">수강신청</a></li>
+                <li><a th:href="@{/Bachelor/BacResult}">성적</a></li>
+                <li><a th:href="@{/Bachelor/BacGrad}">수료 및 졸업</a></li>
+                <li><a th:href="@{/Bachelor/BacQuestion}">자주묻는질문</a></li>
             </ul>
         </article>
         <article class="grad">
@@ -36,7 +36,7 @@
                 <h4>수료 및 졸업</h4>
             </div>
             <div class="gradstandard">
-                <h4><img src="/images/bullet-h4.png" alt="h4">수료기준</h4>
+                <h4><img th:src="@{/images/bullet-h4.png}" alt="h4">수료기준</h4>
                 <table>
                     <thead>
                     <tr>
@@ -98,7 +98,7 @@
                 <p>- 수료기준 : 졸업학점에 따라 학년별 수료학점이 다르며, 각 학년별 수료학점을 취득한 경우 해당 학년에 대한 ‘수료증명서’를 발급 가능</p>
             </div>
             <div class="egrad">
-                <h4><img src="/images/bullet-h4.png" alt="h4">조기졸업</h4>
+                <h4><img th:src="@{/images/bullet-h4.png}" alt="h4">조기졸업</h4>
                 <table>
                     <thead>
                     <tr>
@@ -127,7 +127,7 @@
                 <p>※ 편입생 제외</p>
             </div>
             <div class="graduation">
-                <h4><img src="/images/bullet-h4.png" alt="h4">졸업</h4>
+                <h4><img th:src="@{/images/bullet-h4.png}" alt="h4">졸업</h4>
                 <table>
                     <thead>
                     <tr class="firstth">
