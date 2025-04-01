@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMVCConfig implements WebMvcConfigurer {
 
-    private AppInfo appInfo;
+    private final AppInfo appInfo;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -35,6 +37,26 @@ public class CollegeController {
 
     @PostMapping("/Management/registerCollege")
     public String registerCollege(CollegeDTO collegeDTO) {
+        MultipartFile file = collegeDTO.getFile();
+
+        if (file != null && !file.isEmpty()) {
+            String filename = file.getOriginalFilename();
+            collegeDTO.setFileName(filename);
+
+            try {
+                String uploadDir = System.getProperty("user.dir") + "/uploads/";
+                File dir = new File(uploadDir);
+                if (!dir.exists()) dir.mkdirs();
+
+                file.transferTo(new File(uploadDir + filename));
+            } catch (Exception e) {
+                log.error("파일 업로드 실패", e);
+            }
+        } else {
+            log.warn("업로드된 파일이 없습니다.");
+            collegeDTO.setFileName(null);
+        }
+
 
         collegeService.registerCollege(collegeDTO);
         log.info("collegeDTO: {}", collegeDTO);
