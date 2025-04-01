@@ -29,8 +29,18 @@ public class Department {
     private String dep_number;
     private String office;
     private int lecture_code;
-    private int Student_id;
-    private int Professor_id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Professor_id")
+    private Professor professor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Student_id")
+    private Student student;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "lecture_code", nullable = true)
+    private Lecture lecture;
 
 
 }

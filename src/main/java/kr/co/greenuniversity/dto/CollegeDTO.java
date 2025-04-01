@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @NoArgsConstructor
@@ -14,9 +15,10 @@ public class CollegeDTO {
     private int no;
     private String collegeName;
     private String college_eng_name;
+    private String fileName;
     private String info_title;
     private String info_context;
-    private String file;
+    private MultipartFile file;
 
 
 }
