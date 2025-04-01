@@ -15,18 +15,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CollegeService {
 
-    private final CollegeRepository collegeRepository;
-    private final ModelMapper modelMapper;
+    //private final CollegeRepository collegeRepository;
+    //private final ModelMapper modelMapper;
 
-    public void registerCollege(CollegeDTO collegeDTO){
+    //public void registerCollege(CollegeDTO collegeDTO){
 
-        College college = modelMapper.map(collegeDTO, College.class);
-        log.info("college : {}", college);
+      //  College college = modelMapper.map(collegeDTO, College.class);
+        //log.info("college : {}", college);
 
-        collegeRepository.save(college);
+        //collegeRepository.save(college);
 
-    }
-    public List<College> findAll(){
-        return collegeRepository.findAll();
-    }
+    //}
+    //public List<College> findAll(){
+      //  return collegeRepository.findAll();
+    //}
 }

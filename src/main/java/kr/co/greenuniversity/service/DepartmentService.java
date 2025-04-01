@@ -35,14 +35,14 @@ public class DepartmentService {
         log.info("Department {}", department);
     }
 
-    public List<Department> getDepartmentsByCollegeName(String collegeName){
+    //public List<Department> getDepartmentsByCollegeName(String collegeName){
 
-        return departmentRepository.findByCollege_CollegeName(collegeName);
+       // return departmentRepository.findByCollege_CollegeName(collegeName);
 
-    }
+    //}
 
-    public int getNextDepartmentNo() {
-        Optional<Integer> maxNo = departmentRepository.findMaxNo();
-        return (maxNo.orElse(0) + 1) % 100;
-    }
+    //public int getNextDepartmentNo() {
+      //  Optional<Integer> maxNo = departmentRepository.findMaxNo();
+       // return (maxNo.orElse(0) + 1) % 100;
+    //}
 }

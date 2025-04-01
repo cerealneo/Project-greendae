@@ -55,9 +55,6 @@ public class MyUserDetails implements UserDetails {
     public String getPassword() {
         return user.getPassword();
 
-
-
-
 }
 }
 

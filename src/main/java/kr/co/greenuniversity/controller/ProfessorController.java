@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ProfessorController {
 
-    private final ProfessorService professorService;
+    /*private final ProfessorService professorService;
 
     @GetMapping("/Management/ManageProfessor")
     public String view(){
@@ -28,5 +28,5 @@ public class ProfessorController {
 
         return "redirect:/Management/ManageProfessor";
 
-    }
+    }*/
 }

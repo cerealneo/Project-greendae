@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
 
-    List<Professor> findByDepartment_nameAndCollege_name(String departmentName, String collegeName);
+   // List<Professor> findByDepartment_nameAndCollege_name(String departmentName, String collegeName);
 
-    List<Professor> fintByDepartment_name(String departmentName);
+   // List<Professor> fintByDepartment_name(String departmentName);
 
 }
