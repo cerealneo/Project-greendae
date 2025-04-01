@@ -17,5 +17,8 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
     @Query("SELECT MAX(d.no) FROM Department d")
     Optional<Integer> findMaxNo();
 
+    String departmentName(String departmentName);
+
+    Optional<Department> findByDepartmentName(String departmentName);
     //Optional<Department> findByCollege_CollegeNameAndDepartmentName(String collegeName, String departmentName);
 }

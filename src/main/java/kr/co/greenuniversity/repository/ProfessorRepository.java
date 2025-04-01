@@ -1,5 +1,6 @@
 package kr.co.greenuniversity.repository;
 
+import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Professor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -13,6 +14,11 @@ public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
     // 교수 ID로 검색 (기본 제공됨)
     Optional<Professor> findById(int id);
 
+    List<Professor> findByIdStartingWith(String idPrefix);
+
+    long countByIdStartingWith(String prefix);
+
+    int countByDepartment(Department department);
     // 특정 학과 이름 기반으로 교수 조회
     //List<Professor> findByDepartments_Department_name(String departmentName);
 

@@ -18,7 +18,7 @@ public class Professor {
 
 
     @Id
-    private int id;
+    private String id;
 
     private String jumin;
     private String name;
@@ -40,9 +40,12 @@ public class Professor {
     private String departmentName;
 
     private String appointment_date;
-    private String empoly_status;
+
+    @Column(name = "employ_status")
+    private String employStatus;
 
 
-    @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY)
-    private List<Department> departments;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
 }
