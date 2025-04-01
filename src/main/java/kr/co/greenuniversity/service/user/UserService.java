@@ -52,17 +52,32 @@ public class UserService {
 
         User user = modelMapper.map(userDTO, User.class);
 
-
         Optional<User> optUser = userRepository.findByEmail(user.getEmail());
-
-        
 
         if(optUser.isPresent()) {
             User userResult = optUser.get();
-
             return userResult;
         }
         return null;
+    }
+
+    public long checkEmail(String type, String value){
+        long count = 0;
+        log.info("checkUser: {}", type + value);
+
+        /* if(type.equals("email")){
+            count = userRepository.countByEmail(value);
+            if(count == 0){
+
+            }
+
+        } */
+        String code = sendEmailCode(value);
+        // 인증코드 비교를 하기 위해서 세션 저장
+        HttpSession session = request.getSession();
+        session.setAttribute("authCode", code);
+        log.info("authCode : " + code);
+        return count;
     }
 
     public long checkUser(String type, String value){

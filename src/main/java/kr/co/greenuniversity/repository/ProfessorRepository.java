@@ -11,10 +11,16 @@ import java.util.Optional;
 @Repository
 public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
 
+
+   // List<Professor> findByDepartment_nameAndCollege_name(String departmentName, String collegeName);
+
+   // List<Professor> fintByDepartment_name(String departmentName);
+
     // 교수 ID로 검색 (기본 제공됨)
     Optional<Professor> findById(int id);
 
     List<Professor> findByIdStartingWith(String idPrefix);
+
 
     long countByIdStartingWith(String prefix);
 

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DepartmentController {
 
-    private final DepartmentService departmentService;
+   /* private final DepartmentService departmentService;
     private final CollegeRepository collegeRepository;
 
     @PostMapping("/Management/registerDepart")
@@ -29,17 +29,17 @@ public class DepartmentController {
         return "redirect:/Management/ManageDepartRegist";
     }
 
-    @GetMapping("/Management/ManageDepartRegist")
-    public String showDepartmentForm(Model model) {
-        int nextNo = departmentService.getNextDepartmentNo();
+    //@GetMapping("/Management/ManageDepartRegist")
+    //public String showDepartmentForm(Model model) {
+     //   int nextNo = departmentService.getNextDepartmentNo();
 
-        if (nextNo < 10) nextNo = 10;
-        String formattedNo = String.format("%02d", nextNo);
+       // if (nextNo < 10) nextNo = 10;
+        //String formattedNo = String.format("%02d", nextNo);
 
-        model.addAttribute("nextNo", formattedNo);
-        model.addAttribute("colleges", collegeRepository.findAll());
+       // model.addAttribute("nextNo", formattedNo);
+       // model.addAttribute("colleges", collegeRepository.findAll());
 
-        return "/Management/ManageDepartRegist";
+       // return "/Management/ManageDepartRegist";
     }
 
     @GetMapping("/department/engineering")
@@ -61,6 +61,6 @@ public class DepartmentController {
     @GetMapping("/department/teacher")
     public String teacher() {
         return "/department/teacher";
-    }
+    } */
 
 }

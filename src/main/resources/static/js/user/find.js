@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let isNameOk = false;
     let isEmailOk = false;
 
-    // 3.이름 유효성 검사
+    // 이름 유효성 검사
     const nameResult = document.getElementsByClassName('nameResult')[0];
 
-    formRegister.name.addEventListener('focusout', function(){
+    formfindId.name.addEventListener('focusout', function(){
 
         const value = this.value;
 
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     btnSendEmail.onclick = async function(){
 
-        const value = formRegister.email.value;
+        const value = formfindId.email.value;
 
         // 이중 클릭 방지
         if(preventDoubleClick){
@@ -46,17 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         preventDoubleClick = true;
-        const response = await fetch(`/user/email/${value}`);
+        const response = await fetch(`/find/email/${value}`);
         const data = await response.json();
 
-        if(data.count > 0){
-            emailResult.innerText = '이미 사용중인 이메일 입니다.';
-            emailResult.style.color = 'red';
-            isEmailOk = false;
-        }else {
             // 인증번호 입력 필드 출력
             auth.style.display = 'block';
-        }
     };
 
     // 인증 코드 비교
@@ -64,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     btnAuthEmail.onclick = async function(){
 
-        const value = formRegister.auth.value;
+        const value = formfindId.auth.value;
 
         // JSON 데이터 생성
         const jsonData = {
@@ -72,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // 서버 전송
-        const response = await fetch('/user/email/auth', {
+        const response = await fetch('/find/email/auth', {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(jsonData)
@@ -90,25 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
             emailResult.style.color = 'red';
             isEmailOk = false;
         }
-
-    } // btnAuthEmail.onclick end
-
-    // 최종 폼 전송 이벤트
-    formRegister.onsubmit = function(e){
-        console.log("form submit!!!")
-
-        // 3) 이름 유효성 검사 결과
-        if(!isNameOk){
-            return false;
-        }
-
-        // 5) 이메일 유효성 검사 결과
-        if(!isEmailOk){
-            return false;
-        }
-        return true; // 폼 전송 시작
-
-    }; // 최종 폼 전송 이벤트 끝
-
+    }
 
 });

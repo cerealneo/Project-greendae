@@ -65,7 +65,7 @@ textarea {
     left: 2px;
 }
 
-/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+/* ------------------------------------------------------------------- */
 /* main */
 
 main {
@@ -77,71 +77,16 @@ main {
 
 }
 
-input {
-    height: 25px;
-}
-
-button {
-    height: 25px;
-}
-
 .content {
     margin: 0 auto;
     position: relative;
     left: 7%;
 }
 
-.type-list {
-    display: flex;
-}
-
-form {
-    width: 600px;
-    margin-top: 20px;
-}
-
-input {
-    border: 1px solid #cccccc;
-}
-
-.form-boder {
-    height: 250px;
-    border: 1px solid #cccccc;
-}
-
-.form-boder > p {
-    margin: 10px 0px 10px 5px;
-}
-
-.form-hd > p {
-    font-size: 25px;
-    border-bottom: 1px solid #cccccc;
+.box {
+    text-align: center;
+    width: 300px;
+    height: 50px;
+    border: 1px solid black;
     box-sizing: border-box;
-    margin-bottom: 20px;
 }
-
-form > p {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid black;
-}
-
-label {
-    margin-left: 20px;
-    font-size: 20px;
-}
-
-.name-block > label > input {
-    margin-left: 20px;
-}
-
-#btnAuthEmail {
-    width: 40px;
-}
-
-.auth {
-    display: none;
-}
-
-

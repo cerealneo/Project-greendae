@@ -55,7 +55,10 @@ public class ProfessorController {
         professorService.registerProfessor(professor, departmentName);
         return "redirect:/Management/ManageProfessor";
 
+
     }
+
+
 
 
 

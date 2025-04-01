@@ -1,10 +1,22 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <header>
     <div class="nav">
         <div class="navbar">
+
             <div class="navbar-item"><a th:href="@{/main}">HOME</a></div>
             <div class="navbar-item"><a href="#">사이트맵</a></div>
-            <div class="navbar-item"><a th:href="@{/user/login}">로그인</a></div>
-            <div class="navbar-item"><a th:href="@{/Support/CourseRegister}">학생지원</a></div>
+
+            <div class="navbar-item"  sec:authorize="isAnonymous()">
+                <a th:href="@{/user/login}">로그인</a>
+            </div>
+            <div class="navbar-item" sec:authorize="isAuthenticated()">
+                <a th:href="@{/user/logout}">로그아웃</a>
+            </div>
+            <div class="navbar-item"><a href="#">학생지원</a></div>
+
         </div>
     </div>
     <div class="headerbar">

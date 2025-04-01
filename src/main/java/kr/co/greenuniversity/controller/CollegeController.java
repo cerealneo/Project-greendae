@@ -22,9 +22,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CollegeController {
 
-    private final CollegeService collegeService;
-    private final DepartmentService departmentService;
-    private final CollegeRepository collegeRepository;
+   // private final CollegeService collegeService;
+    //private final DepartmentService departmentService;
+    //private final CollegeRepository collegeRepository;
 
     /*
     @GetMapping("/Management/ManageDepartRegist")
@@ -35,7 +35,7 @@ public class CollegeController {
     }
      */
 
-    @PostMapping("/Management/registerCollege")
+   /* @PostMapping("/Management/registerCollege")
     public String registerCollege(CollegeDTO collegeDTO) {
         MultipartFile file = collegeDTO.getFile();
 
@@ -63,7 +63,7 @@ public class CollegeController {
 
 
         return "redirect:/Management/ManageDepartRegist";
-    }
+    } */
 
 
 }

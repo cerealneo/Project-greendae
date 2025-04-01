@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class ProfessorService {
 
+
     private final ProfessorRepository professorRepository;
     private final ModelMapper modelMapper;
     private final DepartmentRepository departmentRepository;

@@ -6,6 +6,7 @@
     <title>로그인</title>
     <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" th:href="@{/css/user/login.css}">
+    <script th:src="@{/js/user/login.js}"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -44,9 +45,7 @@
 
                     <input type="submit" value="로그인" class="loginbtn">
                 </form>
-
-
-                
+                <a th:href="@{/user/register}">회원가입</a>
 
                 <div class="guide">
                     <p><img src="/images/bullet-h4.png">아이디,비밀번호 안내</p>
@@ -57,10 +56,8 @@
                 </div>    
             </article>
         </main>
-
         <th:block th:include="/common/__footer"/>
-
-
 </div>
+
 </body>
 </html>

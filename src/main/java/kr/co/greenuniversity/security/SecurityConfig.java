@@ -32,7 +32,7 @@ public class SecurityConfig {
         //로그아웃 설정
         http.logout(logout -> logout.logoutUrl("/user/logout")
                 .invalidateHttpSession(true)
-                .logoutSuccessUrl("/user/login?code=101"));
+                .logoutSuccessUrl("/user/login"));
 
       /*
             인가 설정
@@ -43,9 +43,6 @@ public class SecurityConfig {
 
 
        */
-
-
-
 
         //인가 설정
         http.authorizeHttpRequests(authorize -> authorize
