@@ -35,6 +35,7 @@
                         <td>
                             <input class="register" type="text" name="id" placeholder="아이디 입력"/>
                             <button id="btnCheckUid" type="button">중복확인</button>
+                            <p class="ex">영문·숫자 조합 4~10자 이내</p>
                             <span class="uidResult"></span>
                         </td>
                     </tr>
@@ -67,19 +68,26 @@
                             <span class="hpResult"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="email-row">
                         <th>이메일<p class="star">*</p></th>
-                        <td>
-                            <input class="register" type="email" name="email" placeholder="이메일 입력"/>
-                            <button id="btnSendEmail" type="button">인증번호 받기</button>
-                            <span class="emailResult"></span>
+                        <td class="email-td">
+                            <!-- 1줄: 이메일 입력 + 인증번호 받기 + 결과메시지 -->
+                            <div class="emailtop">
+                                <input class="register" type="email" name="email" placeholder="이메일 입력"/>
+                                <button id="btnSendEmail" type="button">인증번호 받기</button>
+
+                            </div>
+
+                            <!-- 2줄: 인증번호 입력 + 확인 버튼 -->
                             <div class="auth">
-                                <input type="text" name="auth" placeholder="인증번호 입력"/>
+                                <input class="register" type="text" name="auth" placeholder="인증번호 입력"/>
                                 <button id="btnAuthEmail" type="button">확인</button>
+                                <span class="emailResult"></span>
                             </div>
                         </td>
-
                     </tr>
+
+
                     <tr class="address-row">
                         <th>주소<p class="star">*</p></th>
                         <td>
@@ -95,14 +103,15 @@
             </div>
             <div class="pagebtn">
                 <div class="cancle">
-                    <a th:href="@{/user/login}">취소</a>
+                    <a  th:href="@{/user/login}">취소</a>
                 </div>
-                <input type="submit" value="회원가입" class="btn btnRegister"/>
+                <input id="registerbtn" type="submit" value="회원가입" class="btn btnRegister"/>
             </div>
         </form>
     </main>
     <th:block th:include="/common/__footer"/>
 </div>
+
 
 </body>
 </html>
