@@ -3,11 +3,9 @@ package kr.co.greenuniversity.repository.impl;
 import com.querydsl.core.Tuple;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import kr.co.greenuniversity.dto.PageRequestDTO;
-
-import kr.co.greenuniversity.entity.community.QCommunity1;
+import kr.co.greenuniversity.dto.page.PageRequestDTO;
+import kr.co.greenuniversity.entity.community.QCommunity2;
 import kr.co.greenuniversity.entity.user.QUser;
-import kr.co.greenuniversity.repository.custom.CommunityRepositoryCustom;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -20,10 +18,10 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Repository
-public class CommunityRepositoryImpl implements CommunityRepositoryCustom {
+public class Community2RepositoryImpl implements kr.co.greenuniversity.repository.custom.Community2RepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
-    private QCommunity1 qCommunity = QCommunity1.community1;
+    private QCommunity2 qCommunity = QCommunity2.community2;
     private QUser qUser = QUser.user;
 
     @Override

@@ -1,124 +1,91 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>커뮤니티/질문과 답변</title>
-        <link rel="stylesheet" href="/css/_header.css">
-        <link rel="stylesheet" href="/css/_footer.css">
-        <link rel="stylesheet" href="/css/homebar.css">
-        <link rel="stylesheet" href="/css/Community/qa.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티/질문과 답변</title>
+    <link rel="stylesheet" href="/css/_header.css">
+    <link rel="stylesheet" href="/css/_footer.css">
+    <link rel="stylesheet" href="/css/homebar.css">
+    <link rel="stylesheet" href="/css/Community/qa.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 
-    </head>
-    <body>
-        <div id="wrapper">
-            <th:block th:include="/common/__header"/>
-            <div class="homebar">
-                <article class="inline">
-                    <a href="/static/main"><img src="/images/ico-home.png" alt="homeico"></a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Community/qa">커뮤니티</a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Community/qa">질문과 답변</a>
+</head>
+<body>
+<div id="wrapper">
+    <th:block th:include="/common/__header"/>
+    <div class="homebar">
+        <article class="inline">
+            <a href="/main"><img src="/images/ico-home.png" alt="homeico"></a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/Community/qa">커뮤니티</a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/Community/qa">질문과 답변</a>
+        </article>
+    </div>
+    <main>
+        <article class="side">
+            <h4>커뮤니티</h4>
+            <ul>
+                <li><a href="/Community/notice">공지사항</a></li>
+                <li><a href="/Community/news">뉴스 및 칼럼</a></li>
+                <li><a href="/Community/job">취업정보</a></li>
+                <li><a href="/Community/free">자유게시판</a></li>
+                <li class="on"><a href="/Community/qa" class="on">질문과 답변</a></li>
+                <li><a href="/Community/resource">자료실</a></li>
+            </ul>
+        </article>
+        <article class="notice">
+            <div class="noticetop">
+                <h4>질문과 답변</h4>
+            </div>
+            <form th:action="@{/Community/searchQa}" class="search">
+                <select class="dropdown" name="searchType">
+                    <option value="all">전체</option>
+                    <option value="title" th:selected="${pageResponseDTO.searchType == 'title'}">제목</option>
+                    <option value="content" th:selected="${pageResponseDTO.searchType == 'content'}">내용</option>
+                    <option value="writer" th:selected="${pageResponseDTO.searchType == 'writer'}">작성자</option>
+                </select>
+                <input type="text" name="keyword" placeholder="검색어를 입력해 주세요">
+                <button class="searchbtn">검색</button>
+            </form>
+            <div class="noticemain">
+                <table>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                        <th>상태</th>
+                    </tr>
+                    <tr th:each="community, i:${pageResponseDTO.dtoList}">
+                        <td>[[${pageResponseDTO.startNo - i.index}]]</td>
+                        <td><a th:href="@{/Community/view(no=${community.no})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
+                        <td>[[${community.name}]]</td>
+                        <td>[[${community.wdate}]]</td>
+                        <td th:if="${community.status == 'wait'}" class="wait">답변대기</td>
+                        <td th:if="${community.status == 'resp'}" class="done">답변완료</td>
+                    </tr>
+                </table>
+                <a th:href="@{|/Community/write2?cate=${pageResponseDTO.cate}|}" class="write">글쓰기</a>
+                <article class="pagebtn">
+                    <th:block th:if="${pageResponseDTO.prev}">
+                        <a th:href="@{/Community/list(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>
+                    </th:block>
+
+                    <th:block th:each="num:${#numbers.sequence(pageResponseDTO.start, pageResponseDTO.end)}">
+                        <a th:href="@{/Community/list(pg=${num})}" th:class="${num == pageResponseDTO.pg} ? 'current' : 'num'">[[${num}]]</a>
+                    </th:block>
+
+                    <th:block th:if="${pageResponseDTO.next}">
+                        <a th:href="@{/Community/list(pg=${pageResponseDTO.end+1})}" class="next">다음</a>
+                    </th:block>
                 </article>
             </div>
-            <main>
-                <article class="side">
-                    <h4>커뮤니티</h4>
-                        <ul>
-                            <li><a href="/Community/notice">공지사항</a></li>
-                            <li><a href="/Community/news">뉴스 및 칼럼</a></li>
-                            <li><a href="/Community/job">취업정보</a></li>
-                            <li><a href="/Community/free">자유게시판</a></li>
-                            <li class="on"><a href="/Community/qa" class="on">질문과 답변</a></li>
-                            <li><a href="/Community/resource">자료실</a></li>
-                        </ul>
-                </article>
-                <article class="notice">
-                    <div class="noticetop">
-                        <h4>질문과 답변</h4>
-                    </div>
-                    <form class="search">
-                        <select class="dropdown">
-                            <option>전체</option>
-                            <option>제목</option>
-                            <option>작성자</option>
-                            <option>내용</option>
-                        </select>
-                        <input type="text" value="검색어를 입력해 주세요">
-                        <button class="searchbtn">검색</button>
-                    </form>
-                    <div class="noticemain">
-                        <table>
-                            <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                                <th>상태</th>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>
-                                    <img src="/images/ico-lock.png" alt="iconew">
-                                    문의드립니다.
-                                </td>
-                                <td>홍길동</td>
-                                <td>24.04.09</td>
-                                <td class="wait">답변대기</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>취업 진로 상담</td>
-                                <td>홍길동</td>
-                                <td>24.04.09</td>
-                                <td class="done">답변완료</td>
-                            </tr>
-                            <tr class="manager">
-                                <td>3</td>
-                                <td>
-                                    <img src="/images/ico-reply.png" alt="iconew">
-                                    RE : [답변] 취업 진로 상담
-                                </td>
-                                <td>담당자</td>
-                                <td>24.04.09</td>
-                                <td class="done">답변완료</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <img src="/images/ico-lock.png" alt="iconew">
-                                    취업실전전략1 일반석택 교과목 문의입니다
-                                </td>
-                                <td>홍길동</td>
-                                <td>24.04.09</td>
-                                <td class="done">답변완료</td>
-                            </tr>
-                            <tr class="manager">
-                                <td>1</td>
-                                <td><img src="/images/ico-reply.png" alt="iconew">
-                                    RE : [답변] 취업실전전략1 일반선택 교과목 문의입니다
-                                </td>
-                                <td>담당자</td>
-                                <td>24.04.09</td>
-                                <td class="done">답변완료</td>
-                            </tr>
-                        </table>
-                        <article class="pagebtn">
-                            <a href=""><img src="/images/btn-first-page.png" alt="firstarr"></a>
-                            <a href=""><img src="/images/btn-prev-page.png" alt="firstarr"></a>
-                            <a href="">1</a>
-                            <a href="">2</a>
-                            <a href="">3</a>
-                            <a href=""><img src="/images/btn-next-page.png" alt="firstarr"></a>
-                            <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
-                        </article>
-                    </div>
-                </article>
-            </main>
-            <th:block th:include="/common/__footer"/>
-        </div>
-    </body>
+        </article>
+    </main>
+    <th:block th:include="/common/__footer"/>
+</div>
+</body>
 </html>

@@ -13,8 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CommunityDTO1 {
+public class Community2DTO {
     private int no;
+    private String status;
+    private String deadline;
+    private String type;
     private String cate;
     private String title;
     private String content;
@@ -28,6 +31,14 @@ public class CommunityDTO1 {
     // 추가 컬럼
     private String name;
     private User user;
+    private boolean expired;
+
+    public String getDeadline() {
+        if (deadline != null && !deadline.isBlank()) {
+            return deadline.substring(0, 10);
+        }
+        return null;
+    }
 
     public String getWdate() {
         if(wdate != null){
@@ -43,5 +54,8 @@ public class CommunityDTO1 {
         return List.of(file1, file2);
     }
 
+    public void setExpired(boolean expired) {
+        this.expired = expired;
+    }
 
 }
