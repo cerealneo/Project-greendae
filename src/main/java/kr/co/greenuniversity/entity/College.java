@@ -1,5 +1,6 @@
 package kr.co.greenuniversity.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +29,7 @@ public class College {
     private String file;
 
     @OneToMany(mappedBy = "college", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Department> departments;
 
 

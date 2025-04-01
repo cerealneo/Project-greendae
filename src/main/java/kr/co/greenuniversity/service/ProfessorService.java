@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -33,7 +34,7 @@ public class ProfessorService {
         professorRepository.save(professor);
     }
 
-    private String generateProfessorId(Department department) {
+    public String generateProfessorId(Department department) {
 
         String year = String.valueOf(LocalDate.now().getYear());
         String deptNo = String.format("%02d", department.getNo());
@@ -45,4 +46,10 @@ public class ProfessorService {
     }
 
 
+    public String generateProfessorIdPublic(String departmentName) {
+
+        Department dept = departmentRepository.findByDepartmentName(departmentName)
+                .orElseThrow(() -> new IllegalArgumentException("학과 없음"));
+        return generateProfessorId(dept);
+    }
 }
