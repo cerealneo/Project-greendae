@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,6 +38,9 @@ public class Student {
     private String reg_grade;
     private String reg_term;
     private String status;
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    private List<Department> departments;
 
 
 }
