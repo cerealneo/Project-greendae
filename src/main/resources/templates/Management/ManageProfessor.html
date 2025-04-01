@@ -80,7 +80,7 @@
                     <img src="/images/bullet-h4.png">
                     <h3>기본정보 입력</h3>
                 </div>
-                    <form class="professor">
+                    <form class="professor"th:action="@{/Management/ManageProfessor}" method="post">
                         <table class="table-1">
                             <tr>
                                 <td rowspan="4" class="avatar">
@@ -88,8 +88,8 @@
                                 </td>
                                 <td>교수번호</td>
                                 <td>
-                                    <input type="text" hidden>
-                                    <span name="id">연도 + 학과 코드 + 순번 조합 자동생성</span>
+                                    <input type="hidden" name="id">
+                                    <span>연도 + 학과 코드 + 순번 조합 자동생성</span>
                                 </td>
                                 <td>주민등록번호</td>
                                 <td><input type="text" name="jumin" placeholder="- 포함 14자리 입력"></td>
@@ -142,7 +142,7 @@
                         <table class="table-2">
                             <tr>
                                 <td>졸업대학</td>
-                                <td><input type="text" name="college_name" placeholder="대학교 이름 입력"></td>
+                                <td><input type="text" name="gradColName" placeholder="대학교 이름 입력"></td>
                                 <td>학문 분야(전공)</td>
                                 <td><input type="text" name="major" placeholder="전공입력"></td>
                             </tr>
@@ -161,16 +161,17 @@
                             <tr>
                                 <td>담당학과</td>
                                 <td class="td-bd2">
-                                    <select class="dropdown" onchange="updateDepartments()" id="collegeSelect">
-                                        <option value="">단과대학선택</option>
-                                        <option value="humanities">인문사회대학</option>
-                                        <option value="naturalscience">자연과학대학</option>
-                                        <option value="engineering">공과대학</option>
-                                        <option value="teacher">사범대학</option>
-                                        <option value="graduateSchool">대학원</option>
+                                    <select class="dropdown" name="college-name" id="collegeSelect">
+                                        <option>단과대학선택</option>
+                                        <th:block th:each="college : ${colleges}">
+                                            <option th:value="${college.collegeName}" th:text="${college.collegeName}"></option>
+                                        </th:block>
                                     </select>
-                                    <select class="dropdown" id="departmentSelect">
-                                        <option value="">학과를 선택하세요</option>
+                                    <select class="dropdown" name="departmentName" id="departmentSelect">
+                                        <option>학과를 선택하세요</option>
+                                        <th:block th:each="department : ${departments}">
+                                            <option th:value="${department.departmentName}" th:text="${department.departmentName}"></option>
+                                        </th:block>
                                     </select>
                                 </td>
                                 <td>임용일</td>

@@ -12,23 +12,23 @@
     <th:block th:include="/common/__header"/>
     <div class="homebar">
         <article class="inline">
-            <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
-            <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/Bachelor/BacSubscribe.html">학사안내</a>
-            <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/Bachelor/BacSubscribe.html">수강신청</a>
+            <a th:href="@{/}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+            <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+            <a th:href="@{/Bachelor/BacNotice}">학사안내</a>
+            <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+            <a th:href="@{/Bachelor/BacSubscribe}">수강신청</a>
         </article>
     </div>
     <main>
         <article class="side">
             <h4>학사안내</h4>
             <ul>
-                <li><a href="/static/Bachelor/BacNotice.html">공지사항</a></li>
-                <li><a href="/static/Bachelor/BacSchedule.html">학사일정</a></li>
-                <li><a href="/static/Bachelor/BacSubscribe.html">수강신청</a></li>
-                <li><a href="/static/Bachelor/BacResult.html">성적</a></li>
-                <li><a href="/static/Bachelor/BacGrad.html">수료 및 졸업</a></li>
-                <li><a href="/static/Bachelor/BacQuestion.html">자주묻는질문</a></li>
+                <li><a th:href="@{/Bachelor/BacNotice}">공지사항</a></li>
+                <li><a th:href="@{/Bachelor/BacSchedule}">학사일정</a></li>
+                <li><a th:href="@{/Bachelor/BacSubscribe}">수강신청</a></li>
+                <li><a th:href="@{/Bachelor/BacResult}">성적</a></li>
+                <li><a th:href="@{/Bachelor/BacGrad}">수료 및 졸업</a></li>
+                <li><a th:href="@{/Bachelor/BacQuestion}">자주묻는질문</a></li>
             </ul>
         </article>
         <article class="signup">

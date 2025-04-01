@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import javax.naming.Name;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,16 +23,17 @@ public class Department {
     @JoinColumn(name = "college_name", referencedColumnName = "college_name")
     private College college;
 
-    private String department_name;
+    @Column(name = "department_name")
+    private String departmentName;
+
     private String department_eng_name;
     private String establishment_date;
     private String pro_name;
     private String dep_number;
     private String office;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Professor_id")
-    private Professor professor;
+    @OneToMany(mappedBy = "department")
+    private List<Professor> professors;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Student_id")

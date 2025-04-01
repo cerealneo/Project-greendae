@@ -14,11 +14,12 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 
     //List<Department> findByCollege_CollegeName(String collegeName);
 
-    //List<Department> findByCollege_CollegeNameAndDepartment_name(String collegeName, String departmentName);
 
+    @Query("SELECT MAX(d.no) FROM Department d")
+    Optional<Integer> findMaxNo();
 
-    //@Query("SELECT MAX(d.no) FROM Department d")
-    //Optional<Integer> findMaxNo();
+    String departmentName(String departmentName);
 
-    //List<Department> findByProfessor_id(int professor_id);
+    Optional<Department> findByDepartmentName(String departmentName);
+    //Optional<Department> findByCollege_CollegeNameAndDepartmentName(String collegeName, String departmentName);
 }

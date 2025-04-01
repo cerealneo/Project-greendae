@@ -18,7 +18,7 @@ public class Professor {
 
 
     @Id
-    private int id;
+    private String id;
 
     private String jumin;
     private String name;
@@ -29,17 +29,23 @@ public class Professor {
     private String email;
     private String addr1;
     private String addr2;
-    private String college_name;
+    private String gradColName;
     private String major;
     private String end_date;
     private String degree;
     private String spot;
-    private String gradColName;
-    private String department_name;
+    private String college_name;
+
+    @Column(name = "department_name")
+    private String departmentName;
+
     private String appointment_date;
-    private String empoly_status;
+
+    @Column(name = "employ_status")
+    private String employStatus;
 
 
-    @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY)
-    private List<Department> departments;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
 }
