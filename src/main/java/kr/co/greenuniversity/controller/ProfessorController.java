@@ -1,6 +1,7 @@
 package kr.co.greenuniversity.controller;
 
 import kr.co.greenuniversity.dto.ProfessorDTO;
+import kr.co.greenuniversity.entity.Professor;
 import kr.co.greenuniversity.service.ProfessorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +22,11 @@ public class ProfessorController {
     }
 
     @PostMapping("/Management/ManageProfessor")
-    public String registerProfessor(ProfessorDTO professorDTO) {
-
-        professorService.registerProfessor(professorDTO);
-        log.info("Registering professor {}", professorDTO);
-
+    public String registerProfessor(Professor professor) {
+        professorService.registerProfessor(professor);
         return "redirect:/Management/ManageProfessor";
 
     }
+
+
 }
