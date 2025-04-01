@@ -28,7 +28,6 @@ public class Department {
     private String pro_name;
     private String dep_number;
     private String office;
-    private int lecture_code;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Professor_id")
