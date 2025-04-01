@@ -16,8 +16,8 @@ import java.util.List;
 @ToString
 @Builder
 @Entity
-@Table(name = "Community")
-public class Community {
+@Table(name = "Community1")
+public class Community1 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

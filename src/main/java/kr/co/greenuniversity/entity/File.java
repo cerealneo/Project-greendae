@@ -22,7 +22,7 @@ public class File {
     private int fno;
 
 
-    private int ano;
+    private int article_no;
     private String oName;
     private String sName;
     private int download;

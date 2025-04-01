@@ -1,7 +1,6 @@
 package kr.co.greenuniversity.dto.community;
 
-import kr.co.greenuniversity.dto.FileDTO;
-import kr.co.greenuniversity.dto.UserDTO;
+import kr.co.greenuniversity.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CommunityDTO {
+public class CommunityDTO1 {
     private int no;
     private String cate;
     private String title;
@@ -28,13 +27,20 @@ public class CommunityDTO {
 
     // 추가 컬럼
     private String name;
-    private UserDTO user;
+    private User user;
 
     public String getWdate() {
         if(wdate != null){
             return wdate.substring(0, 10);
         }
         return null;
+    }
+
+    private MultipartFile file1;
+    private MultipartFile file2;
+
+    public List<MultipartFile> getMultipartFiles(){
+        return List.of(file1, file2);
     }
 
 
