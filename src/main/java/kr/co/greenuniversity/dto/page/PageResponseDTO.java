@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.dto;
+package kr.co.greenuniversity.dto.page;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

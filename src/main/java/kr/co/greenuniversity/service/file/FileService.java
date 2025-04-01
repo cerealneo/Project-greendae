@@ -1,7 +1,7 @@
 package kr.co.greenuniversity.service.file;
 
 import kr.co.greenuniversity.dto.FileDTO;
-import kr.co.greenuniversity.dto.community.CommunityDTO1;
+import kr.co.greenuniversity.dto.community.Community1DTO;
 import kr.co.greenuniversity.entity.File;
 import kr.co.greenuniversity.repository.FileRepository;
 import lombok.RequiredArgsConstructor;
@@ -43,7 +43,7 @@ public class FileService {
     @Value("${spring.servlet.multipart.location}")
     private String uploadDir;
 
-    public List<FileDTO> uploadFile(CommunityDTO1 communityDTO1) {
+    public List<FileDTO> uploadFile(Community1DTO community1DTO) {
 
         java.io.File fileUploadDir = new java.io.File(uploadDir);
 
@@ -52,7 +52,7 @@ public class FileService {
         }
 
         String fileUploadPath = fileUploadDir.getAbsolutePath();
-        List<MultipartFile> multipartFiles = communityDTO1.getMultipartFiles();
+        List<MultipartFile> multipartFiles = community1DTO.getMultipartFiles();
         List<FileDTO> fileDTOList = new ArrayList<>();
 
         for(MultipartFile multipartFile : multipartFiles) {
@@ -121,8 +121,6 @@ public class FileService {
                 .status(HttpStatus.NOT_FOUND)
                 .build();
     }
-
-
 
 
 }
