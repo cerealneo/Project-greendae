@@ -85,13 +85,11 @@
                                 <td>
                                     <select class="university" onchange="updateDepartments()" id="collegeSelect">
                                         <option value="">단과대학선택</option>
-                                        <option value="humanities">인문사회대학</option>
-                                        <option value="naturalscience">자연과학대학</option>
-                                        <option value="engineering">공과대학</option>
-                                        <option value="teacher">사범대학</option>
-                                        <option value="graduateSchool">대학원</option>
+                                        <th:block th:each="college : ${colleges}">
+                                            <option th:value="${college.collegeName}" th:text="${college.collegeName}"></option>
+                                        </th:block>
                                     </select>
-                                    <select id="departmentSelect">
+                                    <select id="departmentSelect" name="departmentName">
                                         <option value="">학과를 선택하세요</option>
                                     </select>
                                     
@@ -128,7 +126,14 @@
                                     </select>
                                 </td>
                                 <th>담당교수</th>
-                                <td><input type="text" class="professor"></td>
+                                <td>
+                                    <select class="dropdown" name="pro_name">
+                                        <option value="">선택</option>
+                                        <th:block th:each="prof : ${professors}">
+                                            <option th:value="${prof.name}" th:text="${prof.name}"></option>
+                                        </th:block>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <th>강의명</th>
@@ -187,7 +192,43 @@
                 </div>
             </footer>
         </div>
-        
+    <script>
+        document.getElementById("collegeSelect").addEventListener("change", function () {
+            const selectedCollege = this.value;
+
+            fetch(`/api/departments/by-college?collegeName=${encodeURIComponent(selectedCollege)}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("받은 데이터", data);  // 여기에 ["영어영문학과", "행정학과"] 등 나와야 함
+                    const departmentSelect = document.getElementById("departmentSelect");
+                    departmentSelect.innerHTML = '<option>학과를 선택하세요</option>';
+
+                    data.forEach(deptName => {
+                        const option = document.createElement("option");
+                        option.value = deptName;
+                        option.text = deptName;
+                        departmentSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error("에러 발생", error);
+                });
+        });
+        document.getElementById('departmentSelect').addEventListener('change', function () {
+            const departmentName = this.value;
+
+            fetch(`/api/professors/generate-id?departmentName=${encodeURIComponent(departmentName)}`)
+            console.log(departmentName)
+                .then(res => res.json())
+                .then(data => {
+                    // 여기서 input[name='id']와 #professorIdDisplay를 업데이트
+                    document.querySelector("input[name='id']").value = data;
+                    document.getElementById("professorIdDisplay").textContent = data;
+                })
+                .catch(err => console.error('ID 생성 오류:', err));
+        });
+
+    </script>
     </body>
 
     </html>

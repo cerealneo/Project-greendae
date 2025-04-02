@@ -36,9 +36,8 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private List<Professor> professors;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Student_id")
-    private Student student;
+    @OneToMany(mappedBy = "department")
+    private List<Student> student;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "lecture_code", nullable = true)
