@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>새 비밀번호 설정</title>
+    <th:block th:include="/_headerLink"/>
+    <link rel="stylesheet" th:href="@{/css/user/register.css}">
+</head>
+<body>
+<div id="wrapper">
+    <th:block th:include="/common/__header"/>
+
+    <div class="homebar">
+        <article class="inline">
+            <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/static/user/login.html">회원</a>
+            <img src="/images/bg-path-arrow.png" alt="arrowright">
+            <a href="/static/user/login.html">새 비밀번호 설정</a>
+        </article>
+    </div>
+
+    <main>
+        <article class="content">
+            <div class="form-hd">
+                <p>새 비밀번호 설정</p>
+            </div>
+
+            <form name="formRegister" th:action="@{/updatePass}" method="post">
+                <div class="termsarea">
+                    <table>
+
+                        <input type="hidden" name="id" value="${resultId}" />
+                        <tr>
+                            <th>비밀번호<p class="star">*</p></th>
+                            <td><input class="register" type="password" name="password" placeholder="비밀번호 입력"/>
+                                <p class="ex">비밀번호는 8-16자리 이내, 영문·숫자·특수문자 조합</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>비밀번호 확인<p class="star">*</p></th>
+                            <td>
+                                <input class="register" type="password" name="password2" placeholder="비밀번호 입력 확인"/>
+                                <span class="passResult"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <input type="submit" value="비밀번호 변경">
+            </form>
+
+        </article>
+    </main>
+
+    <th:block th:include="/common/__footer"/>
+</div>
+</body>
+</html>

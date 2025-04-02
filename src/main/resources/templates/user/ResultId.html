@@ -27,7 +27,10 @@
         </div>
 
         <div class="box">
-          <p><span th:text="${foundUserId}"></span></p>
+          <p>
+            <span th:text="${resultId}" th:if="${resultId != null}"></span>
+            <span th:text="${error}" th:if="${error != null}"></span>
+          </p>
         </div>
 
       </article>
