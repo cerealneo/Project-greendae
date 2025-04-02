@@ -10,8 +10,12 @@ public class MainController {
     @GetMapping(value= {"/", "main"})
     public String MainPage(Authentication auth) {
 
-        
-
         return "/main";
+    }
+
+    @GetMapping("/adminMain")
+    public String AdminPage(Authentication auth) {
+
+        return "/Management/Managemain";
     }
 }

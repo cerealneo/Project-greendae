@@ -22,7 +22,7 @@ public class MyUserDetails implements UserDetails {
         //권한 목록 생성
         List<GrantedAuthority> authorities = new ArrayList<>();
         //계정 권한 앞에 접두어 ROLE_ 붙여야 됨
-        authorities.add(new SimpleGrantedAuthority("Role_" + user.getId()));
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
         return authorities;
     }
 
