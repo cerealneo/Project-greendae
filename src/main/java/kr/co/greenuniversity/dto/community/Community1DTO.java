@@ -1,5 +1,6 @@
 package kr.co.greenuniversity.dto.community;
 
+import kr.co.greenuniversity.dto.file.FileDTO;
 import kr.co.greenuniversity.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,7 @@ public class Community1DTO {
     // 추가 컬럼
     private String name;
     private User user;
+    private List<FileDTO> files;
 
     public String getWdate() {
         if(wdate != null){

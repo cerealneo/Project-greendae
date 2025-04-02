@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>커뮤니티/글쓰기</title>
@@ -33,6 +33,7 @@
             </article>
             <form th:action="@{/Community/write1}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="writer" th:value="${#authentication.principal.user.id}">
+                <input type="hidden" name="cate" th:value="${cate}">
                 <table border="0">
                     <tr>
                         <th>제목</th>
@@ -56,13 +57,13 @@
                     </tr>
                 </table>
                 <div>
-                    <a href="#" class="btn btnCancel">취소</a>
+                    <a th:href="@{/Community/{cate}(cate=${cate})}" class="btn btnCancel">취소</a>
                     <input type="submit" value="작성완료" class="btn btnComplete"/>
                 </div>
             </form>
         </section>
     </main>
-    <!--<th:block th:include="/common/__footer"/>-->
+    <th:block th:include="/common/__footer"/>
 </div>
 </body>
 </html>

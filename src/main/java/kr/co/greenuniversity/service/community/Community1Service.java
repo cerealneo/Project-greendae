@@ -24,7 +24,6 @@ public class Community1Service {
     private final Community1Repository communityRepository1;
     private final ModelMapper modelMapper;
 
-
     // 목록
     public PageResponseDTO findAll(PageRequestDTO pageRequestDTO) {
 

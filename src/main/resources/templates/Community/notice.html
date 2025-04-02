@@ -60,12 +60,13 @@
                             </tr>
                             <tr th:each="community, i:${pageResponseDTO.dtoList}">
                                 <td>[[${pageResponseDTO.startNo - i.index}]]</td>
-                                <td><a th:href="@{/Community/view1(no=${community.no})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
+                                <td><a th:href="@{/Community/view1(no=${community.no}, cate=${community.cate})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
                                 <td>[[${community.name}]]</td>
                                 <td>[[${community.wdate}]]</td>
                                 <td>[[${community.hit}]]</td>
                             </tr>
                         </table>
+                        <a th:href="@{/Community/write1(cate=${pageResponseDTO.cate})}" class="write">글쓰기</a>
                         <article class="pagebtn">
                             <th:block th:if="${pageResponseDTO.prev}">
                                 <a th:href="@{/Community/list(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>

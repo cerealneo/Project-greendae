@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -20,13 +21,13 @@ import java.util.Optional;
 @Service
 public class CommunityService {
 
-    private final Community1Repository communityRepository1;
-    private final Community2Repository communityRepository2;
+    private final Community1Repository community1Repository;
+    private final Community2Repository community2Repository;
     private final ModelMapper modelMapper;
 
     // 글보기
     public Community1DTO findById1(int no) {
-        Optional<Community1> optCommunity = communityRepository1.findById(no);
+        Optional<Community1> optCommunity = community1Repository.findById(no);
 
         if (optCommunity.isPresent()) {
             Community1 community = optCommunity.get();
@@ -37,7 +38,7 @@ public class CommunityService {
     }
 
     public Community2DTO findById2(int no) {
-        Optional<Community2> optCommunity = communityRepository2.findById(no);
+        Optional<Community2> optCommunity = community2Repository.findById(no);
 
         if (optCommunity.isPresent()) {
             Community2 community = optCommunity.get();
@@ -57,7 +58,7 @@ public class CommunityService {
         Community1 community = modelMapper.map(communityDTO, Community1.class);
         community.setUser(user);
 
-        Community1 savedCommunity = communityRepository1.save(community);
+        Community1 savedCommunity = community1Repository.save(community);
 
         return savedCommunity.getNo();
     }
@@ -70,10 +71,22 @@ public class CommunityService {
         Community2 community = modelMapper.map(communityDTO, Community2.class);
         community.setUser(user);
 
-        Community2 savedCommunity = communityRepository2.save(community);
+        log.info("CommunityDTO: " + communityDTO);
+
+        Community2 savedCommunity = community2Repository.save(community);
+
+        log.info("saved community: " + savedCommunity);
 
         return savedCommunity.getNo();
     }
+
+    @Transactional
+    public void response(int parent) {
+        Community2 community = community2Repository.findById(parent)
+                .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
+        community.setStatus("resp");
+    }
+
 
 
 }

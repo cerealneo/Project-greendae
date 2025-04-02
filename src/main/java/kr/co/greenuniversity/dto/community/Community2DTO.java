@@ -1,5 +1,6 @@
 package kr.co.greenuniversity.dto.community;
 
+import kr.co.greenuniversity.dto.file.FileDTO;
 import kr.co.greenuniversity.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,10 +28,12 @@ public class Community2DTO {
     private String writer;
     private String regip;
     private String wdate;
+    private Boolean locked;
 
     // 추가 컬럼
     private String name;
     private User user;
+    private List<FileDTO> files;
     private boolean expired;
 
     public String getDeadline() {
