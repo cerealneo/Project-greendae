@@ -111,3 +111,73 @@ main {
 .box span{
     font-size: 20px;
 }
+
+.update-pass-container {
+    width: 450px;                /* 적절한 폭 설정 */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 30px;
+    text-align: left;            /* 전체를 왼쪽 정렬 */
+    margin: 0 auto;              /* 수평 중앙 배치 */
+}
+
+/* 제목 */
+.update-pass-container h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+}
+
+/* 폼 그룹 */
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.form-group .star {
+    color: #f00;
+    font-weight: normal;
+}
+.form-group input {
+    width: 100%;               /* 부모 폭에 딱 맞게 */
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group .desc {
+    font-size: 13px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* 비밀번호 확인 결과 메시지 */
+.passResult {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #888;
+}
+
+/* 버튼 */
+.submit-btn {
+    width: 100%;               /* 버튼도 부모 폭에 맞춤 */
+    padding: 12px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.submit-btn:hover {
+    background-color: #218838;
+}
