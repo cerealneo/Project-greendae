@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오시는 길</title>
-    <link rel="stylesheet" href="/css/_header.css">
-    <link rel="stylesheet" href="/css/_footer.css">
-    <link rel="stylesheet" href="/css/homebar.css">
+    <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" href="/css/introduction.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <style>
         .root_daum_roughmap root_daum_roughmap_landing {
             width: 930px;
@@ -24,18 +19,13 @@
         
         <div class="homebar">
             <article class="inline">
-                <a href="/"><img src="/images/ico-home.png" alt="homeico"></a>
-                <img src="/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/Bachelor/BacNotice">학사안내</a>
-                <img src="/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/Bachelor/BacNotice">공지사항</a>
+                <a th:href="@{/}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/Introduction/presidentMessage}">대학소개</a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/Introduction/directions}">오시는길</a>
             </article>
         </div>
-
-
-
-
-
 <!---------------------사이드바------------------------------>
     <main>
         
@@ -43,11 +33,11 @@
             <aside>
                 <h2>대학소개</h2>
                 <ul class="menu">
-                    <li><a href="/Introduction/presidentMessage" >총장 인사말</a></li>
-                    <li><a href="/Introduction/educationalPhilosophy" >교육이념</a></li>
-                    <li><a href="/Introduction/history" >연혁</a></li>
-                    <li><a href="/Introduction/organizationalChart" >조직도</a></li>
-                    <li><a href="/Introduction/directions" class="on" >오시는 길</a></li>
+                    <li><a th:href="@{/Introduction/presidentMessage}" >총장 인사말</a></li>
+                    <li><a th:href="@{/Introduction/educationalPhilosophy}" >교육이념</a></li>
+                    <li><a th:href="@{/Introduction/history}" >연혁</a></li>
+                    <li><a th:href="@{/Introduction/organizationalChart}" >조직도</a></li>
+                    <li><a th:href="@{/Introduction/directions}" class="on" >오시는 길</a></li>
                 </ul>
             </aside>
         </section>
@@ -84,7 +74,6 @@
 <!--------------------------푸터-------------------------------->
 
         <th:block th:include="/common/__footer"/>
-
     </div>
 </body>
 </html>

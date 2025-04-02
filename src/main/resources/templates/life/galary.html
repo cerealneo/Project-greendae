@@ -3,34 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <title>학교생활/갤러리</title>
-        <link rel="stylesheet" href="/css/_header.css">
-        <link rel="stylesheet" href="/css/_footer.css">
-        <link rel="stylesheet" href="/css/homebar.css">
-        <link rel="stylesheet" href="/css/life/galary.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+        <th:block th:include="/_headerLink"/>
+        <link rel="stylesheet" th:href="@{/css/life/galary.css}">
+
     </head>
     <body>
         <div id="wrapper">
             <th:block th:include="/common/__header"/>
             <div class="homebar">
                 <article class="inline">
-                    <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/life/council.html">대학생활</a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/life/galary.html">갤러리</a>
+                    <a th:href="@{/}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+                    <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                    <a th:href="@{/life/council}">대학생활</a>
+                    <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                    <a th:href="@{/life/galary}">갤러리</a>
+
                 </article>
             </div>
             <main>
                 <aside>
                     <span>대학생활</span>
                     <nav>
-                        <a href="/static/life/council.html">학생회 소개</a>
-                        <a href="/static/life/study.html">동아리/스터디</a>
-                        <a href="/static/life/meal.html">식단안내</a>
-                        <a href="/static/life/galary.html" class="on">갤러리</a>
+                        <a th:href="@{/life/council.html}">학생회 소개</a>
+                        <a th:href="@{/life/study.html}">동아리/스터디</a>
+                        <a th:href="@{/life/meal.html}">식단안내</a>
+                        <a th:href="@{/life/galary.html}" class="on">갤러리</a>
+
                     </nav>
                 </aside>
                 <section>

@@ -22,38 +22,46 @@
     </div>
     <main>
         <article class="content">
-            <div class="form-hd">
-                <p>아이디 찾기</p>
+            <div class="form-header">
+                <h1>아이디 찾기</h1>
             </div>
             <form name="formfindId" th:action="@{/findId}" method="post">
-                <!--<div class="type-list">
+                <!--
+                <div class="type-list">
                     <label><input type="checkbox" name="student" class="checkbox">학부생</label>
                     <label><input type="checkbox" name="pro" class="checkbox">교직원</label>
                     <label><input type="checkbox" name="user" class="checkbox">일반</label>
                     <input type="hidden" name="admin" class="checkbox">
-                </div> -->
+                </div>
+                -->
 
-                <div class="form-boder">
-                    <p>본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p>
-                    <div class="name-block">
-                        <label>이름<input type="text" name="name" /></label>
-                        <span class="nameResult"></span> <br>
+                <div class="form-box">
+                    <p class="info-text">
+                        본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.
+                    </p>
+                    <div class="input-group name-group">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+                        <span class="nameResult"></span>
                     </div>
-                    <div class="email-block">
-                        <div>
-                            <label>이메일<input type="email" name="email" class="email-input"/></label>
-                            <button id="btnSendEmail" type="button">인증번호 받기</button>
-                            <span class="emailResult"></span>
-                            <div class="auth">
-                                <label>인증코드<input type="text" name="auth" class="email-input" placeholder="인증번호 입력"/></label>
-                                <button id="btnAuthEmail" type="button">확인</button>
-                            </div>
-                        </div>
+                    <div class="input-group email-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" class="email-input" placeholder="이메일을 입력하세요">
+                        <button id="btnSendEmail" type="button">인증번호 받기</button>
+                        <span class="emailResult"></span>
+                    </div>
+
+                    <!-- 인증코드 입력 영역: 처음에 숨김 -->
+                    <div class="input-group auth-group" style="display: none;">
+                        <label for="auth">인증코드</label>
+                        <input type="text" id="auth" name="auth" class="email-input" placeholder="인증번호 입력">
+                        <button id="btnAuthEmail" type="button">확인</button>
+                        <span class="authResult"></span> <!-- 인증 결과 메시지용 -->
                     </div>
                 </div>
-                <input type="submit" value="다음"  class="submit"/>
-            </form>
 
+                <input type="submit" value="다음" class="submit-button"/>
+            </form>
         </article>
     </main>
 
