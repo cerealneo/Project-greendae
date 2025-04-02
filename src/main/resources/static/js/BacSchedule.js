@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     let today = new Date();
-    let currentMonth = today.getMonth() + 1;  // JavaScript에서 month는 0부터 시작하므로 +1
+    let currentMonth = today.getMonth() + 1;  // 월은 0부터 시작하므로 +1
     let currentYear = today.getFullYear();
 
     function fetchEvents(year, month) {
-        // 절대 URL로 변경하여 요청 보내기
         fetch(`/api/bachelor/schedule/${year}/${month}`)
             .then(response => response.json())
             .then(data => {
                 console.log("📅 일정 데이터:", data);
-                renderCalendar(month - 1, year, data); // month -1은 JavaScript의 Date 기준에 맞추기 위함
+                // month - 1로 보내는 이유: Date 객체 기준(월이 0부터 시작)
+                renderCalendar(month - 1, year, data);
             })
             .catch(error => console.error("데이터 불러오기 실패:", error));
     }
@@ -48,18 +48,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     cell.innerText = date;
                     cell.dataset.date = `${year}-${monthNames[month]}-${String(date).padStart(2, "0")}`;
 
-                    // 📌 일정이 있는 날짜에 표시 추가
-                    let event = events.find(e => e.eventDate === cell.dataset.date);  // 날짜 비교 수정
-                    console.log("캘린더 날짜:", cell.dataset.date);  // 날짜 로그 추가
-                    console.log("이벤트 날짜:", event ? event.eventDate : "없음");  // 이벤트 로그 추가
+                    // 일정 데이터가 있는지 확인
+                    let event = events.find(e => e.eventDate === cell.dataset.date);
+                    console.log("캘린더 날짜:", cell.dataset.date);
+                    console.log("이벤트 날짜:", event ? event.eventDate : "없음");
 
                     if (event) {
                         let eventMarker = document.createElement("div");
-                        eventMarker.classList.add("event-marker");
+                        // CSS에서 .event 클래스에 글자 크기 15px, 배경 #007BFF, 흰색 텍스트 등 지정
+                        eventMarker.classList.add("event");
                         eventMarker.innerText = event.title;
                         cell.appendChild(eventMarker);
                     }
-
                     date++;
                 }
                 // 다음 달 날짜
@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
             calendarBody.appendChild(row);
         }
     }
-
 
     function prevMonth() {
         if (currentMonth === 1) {

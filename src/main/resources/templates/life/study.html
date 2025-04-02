@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>학교생활/동아리/스터디</title>
+        <title>3조 - 그린대학교</title>
         <th:block th:include="/_headerLink"/>
         <link rel="stylesheet" href="/css/life/study.css">
     </head>
@@ -21,14 +21,13 @@
             </div>
             <main>
                 <aside>
-                    <span>대학생활</span>
-                    <nav>
-                        <a th:href="@{/life/council.html}">학생회 소개</a>
-                        <a th:href="@{/life/study.html}" class="on">동아리/스터디</a>
-                        <a th:href="@{/life/meal.html}">식단안내</a>
-                        <a th:href="@{/life/galary.html}">갤러리</a>
-
-                    </nav>
+                    <p class="list-hadding">대학생활</p>
+                    <ul class="list">
+                        <li><a th:href="@{/life/council}">학생회 소개</a></li>
+                        <li style="background-color: #3F97F6;"><a style="color: white;" th:href="@{/life/study}">동아리/스터디</a></li>
+                        <li><a th:href="@{/life/meal}">식단안내</a></li>
+                        <li> <a th:href="@{/life/galary}">갤러리</a></li>
+                    </ul>
                 </aside>
                 <section>
                     <span>동아리/스터디</span>

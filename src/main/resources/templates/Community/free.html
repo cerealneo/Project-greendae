@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>커뮤니티/자유게시판</title>
-    <link rel="stylesheet" th:href="@{/css/_header.css}">
-    <link rel="stylesheet" th:href="@{/css/_footer.css}">
-    <link rel="stylesheet" th:href="@{/css/homebar.css}">
+    <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" th:href="@{/css/Community/free.css}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -55,36 +50,36 @@
             <div class="noticemain">
                 <table>
                     <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>작성일</th>
-                        <th>조회</th>
-                    </tr>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <th>조회</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="community, i:${pageResponseDTO.dtoList}">
-                        <td>[[${pageResponseDTO.startNo - i.index}]]</td>
-                        <td><a th:href="@{/Community/view1(no=${community.no}, cate=${community.cate})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
-                        <td>[[${community.name}]]</td>
-                        <td>[[${community.wdate}]]</td>
-                        <td>[[${community.hit}]]</td>
-                    </tr>
+                        <tr th:each="community, i:${pageResponseDTO.dtoList}">
+                            <td>[[${pageResponseDTO.startNo - i.index}]]</td>
+                            <td><a th:href="@{/Community/view1(no=${community.no}, cate=${community.cate})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
+                            <td>[[${community.name}]]</td>
+                            <td>[[${community.wdate}]]</td>
+                            <td>[[${community.hit}]]</td>
+                        </tr>
                     </tbody>
                 </table>
                 <a th:href="@{/Community/write1(cate=${pageResponseDTO.cate})}" class="write">글쓰기</a>
                 <article class="pagebtn">
                     <th:block th:if="${pageResponseDTO.prev}">
-                        <a th:href="@{/Community/free(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>
+                        <a th:href="@{/Community/list(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>
                     </th:block>
 
                     <th:block th:each="num:${#numbers.sequence(pageResponseDTO.start, pageResponseDTO.end)}">
-                        <a th:href="@{/Community/free(pg=${num})}" th:class="${num == pageResponseDTO.pg} ? 'current' : 'num'">[[${num}]]</a>
+                        <a th:href="@{/Community/list(pg=${num})}" th:class="${num == pageResponseDTO.pg} ? 'current' : 'num'">[[${num}]]</a>
                     </th:block>
 
                     <th:block th:if="${pageResponseDTO.next}">
-                        <a th:href="@{/Community/free(pg=${pageResponseDTO.end+1})}" class="next">다음</a>
+                        <a th:href="@{/Community/list(pg=${pageResponseDTO.end+1})}" class="next">다음</a>
                     </th:block>
                 </article>
             </div>

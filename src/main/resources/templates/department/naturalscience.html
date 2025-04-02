@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자연과학대학</title>
-    <link rel="stylesheet" href="/css/_header.css">
-    <link rel="stylesheet" href="/css/_footer.css">
-    <link rel="stylesheet" href="/css/homebar.css">
+    <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" href="/css/department/humanities.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div id="wrapper">
@@ -18,11 +14,11 @@
 
         <div class="homebar">
             <article class="inline">
-                <a href="/"><img src="/images/ico-home.png" alt="homeico"></a>
-                <img src="/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/static/department/humanities.html">대학·대학원</a>
-                <img src="/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/static/department/naturalscience.html">자연과학대학</a>
+                <a th:href="@{/}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/department/humanities}">대학·대학원</a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/department/naturalscience}">자연과학대학</a>
             </article>
         </div>
 
@@ -30,11 +26,11 @@
             <aside>
                 <p class="list-hadding">대학·대학원</p>
                 <ul class="list">
-                    <li><a href="/static/department/humanities.html">인문사회대학</a></li>
-                    <li style="background-color: #3F97F6;"><a style="color: white;" href="/static/department/naturalscience.html">자연과학대학</a></li>
-                    <li><a href="/static/department/engineering.html">공과대학</a></li>
-                    <li><a href="/static/department/teacher.html">사범대학</a></li>
-                    <li><a href="/static/department/graduateSchool.html">대학원</a></li>
+                    <li><a th:href="@{/department/humanities}">인문사회대학</a></li>
+                    <li style="background-color: #3F97F6;"><a style="color: white;" th:href="@{/department/naturalscience}">자연과학대학</a></li>
+                    <li><a th:href="@{/department/engineering}">공과대학</a></li>
+                    <li><a th:href="@{/department/teacher}">사범대학</a></li>
+                    <li><a th:href="@{/department/graduateSchool}">대학원</a></li>
                 </ul>
             </aside>
             
@@ -52,7 +48,7 @@
                     </div>    
                 </div>
 
-                <p class="p_img"><img src="/images/bullet-h4.png" alt="학부 및 학과">학부 및 학과</p>
+                <p class="p_img"><img th:src="@{/images/bullet-h4.png}" alt="학부 및 학과">학부 및 학과</p>
                 <table>
                     <tr class="table-hd">
                         <th>학과/전공</th>

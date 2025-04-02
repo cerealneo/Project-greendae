@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>학교생활/식단안내</title>
+        <title>3조 - 그린대학교</title>
         <th:block th:include="/_headerLink"/>
         <link rel="stylesheet" href="/css/life/meal.css">
         <script src="/js/meal.js"></script>
@@ -22,104 +22,68 @@
             </div>
             <main>
                 <aside>
-                    <span>식단안내</span>
-                    <nav>
-                        <a th:href="@{/life/council.html}">학생회 소개</a>
-                        <a th:href="@{/life/study.html}">동아리/스터디</a>
-                        <a th:href="@{/life/meal.html}" class="on">식단안내</a>
-                        <a th:href="@{/life/galary.html}">갤러리</a>
-
-                    </nav>
+                    <p class="list-hadding">대학생활</p>
+                    <ul class="list">
+                        <li><a th:href="@{/life/council}">학생회 소개</a></li>
+                        <li><a th:href="@{/life/study}">동아리/스터디</a></li>
+                        <li style="background-color: #3F97F6;"><a style="color: white;" th:href="@{/life/meal}">식단안내</a></li>
+                        <li><a th:href="@{/life/galary}">갤러리</a></li>
+                    </ul>
                 </aside>
-                <section>
+                <section class="content">
                     <span>식단안내</span>
                     <article>
                         <div class="meal_date">
-                            <img src="/images/btn-calendar-prev.gif" class="nav-btn" onclick="prevWeek()"> 
-                            <h2> 2025.03.10 ~ 2025.03.14</h2>
-                            <img src="/images/btn-calendar-next.gif" class="nav-btn" onclick="nextWeek()"> 
+                            <img th:src="@{/images/btn-calendar-prev.gif}" class="nav-btn" onclick="prevWeek()">
+                            <h2 th:text="${mealDateRange}">2025.03.10 ~ 2025.03.14</h2>
+                            <img th:src="@{/images/btn-calendar-next.gif}" class="nav-btn" onclick="nextWeek()">
                         </div>
                         <table class="meal_table">
+                            <thead>
                             <tr>
                                 <th>구분</th>
-                                <th>2025.3.10(월)</th>
-                                <th>2025.3.11(화)</th>
-                                <th>2025.3.12(수)</th>
-                                <th>2025.3.13(목)</th>
-                                <th>2025.3.14(금)</th>
-                                <th>2025.3.15(토)</th>
+                                <!-- meals 리스트를 날짜순으로 반복하며 헤더를 출력 -->
+                                <th th:each="meal : ${meals}"
+                                    th:text="${#temporals.format(meal.mealDate, 'yyyy.MM.dd(E)')}"></th>
                             </tr>
-                                <tr>
-                                    <td>조식</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                </tr>
-                                <tr>
-                                    <td>중식<br>11:00 ~ 15:00</td>
-                                    <td>
-                                        <div>정식-5,500원</div><br>
-                                        잡곡밥<br>
-                                        꼬지어묵국<br>
-                                        맛동산탕수육<br>
-                                        알감자버터구이<br>
-                                        쫄면야채무침<br>
-                                        상추겉절이<br>
-                                        포기김치
-                                    </td>
-                                    <td>
-                                        <div>정식-5,500원</div><br>
-                                        백미밥<br>
-                                        호박된장국<br>
-                                        돈육김치찜<br>
-                                        모듬잡채<br>
-                                        비엔나햄볶음<br>
-                                        콩나물무침<br>
-                                        포기김치
-                                    </td>
-                                    <td>
-                                        <div>정식-5,500원</div><br>
-                                        백미밥<br>
-                                        반계탕<br>
-                                        미트볼떡갈비<br>
-                                        사각어묵<br>
-                                        상추겉절이<br>
-                                        포기김치
-                                    </td>
-                                    <td>
-                                        <div>정식-5,500원</div><br>
-                                        백미밥<br>
-                                        홍합탕<br>
-                                        치킨치즈가스<br>
-                                        마파두부<br>
-                                        잡채어묵조림<br>
-                                        꼬시레기무생채<br>
-                                        포기김치
-                                    </td>
-                                    <td>
-                                        <div>정식-5,500원</div><br>
-                                        강황밥<br>
-                                        콩나물김치국<br>
-                                        순살닭떡조림<br>
-                                        해시브라운<br>
-                                        야채샐러드<br>
-                                        열무겉절이<br>
-                                        포기김치
-                                    </td>
-                                    <td>미운영</td>
-                                </tr>
-                                <tr>
-                                    <td>석식</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                    <td>미운영</td>
-                                </tr>
+                            </thead>
+                            <tbody>
+                            <!-- 조식 행 -->
+                            <tr>
+                                <td>조식</td>
+                                <td th:each="meal : ${meals}"
+                                    th:text="${meal.morning != null ? meal.morning : '미운영'}">
+                                    미운영
+                                </td>
+                            </tr>
+                            <!-- 중식 행 -->
+                            <tr>
+                                <td>중식<br>11:00 ~ 15:00</td>
+                                <!-- 날짜별 Meal -->
+                                <td th:each="meal : ${meals}">
+                                    <!-- 가격 박스: luPrice가 있을 때만 표시 -->
+                                    <div th:if="${meal.luPrice != null}" class="price-box"
+                                         th:text="'정식-' + ${meal.luPrice} + '원'">
+                                        정식-5,500원
+                                    </div>
+                                    <br/>
+                                    <!-- 메뉴 문자열: 콤마(,)를 <br>로 치환 -->
+                                    <div th:if="${meal.lunch != null}"
+                                         th:utext="${#strings.replace(meal.lunch, ',', '<br/>')}"></div>
+                                    <div th:if="${meal.lunch == null}">
+                                        미운영
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- 석식 행 -->
+                            <tr>
+                                <td>석식</td>
+                                <td th:each="meal : ${meals}"
+                                    th:text="${meal.dinner != null ? meal.dinner : '미운영'}">
+                                    미운영
+                                </td>
+                            </tr>
+                            </tbody>
                         </table>
                         <div class="greeting">※ 항상 그린식당을 이용해 주셔서 감사합니다.</div>
                     </article>
