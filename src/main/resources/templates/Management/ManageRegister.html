@@ -74,13 +74,16 @@
                     <h4>강의등록</h4>
                     <h3>학사운영 ><p> 강의 등록</p></h3>
                 </article>
-                <div class="register">
+                <form class="register" th:action="@{/Management/ManageRegister}" method="post">
                     <div class="info">
                         <h4><img src="/images/bullet-h4.png" alt="h4">기본정보 입력</h4>
                         <table class="basic">
                             <tr>
                                 <th>과목코드</th>
-                                <td class="redtxt">학과 코드+연도+학기+순번 조합 자동생성</td>
+                                <td class="redtxt">
+                                    <input type="hidden" name="code" />
+                                    학과 코드+연도+학기+순번 조합 자동생성
+                                </td>
                                 <th>개설학과</th>
                                 <td>
                                     <select class="university" onchange="updateDepartments()" id="collegeSelect">
@@ -98,7 +101,7 @@
                             <tr>
                                 <th>개설학년</th>
                                 <td>
-                                    <select id="grade">
+                                    <select id="grade" name="grade">
                                         <option>1학년</option>
                                         <option>2학년</option>
                                         <option>3학년</option>
@@ -107,7 +110,7 @@
                                 </td>
                                 <th>학점</th>
                                 <td>
-                                    <select id="score">
+                                    <select id="score" name="credit">
                                         <option>1학점</option>
                                         <option>2학점</option>
                                         <option>3학점</option>
@@ -117,7 +120,7 @@
                             <tr>
                                 <th>이수구분</th>
                                 <td>
-                                    <select id="selectmajor">
+                                    <select id="selectmajor" name="division">
                                         <option>전공 선택</option>
                                         <option>전공 필수</option>
                                         <option>교양 선택</option>
@@ -137,11 +140,11 @@
                             </tr>
                             <tr>
                                 <th>강의명</th>
-                                <td colspan="3"><input type="text" class="classname" placeholder="강좌명 입력"></td>
+                                <td colspan="3"><input type="text" name="lec_name" class="classname" placeholder="강좌명 입력"></td>
                             </tr>
                             <tr>
                                 <th>강의 설명</th>
-                                <td colspan="3"><input type="text" class="explain" placeholder="강의 개요 및 목표, 학습 내용 등"></td>
+                                <td colspan="3"><input type="text" name="lec_info" class="explain" placeholder="강의 개요 및 목표, 학습 내용 등"></td>
                             </tr>
                         </table>
                     </div>
@@ -150,39 +153,41 @@
                         <table>
                             <tr>
                                 <th>수업 기간</th>
-                                <td colspan="3"><input type="date">~<input type="date"></td>
+                                <td colspan="3"><input type="date" name="start_date">~<input type="date" name="end_date"></td>
                             </tr>
                             <tr>
                                 <th>수업 시간</th>
                                 <td colspan="3" class="ckarea">
-                                    <input type="time">~<input type="time">
-                                    <label><input type="checkbox" class="ckbox"> 월</label>
-                                    <label><input type="checkbox" class="ckbox"> 화</label>
-                                    <label><input type="checkbox" class="ckbox"> 수</label>
-                                    <label><input type="checkbox" class="ckbox"> 목</label>
-                                    <label><input type="checkbox" class="ckbox"> 금</label>
+                                    <input type="time" name="start_time">~<input type="time" name="end_time">
+                                    <label><input type="checkbox" class="ckbox" name="day"> 월</label>
+                                    <label><input type="checkbox" class="ckbox" name="day"> 화</label>
+                                    <label><input type="checkbox" class="ckbox" name="day"> 수</label>
+                                    <label><input type="checkbox" class="ckbox" name="day"> 목</label>
+                                    <label><input type="checkbox" class="ckbox" name="day"> 금</label>
                                 </td>
                             </tr>
                             <tr>
                                 <th>평가방식</th>
-                                <td colspan="3"><input type="text" placeholder="출석 10%, 과제 30%, 시험 60%" class="how"></td>
+                                <td colspan="3"><input type="text" name="evaluation" placeholder="출석 10%, 과제 30%, 시험 60%" class="how"></td>
                             </tr>
                             <tr>
                                 <th>교재</th>
-                                <td colspan="3"><input type="text" placeholder="출판사 - 도서명 - 저자 입력" class="book"></td>
+                                <td colspan="3"><input type="text" name="book" placeholder="출판사 - 도서명 - 저자 입력" class="book"></td>
                             </tr>
                             <tr>
                                 <th>강의실</th>
-                                <td><input type="text" placeholder="인문관 301호" class="room"></td>
+                                <td><input type="text" name="classroom" placeholder="인문관 301호" class="room"></td>
                                 <th>최대 수강인원</th>
-                                <td><input type="text"></td>
+                                <td><input type="text" name="people_num"></td>
                             </tr>
                         </table>
-                        <button>등록</button>
+
+                        <input type="submit" value="등록" class="button">
                     </div>
 
                     
-                </div>
+                </form>
+
                  
                 
             </main>
