@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +22,11 @@ public class ProfessorService {
     private final ProfessorRepository professorRepository;
     private final ModelMapper modelMapper;
     private final DepartmentRepository departmentRepository;
+
+
+    public List<Professor> findAllProfessors(){
+        return professorRepository.findAll();
+    }
 
     public void registerProfessor(Professor professor, String departmentName) {
 

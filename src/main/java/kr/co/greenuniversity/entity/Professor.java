@@ -19,7 +19,10 @@ public class Professor {
     private String id;
 
     private String jumin;
+
+    @Column(name = "name")
     private String name;
+
     private String eng_name;
     private String gender;
     private String phone;

@@ -3,8 +3,10 @@ package kr.co.greenuniversity.controller;
 import kr.co.greenuniversity.dto.DepartmentDTO;
 import kr.co.greenuniversity.entity.College;
 import kr.co.greenuniversity.entity.Department;
+import kr.co.greenuniversity.entity.Professor;
 import kr.co.greenuniversity.repository.CollegeRepository;
 import kr.co.greenuniversity.service.DepartmentService;
+import kr.co.greenuniversity.service.ProfessorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller
@@ -21,6 +25,7 @@ public class DepartmentController {
 
     private final DepartmentService departmentService;
     private final CollegeRepository collegeRepository;
+    private final ProfessorService professorService;
 
     @PostMapping("/Management/registerDepart")
     public String registerDepartment(@ModelAttribute DepartmentDTO departmentDTO) {
@@ -31,6 +36,10 @@ public class DepartmentController {
 
     @GetMapping("/Management/ManageDepartRegist")
     public String showDepartmentForm(Model model) {
+
+        List<Professor> professors = professorService.findAllProfessors();
+        model.addAttribute("professors", professors);
+
         int nextNo = departmentService.getNextDepartmentNo();
 
         if (nextNo < 10) nextNo = 10;
