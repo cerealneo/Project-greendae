@@ -42,4 +42,16 @@ public class Student {
     @JoinColumn(name = "department_no")
     private Department department;
 
+
+    @Column(nullable = false)
+    private String role;
+
+
+    @PrePersist
+    public void prePersist(){
+        if(this.role == null){
+            this.role = "PRO";
+        }
+    }
+
 }

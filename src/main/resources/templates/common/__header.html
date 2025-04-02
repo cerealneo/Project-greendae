@@ -15,8 +15,10 @@
             <div class="navbar-item" sec:authorize="isAuthenticated()">
                 <a th:href="@{/user/logout}">로그아웃</a>
             </div>
-            <div class="navbar-item"><a href="#">학생지원</a></div>
-
+            <div class="navbar-item"><a th:href="@{/support/CourseRegister}">학생지원</a></div>
+            <div class="navbar-item">
+                <a th:href="@{/adminMain}" sec:authorize="hasRole('ADMIN')">관리자</a>
+            </div>
         </div>
     </div>
     <div class="headerbar">
