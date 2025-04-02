@@ -5,6 +5,7 @@
     <title>새 비밀번호 설정</title>
     <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" th:href="@{/css/user/register.css}">
+    <script th:src="@{/js/user/updatePass.js}"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -26,21 +27,21 @@
                 <p>새 비밀번호 설정</p>
             </div>
 
-            <form name="formRegister" th:action="@{/updatePass}" method="post">
+            <form name="formUpdatePass" th:action="@{/updatePass}" method="post">
                 <div class="termsarea">
                     <table>
 
-                        <input type="hidden" name="id" value="${resultId}" />
+                        <input type="hidden" name="id" th:value="${resultId}" />
                         <tr>
                             <th>비밀번호<p class="star">*</p></th>
-                            <td><input class="register" type="password" name="password" placeholder="비밀번호 입력"/>
+                            <td><input class="register" id="password" type="password" name="password" placeholder="비밀번호 입력"/>
                                 <p class="ex">비밀번호는 8-16자리 이내, 영문·숫자·특수문자 조합</p>
                             </td>
                         </tr>
                         <tr>
                             <th>비밀번호 확인<p class="star">*</p></th>
                             <td>
-                                <input class="register" type="password" name="password2" placeholder="비밀번호 입력 확인"/>
+                                <input class="register" id="password2" type="password" name="password2" placeholder="비밀번호 입력 확인"/>
                                 <span class="passResult"></span>
                             </td>
                         </tr>

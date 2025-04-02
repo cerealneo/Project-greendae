@@ -5,7 +5,7 @@
     <title>비밀번호 찾기</title>
     <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" th:href="@{/css/user/find.css}">
-    <script th:src="@{/js/user/findId.js}"></script>
+    <script th:src="@{/js/user/findPass.js}"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -25,13 +25,13 @@
             <div class="form-hd">
                 <p>비밀번호 찾기</p>
             </div>
-            <form name="formfindId" th:action="@{/findPass}" method="post">
+            <form name="formfindPass" th:action="@{/findPass}" method="post">
 
                 <div class="form-boder">
                     <p>본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p>
                     <div class="name-block">
-                        <label>이름<input type="text" name="name" /></label>
-                        <span class="nameResult"></span> <br>
+                        <label>아이디<input type="text" name="id" /></label>
+                        <span class="uidResult"></span> <br>
                     </div>
                     <div class="email-block">
                         <div>

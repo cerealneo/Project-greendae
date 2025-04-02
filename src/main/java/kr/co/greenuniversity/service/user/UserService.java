@@ -61,14 +61,22 @@ public class UserService {
         return null;
     }
 
-    /*public User updatePass(String id, String password) {
+    public boolean updatePass(String id, String password) {
         log.info("id: {}", id);
         log.info("password: {}", password);
 
-//        modelMapper.map();
+        Optional<User> optUser = userRepository.findById(id);
+        log.info("db에서 찾은 유저: {}", optUser.isPresent());
 
-
-    }*/
+        if (optUser.isPresent()) {
+            User user = optUser.get();
+            String encodedPassword = passwordEncoder.encode(password);
+            user.setPassword(encodedPassword);
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
 
     public long checkEmail(String type, String value){
         long count = 0;
