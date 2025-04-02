@@ -3,11 +3,13 @@ const reEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])
 
 document.addEventListener('DOMContentLoaded', function () {
 
+
     let isNameOk = false;
     let isEmailOk = false;
     let preventDoubleClick = false;
 
     // 요소 선택
+    const formfindId = document.forms['formfindId'];
     const nameInput = document.querySelector('input[name="name"]');
     const nameResult = document.querySelector('.nameResult');
     const emailInput = document.querySelector('input[name="email"]');
@@ -95,4 +97,18 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("인증코드 확인 중 오류 발생:", error);
         }
     });
+
+    formfindId.onsubmit = function () {
+
+        if(!isNameOk) {
+            return false;
+        }
+
+        if(!isEmailOk) {
+            return false;
+        }
+
+        return true;
+    }
+
 });
