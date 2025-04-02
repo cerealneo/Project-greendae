@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LectureRepository extends JpaRepository<Lecture, Integer> {
-
+    int countByDepNoAndStartDate(String depNo, String startDate);
 
 }

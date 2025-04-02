@@ -1,5 +1,6 @@
 package kr.co.greenuniversity.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -17,21 +18,29 @@ import lombok.NoArgsConstructor;
 public class Lecture {
 
     @Id
-    private int code;
+    private String code;
 
-    private String dep_no;
-    private String col_name;
-    private String dep_name;
+    @Column(name = "dep_no")
+    private String depNo;
+    @Column(name = "col_name")
+    private String colName;
+    @Column(name = "dep_name")
+    private String depName;
+
     private int grade;
     private int credit;
     private String division;
     private String pro_name;
     private String lec_name;
     private String lec_info;
-    private String start_date;
-    private String end_date;
-    private String start_time;
-    private String end_time;
+    @Column(name = "start_date")
+    private String startDate;
+    @Column(name = "end_date")
+    private String endDate;
+    @Column(name = "start_time")
+    private String startTime;
+    @Column(name = "end_time")
+    private String endTime;
     private String day;
     private String evaluation;
     private String book;
