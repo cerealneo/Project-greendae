@@ -170,7 +170,7 @@ main .register{
     color: #757575;
 }
 
-#btnCheckUid, #btnSendEmail, #btnAuthEmail, #registerbtn{
+#btnCheckUid, #btnSendEmail, #btnAuthEmail{
     height: 51px;
     padding: 10px;
     border: none;
@@ -179,6 +179,17 @@ main .register{
     font-weight: bold;
     background: #3F97F6;
 }
+
+    #registerbtn{
+        margin-left: 3px;
+        height: 51px;
+        padding: 10px;
+        border: none;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        background: #3F97F6;
+    }
 
     .uidResult,.passResult,.hpResult, .emailResult {
         line-height: 51px; /* 버튼과 높이를 맞추려면 */
