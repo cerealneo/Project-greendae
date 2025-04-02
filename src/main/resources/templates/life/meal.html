@@ -59,17 +59,16 @@
                             <!-- 중식 행 -->
                             <tr>
                                 <td>중식<br>11:00 ~ 15:00</td>
-                                <!-- 날짜별 Meal -->
                                 <td th:each="meal : ${meals}">
-                                    <!-- 가격 박스: luPrice가 있을 때만 표시 -->
+                                    <!-- 초록색 박스: luPrice가 있을 때만 한 번만 출력 -->
                                     <div th:if="${meal.luPrice != null}" class="price-box"
-                                         th:text="'정식-' + ${meal.luPrice} + '원'">
-                                        정식-5,500원
+                                         th:text="${meal.luPrice} + '원'">
                                     </div>
                                     <br/>
-                                    <!-- 메뉴 문자열: 콤마(,)를 <br>로 치환 -->
+                                    <!-- 메뉴 문자열: 콤마(,)를 <br>로 치환하여 출력 -->
                                     <div th:if="${meal.lunch != null}"
-                                         th:utext="${#strings.replace(meal.lunch, ',', '<br/>')}"></div>
+                                         th:utext="${#strings.replace(meal.lunch, ',', '<br/>')}">
+                                    </div>
                                     <div th:if="${meal.lunch == null}">
                                         미운영
                                     </div>

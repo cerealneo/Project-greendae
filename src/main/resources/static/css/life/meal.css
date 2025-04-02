@@ -115,7 +115,7 @@ section > span {
 }
 
 .meal_table tr:nth-of-type(3) td {
-     vertical-align: top;
+     vertical-align: middle;
 }
 
 .meal_table tr:nth-of-type(3) > td:first-child {vertical-align: middle;}
@@ -142,7 +142,6 @@ section > span {
     border: 1px solid #068368;
     color: #068368;
     text-align: center;
-    /* background-color: #e0ffe0;  // 필요시 배경색 */
 }
 
 

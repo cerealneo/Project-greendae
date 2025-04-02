@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>3조 - 그린대학교</title>
+    <title>비밀번호 찾기 결과</title>
     <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" th:href="@{/css/user/find.css}">
     <script th:src="@{/js/user/findPass.js}"></script>
@@ -13,47 +13,53 @@
 
     <div class="homebar">
         <article class="inline">
-            <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
+            <a href="/static/main.html">
+                <img src="/images/ico-home.png" alt="homeico">
+            </a>
             <img src="/images/bg-path-arrow.png" alt="arrowright">
             <a href="/static/user/login.html">회원</a>
             <img src="/images/bg-path-arrow.png" alt="arrowright">
             <a href="/static/user/login.html">비밀번호 찾기</a>
         </article>
     </div>
+
     <main>
         <article class="content">
-            <div class="form-hd">
-                <p>비밀번호 찾기</p>
+            <div class="form-header">
+                <h1>비밀번호 찾기</h1>
             </div>
             <form name="formfindPass" th:action="@{/findPass}" method="post">
-
-                <div class="form-boder">
-                    <p>본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p>
-                    <div class="name-block">
-                        <label>아이디<input type="text" name="id" /></label>
-                        <span class="uidResult"></span> <br>
+                <div class="form-box">
+                    <p class="info-text">
+                        본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.
+                    </p>
+                    <!-- 아이디 입력 -->
+                    <div class="input-group id-group">
+                        <label for="id">아이디</label>
+                        <input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
+                        <span class="uidResult"></span>
                     </div>
-                    <div class="email-block">
-                        <div>
-                            <label>이메일<input type="email" name="email" class="email-input"/></label>
-                            <button id="btnSendEmail" type="button">인증번호 받기</button>
-                            <span class="emailResult"></span>
-                            <div class="auth">
-                                <label>인증코드<input type="text" name="auth" class="email-input" placeholder="인증번호 입력"/></label>
-                                <button id="btnAuthEmail" type="button">확인</button>
-                            </div>
-                        </div>
+                    <!-- 이메일 입력 및 인증번호 받기 -->
+                    <div class="input-group email-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" class="email-input" placeholder="이메일을 입력하세요">
+                        <button id="btnSendEmail" type="button">인증번호 받기</button>
+                        <span class="emailResult"></span>
+                    </div>
+                    <!-- 인증번호 입력 영역: 처음에 숨김 -->
+                    <div class="input-group auth-group" style="display: none;">
+                        <label for="auth">인증코드</label>
+                        <input type="text" id="auth" name="auth" class="email-input" placeholder="인증번호 입력">
+                        <button id="btnAuthEmail" type="button">확인</button>
+                        <span class="authResult"></span>
                     </div>
                 </div>
-                <input type="submit" value="다음"  class="submit"/>
+                <input type="submit" value="다음" class="submit-button"/>
             </form>
-
         </article>
     </main>
 
-
     <th:block th:include="/common/__footer"/>
-
 </div>
 </body>
 </html>
