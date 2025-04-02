@@ -7,6 +7,7 @@ import kr.co.greenuniversity.entity.community.Community2;
 import kr.co.greenuniversity.entity.user.User;
 import kr.co.greenuniversity.repository.community.Community1Repository;
 import kr.co.greenuniversity.repository.community.Community2Repository;
+import kr.co.greenuniversity.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -24,6 +25,7 @@ public class CommunityService {
     private final Community1Repository community1Repository;
     private final Community2Repository community2Repository;
     private final ModelMapper modelMapper;
+    private final UserRepository userRepository;
 
     // 글보기
     public Community1DTO findById1(int no) {
@@ -85,6 +87,36 @@ public class CommunityService {
         Community2 community = community2Repository.findById(parent)
                 .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
         community.setStatus("resp");
+    }
+
+    // 글 삭제
+    public void delete(int no) {
+        community1Repository.deleteById(no);
+        community2Repository.deleteById(no);
+    }
+
+    // 글 수정
+    public Community1DTO modify1(int no) {
+        Community1 community = community1Repository.findById(no).get();
+        return modelMapper.map(community, Community1DTO.class);
+    }
+
+    public Community2DTO modify2(int no) {
+        Community2 community = community2Repository.findById(no).get();
+        return modelMapper.map(community, Community2DTO.class);
+    }
+
+    @Transactional
+    public void update(Community1DTO communityDTO) {
+        Community1 community1 = community1Repository.findById(communityDTO.getNo())
+                .orElseThrow(() -> new RuntimeException("해당 게시글이 존재하지 않습니다."));
+
+        String writerUid = communityDTO.getWriter();
+        User user = userRepository.findById(writerUid)
+                .orElseThrow(() -> new RuntimeException("작성자 정보를 찾을 수 없습니다."));
+
+        modelMapper.map(communityDTO, community1);
+        community1.setUser(user);
     }
 
 

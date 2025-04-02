@@ -61,27 +61,27 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="article, i:${pageResponseDTO.dtoList}">
+                    <tr th:each="community, i:${pageResponseDTO.dtoList}">
                         <td>[[${pageResponseDTO.startNo - i.index}]]</td>
                         <td><a th:href="@{/Community/view1(no=${community.no}, cate=${community.cate})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
-                        <td>[[${article.name}]]</td>
-                        <td>[[${article.wdate}]]</td>
-                        <td>[[${article.hit}]]</td>
+                        <td>[[${community.name}]]</td>
+                        <td>[[${community.wdate}]]</td>
+                        <td>[[${community.hit}]]</td>
                     </tr>
                     </tbody>
                 </table>
 
                 <article class="pagebtn">
                     <th:block th:if="${pageResponseDTO.prev}">
-                        <a th:href="@{/Community/list(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>
+                        <a th:href="@{/Community/searchFree(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>
                     </th:block>
 
                     <th:block th:each="num:${#numbers.sequence(pageResponseDTO.start, pageResponseDTO.end)}">
-                        <a th:href="@{/Community/list(pg=${num})}" th:class="${num == pageResponseDTO.pg} ? 'current' : 'num'">[[${num}]]</a>
+                        <a th:href="@{/Community/searchFree(pg=${num})}" th:class="${num == pageResponseDTO.pg} ? 'current' : 'num'">[[${num}]]</a>
                     </th:block>
 
                     <th:block th:if="${pageResponseDTO.next}">
-                        <a th:href="@{/Community/list(pg=${pageResponseDTO.end+1})}" class="next">다음</a>
+                        <a th:href="@{/Community/searchFree(pg=${pageResponseDTO.end+1})}" class="next">다음</a>
                     </th:block>
                 </article>
             </div>
