@@ -128,13 +128,16 @@ main .schedule .scheduletop h4 {
 
 
 .event {
-    font-size: 12px;
+    font-size: 20px;
     color: white;
+    text-align: center;
     background: #3F97F6;
     padding: 3px;
     border-radius: 5px;
     margin-top: 5px;
 }
+
+
 /* ---- 캘린더 테이블 ---- */
 table {
     width: 100%;

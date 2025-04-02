@@ -1,52 +1,65 @@
 
-
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 16px;
+}
 main {
     width: 100%;
     max-width: 1200px;
     height: auto;
     min-height: 792.5px;
     margin: 0 auto;
+    display: flex;          /* 추가: Flexbox 사용 */
+    align-items: flex-start; /* 추가: 상단 정렬 */
+    gap: 20px;              /* 선택사항: 요소들 사이에 간격 추가 */
 }
+
 
 aside {
-    float: left;
-}
-
-aside > span {
-    font-size: 32px;
-    font-weight: 700;
-}
-
-nav {
     width: 210px;
-    height: 242px;
-    border-top: 2px solid #222;
-    margin-top: 15px;
+    height: 302px;
 }
 
-nav > a {
-    display: block;
-    width: 100%;
+aside > p {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.list-hadding {
+    font-size: 32px;
+    color: #222222;
+}
+
+.list {
+    width: 210px;
     height: 60px;
-    border-bottom: 1px solid #DCDCDC;
-    box-sizing: border-box;
+    margin-top: 15px;
+
+}
+
+.list > li:nth-child(1) {
+    border-top: 2px solid #222222;
+}
+
+.list > li {
+    margin-top: 2px;
+    padding-left: 20px;
+    border-bottom: 1px solid #dcdcdc;
     line-height: 60px;
-    padding-left: 15px;
 }
 
-.on {
-    background-color: #3F97F6;
-    color: #FFF;
+.list > li:hover {
+    background: #3F97F6;
 }
 
-nav > a:hover {
-    background-color: #3F97F6;
-    color: #FFF;
+.list > li:hover a {
+    color: white;
 }
 
-section {
-    margin-left: 270px;
-}
+
 
 section > span {
     display: block;
@@ -119,6 +132,19 @@ section > span {
     border: 1px solid #068368;
     color: #068368;
 }
+.price-box {
+    display: inline-block;
+    width: 90px;
+    height: 24px;
+    margin: 5px 0;
+    line-height: 24px;
+    font-size: 14px;
+    border: 1px solid #068368;
+    color: #068368;
+    text-align: center;
+    /* background-color: #e0ffe0;  // 필요시 배경색 */
+}
+
 
 .greeting {
     margin-top: 15px;

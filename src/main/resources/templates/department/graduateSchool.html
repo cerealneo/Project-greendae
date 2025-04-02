@@ -14,11 +14,11 @@
 
         <div class="homebar">
             <article class="inline">
-                <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
-                <img src="/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/static/department/humanities.html">대학·대학원</a>
-                <img src="/images/bg-path-arrow.png" alt="arrowright">
-                <a href="/static/department/graduateSchool.html">대학원</a>
+                <a th:href="@{/}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/department/humanities}">대학·대학원</a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/department/graduateSchool}">대학원</a>
             </article>
         </div>
 
@@ -26,11 +26,11 @@
             <aside>
                 <p class="list-hadding">대학·대학원</p>
                 <ul class="list">
-                    <li><a href="/static/department/humanities.html">인문사회대학</a></li>
-                    <li><a href="/static/department/naturalscience.html">자연과학대학</a></li>
-                    <li><a href="/static/department/engineering.html">공과대학</a></li>
-                    <li><a href="/static/department/teacher.html">사범대학</a></li>
-                    <li style="background-color: #3F97F6;"><a style="color: white;" href="/static/department/graduateSchool.html">대학원</a></li>
+                    <li><a th:href="@{/department/humanities}">인문사회대학</a></li>
+                    <li><a th:href="@{/department/naturalscience}">자연과학대학</a></li>
+                    <li><a th:href="@{/department/engineering}">공과대학</a></li>
+                    <li><a th:href="@{/department/teacher}">사범대학</a></li>
+                    <li style="background-color: #3F97F6;"><a style="color: white;" th:href="@{/department/graduateSchool}">대학원</a></li>
                 </ul>
             </aside>
             
@@ -53,7 +53,7 @@
                     </div>    
                 </div>
 
-                <p class="p_img"><img src="/images/bullet-h4.png" alt="학부 및 학과">학부 및 학과</p>
+                <p class="p_img"><img th:src="@{/images/bullet-h4.png}" alt="학부 및 학과">학부 및 학과</p>
                 <table>
                     <tr class="table-hd">
                         <th>학과/전공</th>
