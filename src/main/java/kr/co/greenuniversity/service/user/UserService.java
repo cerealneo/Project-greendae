@@ -61,17 +61,19 @@ public class UserService {
         return null;
     }
 
+    /*public User updatePass(String id, String password) {
+        log.info("id: {}", id);
+        log.info("password: {}", password);
+
+//        modelMapper.map();
+
+
+    }*/
+
     public long checkEmail(String type, String value){
         long count = 0;
         log.info("checkUser: {}", type + value);
 
-        /* if(type.equals("email")){
-            count = userRepository.countByEmail(value);
-            if(count == 0){
-
-            }
-
-        } */
         String code = sendEmailCode(value);
         // 인증코드 비교를 하기 위해서 세션 저장
         HttpSession session = request.getSession();

@@ -88,8 +88,8 @@
                                 </td>
                                 <td>교수번호</td>
                                 <td>
-                                    <input type="hidden" name="id">
-                                    <span>연도 + 학과 코드 + 순번 조합 자동생성</span>
+                                    <input type="hidden" name="id" />
+                                    <span id="professorIdDisplay">교수번호 자동생성</span>
                                 </td>
                                 <td>주민등록번호</td>
                                 <td><input type="text" name="jumin" placeholder="- 포함 14자리 입력"></td>
@@ -169,9 +169,6 @@
                                     </select>
                                     <select class="dropdown" name="departmentName" id="departmentSelect">
                                         <option>학과를 선택하세요</option>
-                                        <th:block th:each="department : ${departments}">
-                                            <option th:value="${department.departmentName}" th:text="${department.departmentName}"></option>
-                                        </th:block>
                                     </select>
                                 </td>
                                 <td>임용일</td>
@@ -274,7 +271,47 @@
             }).open();
         }
         </script>
+    <script>
+        document.getElementById("collegeSelect").addEventListener("change", function () {
+            const selectedCollege = this.value;
 
+            fetch(`/api/departments/by-college?collegeName=${encodeURIComponent(selectedCollege)}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("받은 데이터", data);  // 여기에 ["영어영문학과", "행정학과"] 등 나와야 함
+                    const departmentSelect = document.getElementById("departmentSelect");
+                    departmentSelect.innerHTML = '<option>학과를 선택하세요</option>';
+
+                    data.forEach(deptName => {
+                        const option = document.createElement("option");
+                        option.value = deptName;
+                        option.text = deptName;
+                        departmentSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error("에러 발생", error);
+                });
+        });
+        document.getElementById('departmentSelect').addEventListener('change', function () {
+            const departmentName = this.value;
+
+            fetch(`/api/professors/generate-id?departmentName=${encodeURIComponent(departmentSelect)}`)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('generatedIdText').innerText = data.id;
+                    document.getElementById('professorId').value = data.id;
+                })
+                .catch(err => console.error('ID 생성 오류:', err));
+        });
+        $("#departmentSelect").on("change", function () {
+            const deptName = $(this).val();
+            $.get("/api/professors/generate-id?departmentName=" + deptName, function (data) {
+                $("input[name='id']").val(data);
+                $("span#professorIdDisplay").text(data);
+            });
+        });
+    </script>
     </body>
 
     </html>

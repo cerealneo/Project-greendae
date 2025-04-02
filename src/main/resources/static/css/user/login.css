@@ -115,7 +115,7 @@ div > li:nth-child(1) {
 }
 
 .checkbox:checked {
-    background-image: url(/static/common/images/bu_h5.png);
+    background-image: url(/static/images/bu_h5.png);
     background-position: center;
     background-color: white;
     border: 1px solid #eee;
@@ -150,8 +150,6 @@ form > input {
     padding-left: 10px;
 }
 
-
-
 .loginbtn {
     width: 100%;
     background-color: #3f97f6;
@@ -159,8 +157,13 @@ form > input {
     border: none;
 }
 
+.registerbtn{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .guide {
-    margin-top: 20px;
+    margin-top: -20px;
 }
 
 .guide > p:nth-child(1) {
@@ -177,6 +180,7 @@ form > input {
     color: #666666;
     margin-bottom: 5px;
 }
+
 
 .userRegister {
 

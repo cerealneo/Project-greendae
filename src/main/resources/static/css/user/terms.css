@@ -157,6 +157,9 @@ main .termsarea table tr td{
     all: unset;
     cursor: pointer;
 }
+.btnNext{
+    color: white;
+}
 
 
 

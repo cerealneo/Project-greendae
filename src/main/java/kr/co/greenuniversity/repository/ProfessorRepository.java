@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
+public interface ProfessorRepository extends JpaRepository<Professor, String> {
 
 
    // List<Professor> findByDepartment_nameAndCollege_name(String departmentName, String collegeName);
@@ -17,7 +17,7 @@ public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
    // List<Professor> fintByDepartment_name(String departmentName);
 
     // 교수 ID로 검색 (기본 제공됨)
-    Optional<Professor> findById(int id);
+    Optional<Professor> findById(String id);
 
     List<Professor> findByIdStartingWith(String idPrefix);
 
