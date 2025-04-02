@@ -3,6 +3,7 @@ package kr.co.greenuniversity.controller;
 import kr.co.greenuniversity.dto.StudentDTO;
 import kr.co.greenuniversity.entity.College;
 import kr.co.greenuniversity.entity.Department;
+import kr.co.greenuniversity.entity.Professor;
 import kr.co.greenuniversity.entity.Student;
 import kr.co.greenuniversity.repository.CollegeRepository;
 import kr.co.greenuniversity.repository.DepartmentRepository;
@@ -39,6 +40,9 @@ public class StudentController {
 
         List<College> colleges = collegeRepository.findAll();
         model.addAttribute("colleges", colleges);
+
+        List<Professor> professors = professorService.findAllProfessors();
+        model.addAttribute("professors", professors);
 
         if (!colleges.isEmpty() && !colleges.get(0).getDepartments().isEmpty()) {
             Department defaultDept = colleges.get(0).getDepartments().get(0);

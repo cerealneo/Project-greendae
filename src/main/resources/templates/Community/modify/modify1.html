@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>3조 - 그린대학교</title>
+    <title>커뮤니티/글수정</title>
     <link rel="stylesheet" href="/css/_header.css">
     <link rel="stylesheet" href="/css/_footer.css">
     <link rel="stylesheet" href="/css/Community/view.css">
@@ -21,30 +21,24 @@
             <img src="/images/bg-path-arrow.png" alt="arrowright">
             <a href="/Community/resource">커뮤니티</a>
             <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/Community/resource">글쓰기</a>
+            <a href="/Community/resource">글수정</a>
         </article>
     </div>
     <main id="article">
         <section class="view">
             <article class="notice">
                 <div class="noticetop">
-                    <h4>글쓰기</h4>
+                    <h4>글수정</h4>
                 </div>
             </article>
-            <form th:action="@{/Community/write2}" method="post" enctype="multipart/form-data">
+            <form th:action="@{/Community/modify1}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="writer" th:value="${#authentication.principal.user.id}">
-                <input type="hidden" name="cate" th:value="${cate}">
+                <input type="hidden" name="cate" th:value="${community1DTO.cate}">
+                <input type="hidden" name="no" th:value="${community1DTO.no}">
                 <table border="0">
                     <tr>
                         <th>제목</th>
-                        <td><input type="text" name="title"></td>
-                    </tr>
-                    <tr>
-                        <th>구분</th>
-                        <td>
-                            <input type="radio" name="type" value="news">뉴스
-                            <input type="radio" name="type" value="column">칼럼
-                        </td>
+                        <td><input type="text" name="title" th:value="${community1DTO.title}"/></td>
                     </tr>
                     <tr>
                         <th>파일</th>
@@ -59,13 +53,13 @@
                     <tr>
                         <th>내용</th>
                         <td>
-                            <textarea name="content"></textarea>
+                            <textarea name="content">[[${community1DTO.content}]]</textarea>
                         </td>
                     </tr>
                 </table>
+
                 <div>
-                    <a th:href="@{/Community/{cate}(cate=${cate})}" class="btn btnCancel">취소</a>
-                    <input type="submit" value="작성완료" class="btn btnComplete"/>
+                    <input type="submit" value="수정완료" class="btn btnList"/>
                 </div>
             </form>
         </section>

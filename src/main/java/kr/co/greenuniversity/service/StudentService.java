@@ -28,6 +28,12 @@ public class StudentService {
 
         String generatedId = generateStudentId(department);
         student.setId(generatedId);
+
+        if (!studentRepository.existsById(generatedId)) {
+            studentRepository.save(student);  // insert 처리
+        } else {
+            throw new IllegalStateException("이미 존재하는 학번입니다: " + generatedId);
+        }
     }
 
     public String generateStudentId(Department department) {

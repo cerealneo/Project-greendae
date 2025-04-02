@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,18 +36,18 @@ public class FindController {
     @PostMapping("/findId")
     public String findId(UserDTO userDTO, Model model) {
 
-      User findUser = userService.findUserId(userDTO);
+        User findUser = userService.findUserId(userDTO);
 
-      if(findUser != null) {
-          log.info("찾은 유저: {}", findUser);
+        if (findUser != null) {
+            log.info("찾은 유저: {}", findUser);
 
-          model.addAttribute("resultId", findUser.getId());
+            model.addAttribute("resultId", findUser.getId());
 
-          return "/user/ResultId";
-      }
-      log.info("사용자 없음");
-      model.addAttribute("error", "해당 사용자를 찾을 수 없습니다.");
-      return "/user/ResultId";
+            return "/user/ResultId";
+        }
+        log.info("사용자 없음");
+        model.addAttribute("error", "해당 사용자를 찾을 수 없습니다.");
+        return "/user/ResultId";
     }
 
     @GetMapping("/findPass")
@@ -58,7 +59,7 @@ public class FindController {
     public String findPass(UserDTO userDTO, Model model) {
         User findUser = userService.findUserId(userDTO);
 
-        if(findUser != null) {
+        if (findUser != null) {
             log.info("찾은 유저: {}", findUser);
 
             model.addAttribute("resultId", findUser.getId());
@@ -78,15 +79,26 @@ public class FindController {
     }
 
     // 새 비밀번호 설정
-   /* @PostMapping("/updatePass")
-    public String updatePass(@RequestParam("id") String id, @RequestParam("password") String password) {
+    @PostMapping("/updatePass")
+    public String updatePass(@RequestParam("id") String id,
+                             @RequestParam("password") String password,
+                             @RequestParam("password2") String password2,
+                             RedirectAttributes redirectAttributes) {
         log.info("id: {}", id);
         log.info("password: {}", password);
 
-        userService.updatePass(id, password);
+        boolean isUpdated = userService.updatePass(id, password);
+        log.info("isUpdated: {}", isUpdated);
 
-        return "/user/updatePass";
-    } */
+        if (isUpdated) {
+            redirectAttributes.addFlashAttribute("success", "비밀번호가 변경되었습니다.");
+            return "redirect:/user/login";
+        } else {
+            redirectAttributes.addFlashAttribute("error", "유저를 찾을 수 없습니다.");
+            return "redirect:/user/updatePass";
+        }
+    }
+
 
     // 이메일 체크
     @GetMapping("/find/{type}/{value}")

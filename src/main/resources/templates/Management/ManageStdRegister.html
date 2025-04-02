@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,7 +68,7 @@
                 </div>
             </aside>
 
-            <form class="managemain" th:action="@{/Management/ManageStdRegister}" method="post">
+            <form class="managemain" action="/Management/ManageStdRegister" method="post">
                 
                 <div class="managemaintop">
                     <h4>학생 등록</h4>
@@ -100,9 +100,9 @@
 
                      <tr>
                         <td class="td-hd">성별</td>
-                        <td class="td-bd" name="gender">
-                            <label><input type="radio">남</label>
-                            <label><input type="radio">여</label>
+                        <td class="td-bd">
+                            <label><input type="radio" name="gender" value="남">남</label>
+                            <label><input type="radio" name="gender" value="여">여</label>
                         </td>
                         <td class="td-hd">국적</td>
                         <td class="td-bd">
@@ -166,6 +166,7 @@
                         <td class="td-hd2">입학학과(전공)</td>
                         <td class="td-bd2">
                             <select class="dropdown" name="college_name" onchange="updateDepartments()" id="collegeSelect">
+                                <option value="">단과대학선택</option>
                                 <th:block th:each="college : ${colleges}">
                                     <option th:value="${college.collegeName}" th:text="${college.collegeName}"></option>
                                 </th:block>
@@ -193,9 +194,10 @@
                         <td class="td-hd2">지도교수</td>
                         <td class="td-bd2">
                             <select class="dropdown" name="pro_name">
-                                <option>선택</option>
-                                <option>교수1</option>
-                                <option>교수2</option>
+                                <option value="">선택</option>
+                                <th:block th:each="prof : ${professors}">
+                                    <option th:value="${prof.name}" th:text="${prof.name}"></option>
+                                </th:block>
                             </select>
                         </td>
                     </tr>
@@ -320,21 +322,17 @@
         document.getElementById('departmentSelect').addEventListener('change', function () {
             const departmentName = this.value;
 
-            fetch(`/api/professors/generate-id?departmentName=${encodeURIComponent(departmentSelect)}`)
+            fetch(`/api/professors/generate-id?departmentName=${encodeURIComponent(departmentName)}`)
+                console.log(departmentName)
                 .then(res => res.json())
                 .then(data => {
-                    document.getElementById('generatedIdText').innerText = data.id;
-                    document.getElementById('professorId').value = data.id;
+                    // 여기서 input[name='id']와 #professorIdDisplay를 업데이트
+                    document.querySelector("input[name='id']").value = data;
+                    document.getElementById("professorIdDisplay").textContent = data;
                 })
                 .catch(err => console.error('ID 생성 오류:', err));
         });
-        $("#departmentSelect").on("change", function () {
-            const deptName = $(this).val();
-            $.get("/api/professors/generate-id?departmentName=" + deptName, function (data) {
-                $("input[name='id']").val(data);
-                $("span#professorIdDisplay").text(data);
-            });
-        });
+
     </script>
 </body>
 </html>

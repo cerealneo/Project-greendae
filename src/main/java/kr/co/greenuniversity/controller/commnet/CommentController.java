@@ -33,8 +33,20 @@ public class CommentController {
     }
 
     @ResponseBody
-    @PostMapping("/comment/write")
-    public CommentDTO write(@RequestBody CommentDTO commentDTO, HttpServletRequest request){
+    @PostMapping("/comment/write1")
+    public CommentDTO write1(@RequestBody CommentDTO commentDTO, HttpServletRequest request){
+
+        String regip = request.getRemoteAddr();
+        commentDTO.setRegip(regip);
+
+        CommentDTO savedCommentDTO = commentService.save(commentDTO);
+
+        return savedCommentDTO;
+    }
+
+    @ResponseBody
+    @PostMapping("/comment/write2")
+    public CommentDTO write2(@RequestBody CommentDTO commentDTO, HttpServletRequest request){
 
         String regip = request.getRemoteAddr();
         commentDTO.setRegip(regip);
