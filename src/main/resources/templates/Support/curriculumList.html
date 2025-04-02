@@ -3,34 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <title>나의교과과정</title>
-        <link rel="stylesheet" href="/css/_header.css">
-        <link rel="stylesheet" href="/css/_footer.css">
+        <th:block th:include="/_headerLink"/>
         <link rel="stylesheet" href="/css/support/curriculumList.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="wrapper">
             <th:block th:include="/common/__header"/>
             <div class="homebar">
                 <article class="inline">
-                    <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Support/curriculumList.html">학생지원</a>
-                    <img src="/images/bg-path-arrow.png" alt="arrowright">
-                    <a href="/static/Support/curriculumList.html">성적조회</a>
+                    <a th:href="@{/}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+                    <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                    <a th:href="@{/Support/CourseRegister}">학생지원</a>
+                    <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                    <a th:href="@{/Support/curriculumList}">나의교과과정</a>
+
                 </article>
             </div>
             <main>
                 <aside class="side">
                     <p class="list-hadding">학생지원</p>
                     <ul class="list">
-                        <li><a href="/static/Support/CourseRegister.html">수강신청</a></li>
-                        <li><a href="/static/Support/courseList.html">수강신청내역</a></li>
-                        <li style="background-color: #3F97F6;"><a style="color: white;" href="/static/Support/curriculumList.html">나의교과과정</a></li>
-                        <li><a href="/static/Support/GradeList.html">성적조회</a></li>
-                        <li><a href="/static/Support/academicList.html">학적</a></li>
+                        <li><a th:href="@{/Support/CourseRegister}">수강신청</a></li>
+                        <li><a th:href="@{/Support/courseList}">수강신청내역</a></li>
+                        <li style="background-color: #3F97F6;"><a style="color: white;" th:href="@{/Support/curriculumList}">나의교과과정</a></li>
+                        <li><a th:href="@{/Support/GradeList}">성적조회</a></li>
+                        <li><a th:href="@{/Support/academicList}">학적</a></li>
+
                     </ul>
                 </aside>
                 <article class="course">
@@ -253,8 +251,6 @@
                     </div>
                 </article>
             </main>
-
-
             <th:block th:inclcude="/common/__footer"/>
         </div>
        

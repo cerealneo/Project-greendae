@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>공지사항</title>
+    <title>학사안내 - 공지사항</title>
     <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" th:href="@{/css/Bachelor/BacNotice.css}">
 </head>
+
 <body>
 <div id="wrapper">
     <th:block th:include="/common/__header"/>
@@ -15,7 +16,7 @@
             <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
             <a th:href="@{/Bachelor/BacNotice}">학사안내</a>
             <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
-            <a th:href="@{/Bachelor/BacNotice}">수료 및 졸업</a>
+            <a th:href="@{/Bachelor/BacNotice}">공지사항</a>
         </article>
     </div>
     <main>
@@ -57,7 +58,7 @@
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td><img src="/images/ico-new01.gif" alt="iconew">2025학년도 신입학 3차 추가모집 모집요강 및 모집...</td>
+                        <td><img th:src="@{/images/ico-new01.gif}" alt="iconew">2025학년도 신입학 3차 추가모집 모집요강 및 모집...</td>
                         <td>담당자</td>
                         <td>24.04.09</td>
                         <td>160</td>
