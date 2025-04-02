@@ -61,7 +61,7 @@
                             <span th:unless="${community.expired}" class="recruit">모집중</span>
                         </td>
                         <td>[[${community.name}]]</td>
-                        <td><a th:href="@{/Community/view(no=${community.no})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
+                        <td><a th:href="@{/Community/view3(no=${community.no}, cate=${community.cate})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
                         <td>[[${community.deadline}]]</td>
                         <td>[[${community.hit}]]</td>
                     </tr>

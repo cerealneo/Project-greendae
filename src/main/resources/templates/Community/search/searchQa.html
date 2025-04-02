@@ -56,7 +56,7 @@
                     </tr>
                     <tr th:each="community, i:${pageResponseDTO.dtoList}">
                         <td>[[${pageResponseDTO.startNo - i.index}]]</td>
-                        <td><a th:href="@{/Community/view(no=${community.no})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
+                        <td><a th:href="@{/Community/view4(no=${community.no}, cate=${community.cate})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
                         <td>[[${community.name}]]</td>
                         <td>[[${community.wdate}]]</td>
                         <td th:if="${community.status == 'wait'}" class="wait">답변대기</td>

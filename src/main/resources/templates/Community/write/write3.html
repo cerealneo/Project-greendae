@@ -31,20 +31,27 @@
                     <h4>글쓰기</h4>
                 </div>
             </article>
-            <form th:action="@{/templates/Community/write}" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="writer">
+            <form th:action="@{/Community/write2}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="writer" th:value="${#authentication.principal.user.id}">
+                <input type="hidden" name="cate" th:value="${cate}">
                 <table border="0">
                     <tr>
                         <th>제목</th>
                         <td><input type="text" name="title"></td>
                     </tr>
                     <tr>
-                        <th>작성자</th>
-                        <td><input type="text" name="writer"></td>
+                        <th>마감일</th>
+                        <td><input type="date" name="deadline"/></td>
                     </tr>
                     <tr>
                         <th>파일</th>
-                        <td></td>
+                        <td>
+                            <input type="file" name="file1"/><br>
+                            <input type="file" name="file2"/><br>
+                            <p>
+                                최대 2개 파일 첨부 가능, 각 파일당 최대 10MB까지 가능
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <th>내용</th>
@@ -54,13 +61,13 @@
                     </tr>
                 </table>
                 <div>
-                    <a href="#" class="btn btnCancel">취소</a>
+                    <a th:href="@{/Community/{cate}(cate=${cate})}" class="btn btnCancel">취소</a>
                     <input type="submit" value="작성완료" class="btn btnComplete"/>
                 </div>
             </form>
         </section>
     </main>
-    <!--<th:block th:include="/common/__footer"/>-->
+    <th:block th:include="/common/__footer"/>
 </div>
 </body>
 </html>

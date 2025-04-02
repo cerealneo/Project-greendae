@@ -1,7 +1,7 @@
 package kr.co.greenuniversity.entity.community;
 
 import jakarta.persistence.*;
-import kr.co.greenuniversity.entity.File;
+import kr.co.greenuniversity.entity.File.File;
 import kr.co.greenuniversity.entity.user.User;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -40,6 +40,9 @@ public class Community1 {
 
     @CreationTimestamp
     private LocalDateTime wdate;
+
+    @OneToMany(mappedBy = "ano")
+    private List<File> files;
 
     @PrePersist
     public void prePersist(){

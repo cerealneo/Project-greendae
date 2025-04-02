@@ -60,7 +60,7 @@
                             <span th:if="${community.type == 'news'}" class="news">뉴스</span>
                             <span th:if="${community.type == 'column'}" class="column">칼럼</span>
                         </td>
-                        <td><a th:href="@{/Community/view(no=${community.no})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
+                        <td><a th:href="@{/Community/view2(no=${community.no}, cate=${community.cate})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
                         <td>[[${community.name}]]</td>
                         <td>[[${community.wdate}]]</td>
                         <td>[[${community.hit}]]</td>

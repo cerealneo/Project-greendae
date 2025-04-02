@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.entity;
+package kr.co.greenuniversity.entity.File;
 
 
 import jakarta.persistence.*;
@@ -22,7 +22,7 @@ public class File {
     private int fno;
 
 
-    private int article_no;
+    private int ano;
     private String oName;
     private String sName;
     private int download;

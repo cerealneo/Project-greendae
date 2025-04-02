@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.dto;
+package kr.co.greenuniversity.dto.file;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class FileDTO {
 
     private int fno;
-    private int article_no;
+    private int ano;
     private String oName;
     private String sName;
     private int download;

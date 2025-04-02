@@ -61,14 +61,22 @@
                             </tr>
                             <tr th:each="community, i:${pageResponseDTO.dtoList}">
                                 <td>[[${pageResponseDTO.startNo - i.index}]]</td>
-                                <td><a th:href="@{/Community/view4(no=${community.no})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
+                                <td>
+                                    <a th:href="@{/Community/view4(no=${community.no}, cate=${community.cate})}">
+                                        <span th:if="${community.locked}">
+                                          <img src="/images/ico-lock.png" alt="잠금" style="width:14px; height:14px; vertical-align:middle; margin-right:4px;">
+                                        </span>
+                                        [[${community.title}]]&#91;[[${community.comment}]]&#93;
+                                    </a>
+                                </td>
+
                                 <td>[[${community.name}]]</td>
                                 <td>[[${community.wdate}]]</td>
                                 <td th:if="${community.status == 'wait'}" class="wait">답변대기</td>
                                 <td th:if="${community.status == 'resp'}" class="done">답변완료</td>
                             </tr>
                         </table>
-                        <a th:href="@{|/Community/write2?cate=${pageResponseDTO.cate}|}" class="write">글쓰기</a>
+                        <a th:href="@{|/Community/write4?cate=${pageResponseDTO.cate}|}" class="write">글쓰기</a>
                         <article class="pagebtn">
                             <th:block th:if="${pageResponseDTO.prev}">
                                 <a th:href="@{/Community/list(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>

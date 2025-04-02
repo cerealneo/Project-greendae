@@ -1,11 +1,13 @@
 package kr.co.greenuniversity.entity.community;
 
 import jakarta.persistence.*;
+import kr.co.greenuniversity.entity.File.File;
 import kr.co.greenuniversity.entity.user.User;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,6 +23,7 @@ public class Community2 {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int no;
 
+    @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
     private String status;
     private String type;
     private String deadline;
@@ -42,6 +45,13 @@ public class Community2 {
 
     @CreationTimestamp
     private LocalDateTime wdate;
+
+    @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private Boolean locked;
+
+
+    @OneToMany(mappedBy = "ano")
+    private List<File> files;
 
     @PrePersist
     public void prePersist(){

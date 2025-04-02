@@ -1,9 +1,10 @@
 package kr.co.greenuniversity.service.file;
 
-import kr.co.greenuniversity.dto.FileDTO;
+import kr.co.greenuniversity.dto.file.FileDTO;
 import kr.co.greenuniversity.dto.community.Community1DTO;
-import kr.co.greenuniversity.entity.File;
-import kr.co.greenuniversity.repository.FileRepository;
+import kr.co.greenuniversity.dto.community.Community2DTO;
+import kr.co.greenuniversity.entity.File.File;
+import kr.co.greenuniversity.repository.file.FileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -43,7 +44,44 @@ public class FileService {
     @Value("${spring.servlet.multipart.location}")
     private String uploadDir;
 
-    public List<FileDTO> uploadFile(Community1DTO community1DTO) {
+    public List<FileDTO> uploadFile1(Community1DTO community1DTO) {
+
+        java.io.File fileUploadDir = new java.io.File(uploadDir);
+
+        if (!fileUploadDir.exists()) {
+            fileUploadDir.mkdirs();
+        }
+
+        String fileUploadPath = fileUploadDir.getAbsolutePath();
+        List<MultipartFile> multipartFiles = community1DTO.getMultipartFiles();
+        List<FileDTO> fileDTOList = new ArrayList<>();
+
+        for(MultipartFile multipartFile : multipartFiles) {
+
+            if(!multipartFile.isEmpty()) {
+
+                String oName = multipartFile.getOriginalFilename();
+                String ext = oName.substring(oName.lastIndexOf("."));
+                String sName = UUID.randomUUID().toString() + ext;
+
+                try {
+                    multipartFile.transferTo(new java.io.File(fileUploadPath, sName));
+                }catch(IOException e) {
+                    log.error(e.getMessage());
+                }
+
+                FileDTO fileDTO = FileDTO.builder()
+                        .oName(oName)
+                        .sName(sName)
+                        .build();
+
+                fileDTOList.add(fileDTO);
+            }
+        }
+        return fileDTOList;
+    }
+
+    public List<FileDTO> uploadFile2(Community2DTO community1DTO) {
 
         java.io.File fileUploadDir = new java.io.File(uploadDir);
 
