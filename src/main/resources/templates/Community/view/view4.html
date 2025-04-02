@@ -36,7 +36,7 @@
                     data.forEach(comment => {
                         // 동적 태그 생성
                         const article = `<article>
-                                    <span class="nick">${comment.user.nick}</span>
+                                    <span class="nick">${comment.user.name}</span>
                                     <span class="date">${comment.wdate}</span>
                                     <p class="content">${comment.content}</p>
                                     <div>
@@ -61,7 +61,7 @@
                     "content": this.comment.value
                 };
 
-                const response = await fetch('/comment/write', {
+                const response = await fetch('/comment/write2', {
                     method: 'POST',
                     headers: {"Content-type": "application/json"},
                     body: JSON.stringify(jsonData)
@@ -97,7 +97,7 @@
             <img src="/images/bg-path-arrow.png" alt="arrowright">
             <a href="/Community/resource">커뮤니티</a>
             <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/Community/resource">자료실</a>
+            <a href="/Community/resource">글보기</a>
         </article>
     </div>
     <main id="article">
@@ -135,8 +135,10 @@
             </table>
 
             <div>
-                <a href="#" class="btn btnRemove">삭제</a>
-                <a href="#" class="btn btnModify">수정</a>
+                <a th:href="@{/Community/delete(cate=${community2DTO.cate}, no=${community2DTO.no})}"
+                   class="btn btnRemove"
+                   onclick="return confirm('삭제하시겠습니까?')">삭제</a>
+                <a th:href="@{/Community/modify2(no=${community2DTO.no})}" class="btn btnModify">수정</a>
                 <a th:href="@{/Community/{cate}(cate=${cate})}" class="btn btnList">목록</a>
             </div>
 

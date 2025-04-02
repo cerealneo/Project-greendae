@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Community1Controller {
 
     private final Community1Service communityService;
-    private final FileService fileService;
 
     // 목록
     @GetMapping("Community/notice")
@@ -55,7 +54,9 @@ public class Community1Controller {
 
     @GetMapping("/Community/searchFree")
     public String searchFree(PageRequestDTO pageRequestDTO, Model model) {
+        log.info("pageRequestDTO:{}", pageRequestDTO);
         PageResponseDTO pageResponseDTO = communityService.searchAll(pageRequestDTO);
+        log.info("pageResponseDTO:{}", pageResponseDTO);
         model.addAttribute(pageResponseDTO);
         return "/Community/search/searchFree";
     }

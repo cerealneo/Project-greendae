@@ -31,6 +31,8 @@ public class CommentService {
             return commentDTO;
         }).toList();
 
+        log.info("commentDTOList: {}", commentDTOList);
+
         return commentDTOList;
     }
 
@@ -42,6 +44,8 @@ public class CommentService {
         comment.setUser(user);
 
         Comment savedComment = commentRepository.save(comment);
+
+        log.info("saved comment {}", savedComment);
 
         return modelMapper.map(savedComment, CommentDTO.class);
     }

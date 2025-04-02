@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class Community2Controller {
 
     private final Community2Service communityService;
-    private final FileService fileService;
 
     // 목록
     @GetMapping("/Community/job")

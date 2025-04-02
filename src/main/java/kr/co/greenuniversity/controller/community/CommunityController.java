@@ -126,5 +126,36 @@ public class CommunityController {
         return "redirect:/Community/" + cate;
     }
 
+    // 글 삭제
+    @GetMapping("/Community/delete")
+    public String delete(@RequestParam("cate") String cate, @RequestParam("no") int no) {
+        communityService.delete(no);
+        return "redirect:/Community/" + cate;
+    }
+
+
+    // 글 수정
+    @GetMapping("/Community/modify1")
+    public String modify1(@RequestParam("no") int no, Model model) {
+        Community1DTO community1DTO = communityService.modify1(no);
+        model.addAttribute(community1DTO);
+        return "/Community/modify/modify1";
+    }
+
+    @GetMapping("/Community/modify2")
+    public String modify2(@RequestParam("no") int no, Model model) {
+        Community2DTO community2DTO = communityService.modify2(no);
+        model.addAttribute(community2DTO);
+        return "redirect:/Community/" + no;
+    }
+
+    @PostMapping("/Community/modify1")
+    public String modify1(Community1DTO communityDTO, HttpServletRequest req) {
+        log.info("communityDTO: " + communityDTO);
+        communityService.update(communityDTO);
+        String cate = communityDTO.getCate();
+        return "redirect:/Community/" + cate;
+    }
+
 
 }
