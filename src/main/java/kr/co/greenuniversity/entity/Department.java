@@ -29,7 +29,10 @@ public class Department {
 
     private String department_eng_name;
     private String establishment_date;
-    private String pro_name;
+
+    @Column(name = "pro_name")
+    private String proName;
+
     private String dep_number;
     private String office;
 
