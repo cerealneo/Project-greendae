@@ -7,6 +7,15 @@
     <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" th:href="@{/css/user/login.css}">
     <script th:src="@{/js/user/login.js}"></script>
+    <script>
+        window.onload = function() {
+            // 서버에서 전달된 메시지를 확인하고 alert 창 띄우기
+            const errorMessage = `[[${error2}]]`;
+            if (errorMessage && errorMessage !== 'null') {
+                alert(errorMessage);
+            }
+        };
+    </script>
 </head>
 <body>
     <div id="wrapper">

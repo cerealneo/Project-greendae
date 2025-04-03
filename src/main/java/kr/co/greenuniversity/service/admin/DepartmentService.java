@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.service;
+package kr.co.greenuniversity.service.admin;
 
 import kr.co.greenuniversity.dto.DepartmentDTO;
 import kr.co.greenuniversity.entity.College;

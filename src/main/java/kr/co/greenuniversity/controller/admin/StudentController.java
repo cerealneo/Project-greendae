@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.controller;
+package kr.co.greenuniversity.controller.admin;
 
 import kr.co.greenuniversity.dto.StudentDTO;
 import kr.co.greenuniversity.entity.College;
@@ -8,9 +8,9 @@ import kr.co.greenuniversity.entity.Student;
 import kr.co.greenuniversity.repository.CollegeRepository;
 import kr.co.greenuniversity.repository.DepartmentRepository;
 import kr.co.greenuniversity.repository.StudentRepository;
-import kr.co.greenuniversity.service.DepartmentService;
-import kr.co.greenuniversity.service.ProfessorService;
-import kr.co.greenuniversity.service.StudentService;
+import kr.co.greenuniversity.service.admin.DepartmentService;
+import kr.co.greenuniversity.service.admin.ProfessorService;
+import kr.co.greenuniversity.service.admin.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -60,8 +60,15 @@ public class StudentController {
         studentService.registerStudent(student, departmentName);
         log.info("Student {}", student);
 
-
         return "redirect:/Management/ManageStdRegister";
+    }
 
+    @GetMapping("/Management/StdList")
+    public String StudentList(Model model) {
+
+        List<StudentDTO> stdList = studentService.StdfindAll();
+        model.addAttribute("stdList", stdList);
+
+        return "/Management/ManageStdList";
     }
 }

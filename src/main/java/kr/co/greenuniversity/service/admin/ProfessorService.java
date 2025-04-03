@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.service;
+package kr.co.greenuniversity.service.admin;
 
 import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Professor;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j

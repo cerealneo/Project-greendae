@@ -1,4 +1,4 @@
-package kr.co.greenuniversity.service;
+package kr.co.greenuniversity.service.admin;
 
 import kr.co.greenuniversity.dto.StudentDTO;
 import kr.co.greenuniversity.entity.Department;
@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -20,6 +22,13 @@ public class StudentService {
     private final StudentRepository studentRepository;
     private final ModelMapper modelMapper;
     private final DepartmentRepository departmentRepository;
+
+    public List<StudentDTO> StdfindAll() {
+
+        return studentRepository.findAll().stream()
+                .map(student -> modelMapper.map(student, StudentDTO.class)) // 변환
+                .collect(Collectors.toList()); // 리스트로 변환
+    }
 
     public void registerStudent(Student student, String departmentName) {
 
@@ -57,7 +66,6 @@ public class StudentService {
         return prefix + String.format("%02d", nextSeq);
 
     }
-
 
     public String generateStudentIdPublic(String departmentName) {
 

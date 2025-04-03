@@ -1,13 +1,12 @@
-package kr.co.greenuniversity.controller;
+package kr.co.greenuniversity.controller.admin;
 
-import kr.co.greenuniversity.dto.ProfessorDTO;
 import kr.co.greenuniversity.entity.College;
 import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Professor;
 import kr.co.greenuniversity.repository.CollegeRepository;
 import kr.co.greenuniversity.repository.DepartmentRepository;
-import kr.co.greenuniversity.service.DepartmentService;
-import kr.co.greenuniversity.service.ProfessorService;
+import kr.co.greenuniversity.service.admin.DepartmentService;
+import kr.co.greenuniversity.service.admin.ProfessorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
@@ -68,8 +66,12 @@ public class ProfessorController {
                                     @RequestParam String departmentName) {
         professorService.registerProfessor(professor, departmentName);
         return "redirect:/Management/ManageProfessor";
+    }
 
+    @GetMapping("/Management/ProList")
+    public String ProList() {
 
+        return "/Management/ManageProfessorList";
     }
 
 

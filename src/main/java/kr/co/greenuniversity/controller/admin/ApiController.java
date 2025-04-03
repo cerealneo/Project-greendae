@@ -1,9 +1,8 @@
-package kr.co.greenuniversity.controller;
+package kr.co.greenuniversity.controller.admin;
 
 import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.repository.DepartmentRepository;
-import kr.co.greenuniversity.service.ProfessorService;
-import lombok.RequiredArgsConstructor;
+import kr.co.greenuniversity.service.admin.ProfessorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

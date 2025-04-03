@@ -1,12 +1,7 @@
-package kr.co.greenuniversity.service;
+package kr.co.greenuniversity.service.admin;
 
-import kr.co.greenuniversity.dto.CollegeDTO;
-import kr.co.greenuniversity.dto.LectureDTO;
-import kr.co.greenuniversity.entity.College;
 import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Lecture;
-import kr.co.greenuniversity.entity.Professor;
-import kr.co.greenuniversity.repository.CollegeRepository;
 import kr.co.greenuniversity.repository.DepartmentRepository;
 import kr.co.greenuniversity.repository.LectureRepository;
 import kr.co.greenuniversity.repository.ProfessorRepository;

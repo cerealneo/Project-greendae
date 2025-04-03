@@ -50,6 +50,8 @@ public class FindController {
         return "/user/ResultId";
     }
 
+
+
     @GetMapping("/findPass")
     public String findPass() {
         return "/user/findPass";
@@ -62,13 +64,13 @@ public class FindController {
         if (findUser != null) {
             log.info("찾은 유저: {}", findUser);
 
-            model.addAttribute("resultId", findUser.getId());
+            model.addAttribute("resultUser", findUser.getId());
 
             return "/user/updatePass";
         }
         log.info("사용자 없음");
-        model.addAttribute("error", "해당 사용자를 찾을 수 없습니다.");
-        return "/user/ResultId";
+        model.addAttribute("error2", "해당 사용자를 찾을 수 없습니다.");
+        return "/user/login";
     }
 
     // 새 비밀번호 설정
