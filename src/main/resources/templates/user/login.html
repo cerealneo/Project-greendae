@@ -40,9 +40,9 @@
                 <form method="post" th:action="@{/user/login}">
                     <ul>
                         <div>
-                            <li><label><input type="radio" name="rank" class="checkbox">학부생</label></li>
-                            <li><label><input type="radio" name="rank" class="checkbox">교직원</label></li>
-                            <li><label><input type="radio" name="rank" class="checkbox">일반인</label></li>
+                            <li><label><input type="radio" name="role" class="checkbox" value="STUDENT">학부생</label></li>
+                            <li><label><input type="radio" name="role" class="checkbox" value="PRO">교직원</label></li>
+                            <li><label><input type="radio" name="role" class="checkbox" value="USER">일반인</label></li>
                         </div>
                         <div>
                             <a th:href="@{/findId}">아이디찾기 / </a>

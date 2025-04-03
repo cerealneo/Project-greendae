@@ -1,6 +1,8 @@
 package kr.co.greenuniversity.controller.admin;
 
 import kr.co.greenuniversity.dto.StudentDTO;
+import kr.co.greenuniversity.dto.page.PageRequestDTO;
+import kr.co.greenuniversity.dto.page.PageResponseDTO;
 import kr.co.greenuniversity.entity.College;
 import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Professor;
@@ -66,11 +68,27 @@ public class StudentController {
     }
 
     @GetMapping("/Management/StdList")
-    public String StudentList(Model model) {
-
-        List<StudentDTO> stdList = studentService.StdfindAll();
+    public String StudentList(Model model, @RequestParam(required = false) String keyword
+            , @RequestParam(required = false) String condition) {
+        log.info("keyword {}", keyword);
+        log.info("condition {}", condition);
+       /* List<StudentDTO> stdList = studentService.StdfindAll();
+        log.info("stdList {}", stdList);
         model.addAttribute("stdList", stdList);
 
         return "/Management/ManageStdList";
+        */
+
+        List<StudentDTO> student;
+
+        if (keyword != null && condition != null) {
+            student = studentService.searchStd(keyword, condition);
+        }else {
+            student = studentService.StdfindAll();
+        }
+
+        model.addAttribute("student", student);
+        return "/Management/ManageStdList";
     }
+
 }

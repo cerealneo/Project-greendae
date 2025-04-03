@@ -42,7 +42,6 @@ public class Community1Controller {
         return "/Community/resource";
     }
 
-
     // 검색
     @GetMapping("/Community/searchNotice")
     public String searchNotice(PageRequestDTO pageRequestDTO, Model model) {
