@@ -1,6 +1,5 @@
 package kr.co.greenuniversity.controller.community;
 
-
 import kr.co.greenuniversity.dto.page.PageRequestDTO;
 import kr.co.greenuniversity.dto.page.PageResponseDTO;
 import kr.co.greenuniversity.service.community.Community1Service;
@@ -10,6 +9,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+/*
+이름: 김소현
+내용: 커뮤니티1 테이블 목록, 검색
+ */
 
 @Slf4j
 @RequiredArgsConstructor

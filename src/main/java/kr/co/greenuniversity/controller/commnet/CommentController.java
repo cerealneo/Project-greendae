@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/*
+이름: 김소현
+내용: 커뮤니티1,2 테이블 댓글
+ */
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller
