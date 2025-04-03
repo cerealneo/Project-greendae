@@ -17,6 +17,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
+이름: 김소현
+내용: 커뮤니티1,2 테이블 글 보기, 쓰기, 삭제, 수정, 잠금
+ */
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller

@@ -27,32 +27,31 @@ public class CollegeController {
     private final DepartmentService departmentService;
     private final CollegeRepository collegeRepository;
 
-
-    /*
-    @GetMapping("/Management/ManageDepartRegist")
-    public String showPage(Model model) {
-        List<College> colleges = collegeRepository.findAll();
-        model.addAttribute("colleges", colleges);
-        return "/Management/ManageDepartRegist";
+    @GetMapping("/Management/ManagerDptList")
+    public String ManagerDptList(Model model) {
+        return "/Management/ManagerDptList";
     }
-
-     */
 
 
     @PostMapping("/Management/registerCollege")
     public String registerCollege(CollegeDTO collegeDTO) {
-        MultipartFile file = collegeDTO.getFile(); // CollegeDTO에 MultipartFile 필드가 존재해야 합니다.
+        MultipartFile file = collegeDTO.getFile();
 
         if (file != null && !file.isEmpty()) {
-            String filename = file.getOriginalFilename(); // 원본 파일명 추출
-            collegeDTO.setFileName(filename); // DTO에 저장
+            // 원본 파일명 추출 (확장자 포함)
+            String originalFilename = file.getOriginalFilename();
+            log.info("업로드된 파일명: {}", originalFilename);
+            // DTO의 파일명 필드에 저장 (예: fileName)
+            collegeDTO.setFileName(originalFilename);
 
             try {
                 String uploadDir = System.getProperty("user.dir") + "/uploads/";
                 File dir = new File(uploadDir);
-                if (!dir.exists()) dir.mkdirs();
-
-                file.transferTo(new File(uploadDir + filename));
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+                // 파일 저장: 파일명에 확장자가 포함되어 있어야 함
+                file.transferTo(new File(uploadDir + originalFilename));
             } catch (Exception e) {
                 log.error("파일 업로드 실패", e);
             }
@@ -65,6 +64,7 @@ public class CollegeController {
         log.info("collegeDTO: {}", collegeDTO);
         return "redirect:/Management/ManageDepartRegist";
     }
+
 
 
 }

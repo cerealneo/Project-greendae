@@ -79,7 +79,15 @@
                         <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
                         <a th:href="@{/Management/ManageStdRegister}" >등록</a>
                     </article>
-                </div> 
+                </div>
+                <a class="button" th:href="@{/Management/ManageStdRegister}"
+                   style="padding: 6px 33px;
+              position: relative;
+              background-color: #1A528E;
+              border: 1px solid #08305A;
+              color: white;">
+                    등록
+                </a>
             </div>
             </main>
         <th:block th:include="/common/_adminFooter"/>

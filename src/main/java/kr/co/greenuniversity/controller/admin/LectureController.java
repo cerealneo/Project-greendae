@@ -49,8 +49,18 @@ public class LectureController {
     }
 
     @GetMapping("/Management/ManageInClass")
-    public String view(){
+    public String ManageInClass() {
         return "/Management/ManageInClass";
+    }
+
+    @GetMapping("/Management/ManageEducation")
+    public String ManageEducation() {
+        return "/Management/ManageEducation";
+    }
+
+    @GetMapping("/Management/ManageCourseList")
+    public String ManageCourseList() {
+        return "/Management/ManageCourseList";
     }
 
 }

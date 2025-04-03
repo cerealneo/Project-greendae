@@ -18,6 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/*
+이름: 김소현
+내용: 커뮤니티1,2 테이블 글 보기, 쓰기, 삭제, 수정, 비밀번호, 조회수
+ */
 
 @Slf4j
 @RequiredArgsConstructor
