@@ -16,14 +16,14 @@
         <header>
             <div class="nav">
                 <div class="navbar">
-                    <div class="navbar-item"><a href="/static/main.html">HOME</a></div>
+                    <div class="navbar-item"><a href="/main.html">HOME</a></div>
                     <div class="navbar-item"><a href="#">사이트맵</a></div>
                     <div class="navbar-item"><a href="#">로그아웃</a></div>
                 </div>
             </div>
             <div class="headerbar">
                 <article class="headerbarin">
-                    <a href="/static/Management/Managemain.html"><img src="/images/admin_logo.png" alt="그린대학교"></a>
+                    <a href="/Management/Managemain.html"><img src="/images/admin_logo.png" alt="그린대학교"></a>
                 </article>
             </div>
         </header>
@@ -72,89 +72,84 @@
                     <h3>대학 및 학과 ><p>학과 목록</p></h3>
                 </article>
                 <div class="firsttb">
-                  <div class="search">
-                        <select class="dropdown">
-                            <option>검색조건</option>
-                            <option>학과번호</option>
-                            <option>단과대학</option>
-                            <option>학과</option>
-                            <option>학과장</option>
-                            <option>학과 연락처</option>
-                            <option>소속 교수 수</option>
-                            <option>소속 학생 수</option>
-                            <option>개설 강의 수</option>
-                        </select>
-                        <input type="text" placeholder="키워드 입력">
-                        <div class="searchbtn"> 
-                            <a href="">검색</a>
+                    <form>
+                      <div class="search">
+                            <select class="dropdown" name="condition">
+                                <option>검색조건</option>
+                                <option value="no">학과번호</option>
+                                <option value="college_name">단과대학</option>
+                                <option value="departmentName">학과</option>
+                                <option value="proName">학과장</option>
+                                <option value="dep_number">학과 연락처</option>
+                            </select>
+                            <input type="text" name="keyword" placeholder="키워드 입력">
+                            <div class="searchbtn">
+                                <button type="submit" style="color: white">검색</button>
+                            </div>
                         </div>
-                    </div>
-                    <table>
-                            <tr>
-                                <td>학과번호</td>
-                                <td>단과대학</td>
-                                <td>학과</td>
-                                <td>학과장</td>
-                                <td>학과 연락처</td>
-                                <td>소속 교수 수</td>
-                                <td>소속 학생 수</td>
-                                <td>개설 강의 수</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>10</td>
-                                <td>인문사회대학</td>
-                                <td>국문학과</td>
-                                <td>김국어</td>
-                                <td>051-512-1010</td>
-                                <td>23</td>
-                                <td>322</td>
-                                <td>42</td>
-                            </tr>
-
-                            <tr>
-                                <td>11</td>
-                                <td>인문사회대학</td>
-                                <td>영어명문학과</td>
-                                <td>김영어</td>
-                                <td>051-512-1011</td>
-                                <td>20</td>
-                                <td>312</td>
-                                <td>23</td>
-                            </tr>
-
-                            <tr>
-                                <td>20</td>
-                                <td>자연과학대학</td>
-                                <td>생물학과</td>
-                                <td>김생물</td>
-                                <td>051-512-1234</td>
-                                <td>23</td>
-                                <td>322</td>
-                                <td>42</td>
-                            </tr>
-
-                            <tr>
-                                <td>21</td>
-                                <td>자연과학대학</td>
-                                <td>물리학과</td>
-                                <td>김물리</td>
-                                <td>051-512-1234</td>
-                                <td>23</td>
-                                <td>322</td>
-                                <td>42</td>
-                            </tr>
-                    </table>
+                    </form>
+                        <table>
+                                <tr>
+                                    <td>학과번호</td>
+                                    <td>단과대학</td>
+                                    <td>학과</td>
+                                    <td>학과장</td>
+                                    <td>학과 연락처</td>
+                                    <td>소속 교수 수</td>
+                                    <td>소속 학생 수</td>
+                                    <td>개설 강의 수</td>
+                                </tr>
+                                <tr th:each="dept : ${departments}">
+                                    <td th:text="${dept.no}"></td>
+                                    <td th:text="${dept.college.collegeName}"></td>
+                                    <td th:text="${dept.departmentName}"></td>
+                                    <td th:text="${dept.proName}"></td>
+                                    <td th:text="${dept.office}"></td>
+                                    <td th:text="${#lists.size(dept.professors)}"></td>
+                                    <td th:text="${#lists.size(dept.student)}"></td>
+                                    <td th:text="${dept.lecture != null ? 1 : 0}"></td> <!-- 또는 연관된 강의 수가 여러 개면 수정 필요 -->
+                                </tr>
+                        </table>
                     <article class="pagebtn">
-                        <a href=""><img src="/images/btn-first-page.png" alt="firstarr"></a>
-                        <a href="" class="pagebtn-1"><img src="/images/btn-prev-page.png" alt="firstarr"></a>
-                        <a href="">1</a>
-                        <a href="">2</a>
-                        <a href="">3</a>
-                        <a href="" class="pagebtn-2"><img src="/images/btn-next-page.png" alt="firstarr"></a>
-                        <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
+
+                        <!-- 첫 페이지 -->
+                        <a th:href="@{/Management/ManagerDptList(page=0, size=${page.size}, condition=${condition}, keyword=${keyword})}">
+                            <img src="/images/btn-first-page.png" alt="first">
+                        </a>
+
+                        <!-- 이전 페이지 -->
+                        <a th:if="${page.hasPrevious()}"
+                           th:href="@{/Management/ManagerDptList(page=${page.number - 1}, size=${page.size}, condition=${condition}, keyword=${keyword})}">
+                            <img src="/images/btn-prev-page.png" alt="prev">
+                        </a>
+                        <span th:unless="${page.hasPrevious()}">
+                            <img src="/images/btn-prev-page.png" alt="prev">
+                        </span>
+
+                        <!-- 페이지 숫자 -->
+                        <span th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}">
+                            <a th:href="@{/Management/ManagerDptList(page=${i}, size=${page.size}, condition=${condition}, keyword=${keyword})}"
+                               th:text="${i + 1}"
+                               th:classappend="${page.number == i} ? 'active'">
+                            </a>
+                        </span>
+
+                        <!-- 다음 페이지 -->
+                        <a th:if="${page.hasNext()}"
+                           th:href="@{/Management/ManagerDptList(page=${page.number + 1}, size=${page.size}, condition=${condition}, keyword=${keyword})}">
+                            <img src="/images/btn-next-page.png" alt="next">
+                        </a>
+                        <span th:unless="${page.hasNext()}">
+                            <img src="/images/btn-next-page.png" alt="next">
+                        </span>
+
+                        <!-- 마지막 페이지 -->
+                        <a th:href="@{/Management/ManagerDptList(page=${page.totalPages - 1}, size=${page.size}, condition=${condition}, keyword=${keyword})}">
+                            <img src="/images/btn-last-page.png" alt="last">
+                        </a>
+
                     </article>
-                </div> 
+                    </div>
                 </div>
             </main>
             <footer>
