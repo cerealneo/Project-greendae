@@ -33,23 +33,22 @@ public class LectureService {
         Department dept = departmentRepository.findByDepartmentName(departmentName)
                 .orElseThrow(() -> new IllegalArgumentException("Department not found"));
 
-        String generatedCode = generateLectureCode(dept);
+        String generatedCode = generateLectureCode(dept, lecture.getStartDate());
         lecture.setCode(generatedCode);
-        lecture.setDepNo(String.valueOf(dept.getNo()));
+        lecture.setDepNo(String.format("%02d", dept.getNo()));
         lecture.setColName(dept.getCollege().getCollegeName());
-        lecture.setDepName(dept.getDepartmentName());
+        lecture.setDepartmentName(dept.getDepartmentName());
 
         lectureRepository.save(lecture);
     }
 
-    public String generateLectureCode(Department dept) {
+    public String generateLectureCode(Department dept, LocalDate startDate) {
         String depNo = String.format("%02d", dept.getNo());
-        String year = String.valueOf(LocalDate.now().getYear());
-        int semester = ThreadLocalRandom.current().nextInt(1, 3); // 1 or 2
+        String year = String.valueOf(startDate.getYear()); // ✅ 파라미터에서 연도 추출
+        int semester = (startDate.getMonthValue() <= 6) ? 1 : 2; // ✅ 1학기 or 2학기
 
-        // 순번 계산
-        String startDate = year; // 연도로 계산 (또는 학기 포함해서 변경 가능)
-        int count = lectureRepository.countByDepNoAndStartDate(depNo, startDate);
+        int count = lectureRepository.countByDepNoAndStartDate(depNo, startDate); // ✅ LocalDate 타입 일치
+
         String seq = String.format("%02d", count + 1);
 
         return depNo + year + semester + seq;

@@ -14,7 +14,7 @@ public class DepartmentDTO {
 
     private int no;
     private String collegeName;
-    private String department_name;
+    private String departmentName;
     private String department_eng_name;
     private String establishment_date;
     private String pro_name;

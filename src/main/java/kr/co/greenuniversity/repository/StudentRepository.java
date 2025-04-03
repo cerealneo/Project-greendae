@@ -3,6 +3,8 @@ package kr.co.greenuniversity.repository;
 import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,4 +20,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
     long countByIdStartingWith(String prefix);
 
     int countByDepartment(Department department);
+
+    @Query("SELECT MAX(s.id) FROM Student s WHERE s.id LIKE CONCAT(:prefix, '%')")
+    String findLastIdStartingWith(@Param("prefix") String prefix);
 }
