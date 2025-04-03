@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대학원</title>
+    <th:block th:include="/_headerLink"/>
+    <link rel="stylesheet" href="/css/department/humanities.css">
+
+</head>
+<body>
+    <div id="wrapper">
+        <th:block th:include="/common/__header"/>
+
+        <div class="homebar">
+            <article class="inline">
+                <a th:href="@{/}"><img th:src="@{/images/ico-home.png}" alt="homeico"></a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/department/humanities}">대학·대학원</a>
+                <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+                <a th:href="@{/department/teacher}">대학원</a>
+            </article>
+        </div>
+
+        <main>
+            <aside>
+                <p class="list-hadding">대학·대학원</p>
+                <ul class="list">
+                    <li><a th:href="@{/department/humanities}">인문사회대학</a></li>
+                    <li><a th:href="@{/department/naturalscience}">자연과학대학</a></li>
+                    <li><a th:href="@{/department/engineering}">공과대학</a></li>
+                    <li style="background-color: #3F97F6;"><a style="color: white;" th:href="@{/department/teacher}">사범대학</a></li>
+                    <li><a th:href="@{/department/graduateSchool}">대학원</a></li>
+                </ul>
+            </aside>
+            
+            <article>
+                <p>사범대학</p>
+
+                <div class="main-1">
+                    <img src="/images/college-introduce-4.jpg" alt="사범대학">
+                    <div class="main-1_body">
+                    <p>Education</p>
+                    <p>미래를 움직이는 큰 인재, 세계의 주역!</p>
+                    <p>전공영역은 물론 현대 교육에 대한 학문적 탐구의 자질 및 인격 도야에 중점을 두고 있습니
+                        다. 원격강의 , 스튜디오, 원격교육강의실, 교육매체 제작실, 멀티미디어 강의실, 어학학습실,
+                        수업행동 분석실 등 첨단 시설을 갖춘 교육지원센터를 운영하고 있습니다. 부속기관으로는
+                        중등교육연수원, 과학교육연구소, 부설고등학교 등이 있습니다.</p>
+                    </div>    
+                </div>
+
+                <p class="p_img"><img th:src="@{/images/bullet-h4.png}" alt="학부 및 학과">학부 및 학과</p>
+                <table>
+                    <tr class="table-hd">
+                        <th>학과/전공</th>
+                        <th>학과장</th>
+                        <th>학과 사무실 번호</th>
+                        <th>비고</th>
+                    </tr>
+
+                    <tr class="table-bd">
+                        <td>
+                            <a href="#">국어교육과<img src="/images/ico_link.png" alt="국어교육과"></a>
+                        </td>
+                        <td>김국어</td>
+                        <td>051-123-4001</td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr class="table-bd">
+                        <td>
+                            <a href="#">영어교육과<img src="/images/ico_link.png" alt="영어교육과"></a>
+                        </td>
+                        <td>김영어</td>
+                        <td>051-123-4002</td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="table-bd">
+                        <td>
+                            <a href="#">수학교육과<img src="/images/ico_link.png" alt="수학교육과"></a>
+                        </td>
+                        <td>김수학</td>
+                        <td>051-123-4003</td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="table-bd">
+                        <td>
+                            <a href="#">윤리학과<img src="/images/ico_link.png" alt="윤리학과"></a>
+                        </td>
+                        <td>김윤리</td>
+                        <td>051-123-4004</td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="table-bd">
+                        <td>
+                            <a href="#">교육학과<img src="/images/ico_link.png" alt="교육학과"></a>
+                        </td>
+                        <td>김교육</td>
+                        <td>051-123-4005</td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="table-bd">
+                        <td>
+                            <a href="#">사회교육과<img src="/images/ico_link.png" alt="사회교육과"></a>
+                        </td>
+                        <td>김사회</td>
+                        <td>051-123-4006</td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="table-bd">
+                        <td>
+                            <a href="#">역사교육과<img src="/images/ico_link.png" alt="역사교육과"></a>
+                        </td>
+                        <td>김역사</td>
+                        <td>051-123-4007</td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="table-bd">
+                        <td>
+                            <a href="#">체육교육과<img src="/images/ico_link.png" alt="체육교육과"></a>
+                        </td>
+                        <td>김체육</td>
+                        <td>051-123-4008</td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="table-bd">
+                        <td>
+                            <a href="#">특수교육과<img src="/images/ico_link.png" alt="특수교육과"></a>
+                        </td>
+                        <td>김특수</td>
+                        <td>051-123-4009</td>
+                        <td></td>
+                    </tr>
+
+                </table>
+            </article>
+        </main>
+
+        <th:block th:include="/common/__footer"/>
+    </div>
+
+
+</body>
+</html>

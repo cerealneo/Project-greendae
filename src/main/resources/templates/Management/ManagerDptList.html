@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3조 - 그린대학교</title>
+    <link rel="stylesheet" href="/css/Management/_manageheader.css">
+    <link rel="stylesheet" href="/css/Management/ManageEducation.css">
+    <link rel="stylesheet" href="/css/Management/_managefooter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <th:block th:include="/common/_adminHeader"/>
+        <main>
+            <th:block th:include="/common/_adminSide"/>
+
+            <div class="managemain">
+                <article class="managemaintop">
+                    <h4>학과 목록</h4>
+                    <h3>대학 및 학과 ><p>학과 목록</p></h3>
+                </article>
+                <div class="firsttb">
+                  <div class="search">
+                        <select class="dropdown">
+                            <option>검색조건</option>
+                            <option>학과번호</option>
+                            <option>단과대학</option>
+                            <option>학과</option>
+                            <option>학과장</option>
+                            <option>학과 연락처</option>
+                            <option>소속 교수 수</option>
+                            <option>소속 학생 수</option>
+                            <option>개설 강의 수</option>
+                        </select>
+                        <input type="text" placeholder="키워드 입력">
+                        <div class="searchbtn"> 
+                            <a href="">검색</a>
+                        </div>
+                    </div>
+                    <table>
+                            <tr>
+                                <td>학과번호</td>
+                                <td>단과대학</td>
+                                <td>학과</td>
+                                <td>학과장</td>
+                                <td>학과 연락처</td>
+                                <td>소속 교수 수</td>
+                                <td>소속 학생 수</td>
+                                <td>개설 강의 수</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>10</td>
+                                <td>인문사회대학</td>
+                                <td>국문학과</td>
+                                <td>김국어</td>
+                                <td>051-512-1010</td>
+                                <td>23</td>
+                                <td>322</td>
+                                <td>42</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td>인문사회대학</td>
+                                <td>영어명문학과</td>
+                                <td>김영어</td>
+                                <td>051-512-1011</td>
+                                <td>20</td>
+                                <td>312</td>
+                                <td>23</td>
+                            </tr>
+
+                            <tr>
+                                <td>20</td>
+                                <td>자연과학대학</td>
+                                <td>생물학과</td>
+                                <td>김생물</td>
+                                <td>051-512-1234</td>
+                                <td>23</td>
+                                <td>322</td>
+                                <td>42</td>
+                            </tr>
+
+                            <tr>
+                                <td>21</td>
+                                <td>자연과학대학</td>
+                                <td>물리학과</td>
+                                <td>김물리</td>
+                                <td>051-512-1234</td>
+                                <td>23</td>
+                                <td>322</td>
+                                <td>42</td>
+                            </tr>
+                    </table>
+                    <article class="pagebtn">
+                        <a href=""><img src="/images/btn-first-page.png" alt="firstarr"></a>
+                        <a href="" class="pagebtn-1"><img src="/images/btn-prev-page.png" alt="firstarr"></a>
+                        <a href="">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="" class="pagebtn-2"><img src="/images/btn-next-page.png" alt="firstarr"></a>
+                        <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
+                    </article>
+                </div> 
+                </div>
+            </main>
+        <th:block th:include="/common/_adminFooter"/>
+        </main>
+    </div>
+</body>
+</html>

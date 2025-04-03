@@ -1,0 +1,56 @@
+package kr.co.greenuniversity.controller.admin;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+
+@Controller
+@Slf4j
+@RequiredArgsConstructor
+public class CollegeController {
+
+   // private final CollegeService collegeService;
+    //private final DepartmentService departmentService;
+    //private final CollegeRepository collegeRepository;
+
+    /*
+    @GetMapping("/Management/ManageDepartRegist")
+    public String showPage(Model model) {
+        List<College> colleges = collegeRepository.findAll();
+        model.addAttribute("colleges", colleges);
+        return "/Management/ManageDepartRegist";
+    }
+     */
+
+   /* @PostMapping("/Management/registerCollege")
+    public String registerCollege(CollegeDTO collegeDTO) {
+        MultipartFile file = collegeDTO.getFile();
+
+        if (file != null && !file.isEmpty()) {
+            String filename = file.getOriginalFilename();
+            collegeDTO.setFileName(filename);
+
+            try {
+                String uploadDir = System.getProperty("user.dir") + "/uploads/";
+                File dir = new File(uploadDir);
+                if (!dir.exists()) dir.mkdirs();
+
+                file.transferTo(new File(uploadDir + filename));
+            } catch (Exception e) {
+                log.error("파일 업로드 실패", e);
+            }
+        } else {
+            log.warn("업로드된 파일이 없습니다.");
+            collegeDTO.setFileName(null);
+        }
+
+
+        collegeService.registerCollege(collegeDTO);
+        log.info("collegeDTO: {}", collegeDTO);
+
+
+        return "redirect:/Management/ManageDepartRegist";
+    } */
+
+
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3조 - 그린대학교</title>
+    <link rel="stylesheet" href="/css/Management/_manageheader.css">
+    <link rel="stylesheet" href="/css/Management/ManageStdList.css">
+    <link rel="stylesheet" href="/css/Management/_managefooter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="wrapper">
+        <th:block th:include="/common/_adminHeader"/>
+        <main>
+            <th:block th:include="/common/_adminSide"/>
+            <div class="managemain">
+                <article class="managemaintop">
+                    <h4>학생 목록</h4>
+                    <h3>인사관리 ><p>학생 목록</p></h3>
+                </article>
+                <div class="firsttb">
+                  <div class="search">
+                        <select class="dropdown">
+                            <option>검색조건</option>
+                            <option>학번</option>
+                            <option>이름</option>
+                            <option>주민번호</option>
+                            <option>휴대폰</option>
+                            <option>이메일</option>
+                            <option>학과</option>
+                            <option>학년</option>
+                            <option>학기</option>
+                            <option>상태</option>
+                        
+                        </select>
+                        <input type="text" placeholder="검색어를 입력해 주세요">
+                        <div class="searchbtn"> 
+                            <a href="">검색</a>
+                        </div>
+                    </div>
+                    <table>
+                            <tr>
+                               <th>학번</th>
+                               <th>이름</th>
+                               <th>주민번호</th>
+                               <th>휴대폰</th>
+                               <th>이메일</th>
+                               <th>학과</th>
+                               <th>학년</th>
+                               <th>학기</th>
+                               <th>상태</th>
+                            </tr>
+                        
+                            <tr th:block th:each="">
+                                <td>202001230</td>
+                                <td>홍길동</td>
+                                <td>900103-1234567</td>
+                                <td>010-1234-1001</td>
+                                <td>hong1001@naver.com</td>
+                                <td>컴퓨터공학과</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td class="ing">재학중</td>
+                            </tr>
+
+                    </table>
+                    <article class="pagebtn">
+                        <a href=""><img src="/images/btn-first-page.png" alt="firstarr" ></a>
+                        <a href=""><img src="/images/btn-prev-page.png" alt="firstarr" ></a>
+                        <a href="">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href=""><img src="/images/btn-next-page.png" alt="firstarr"></a>
+                        <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
+                        <a th:href="@{/Management/ManageStdRegister}" class="btn_submit">등록</a>
+                    </article>
+                </div> 
+            </div>
+            </main>
+        <th:block th:include="/common/_adminFooter"/>
+        </div>
+    </body>
+
+    </html>
