@@ -8,6 +8,8 @@ import kr.co.greenuniversity.service.admin.LectureService;
 import kr.co.greenuniversity.service.admin.ProfessorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,10 +29,10 @@ public class LectureController {
     private final LectureService lectureService;
 
     @GetMapping("/Management/ManageRegister")
-    public String view(Model model) {
+    public String view(Model model, Pageable pageable) {
 
         List<College> colleges = collegeRepository.findAll();
-        List<Professor> professors = professorService.findAllProfessors();
+        Page<Professor> professors = professorService.findAllProfessors(pageable);
         model.addAttribute("colleges", colleges);
         model.addAttribute("professors", professors);
 

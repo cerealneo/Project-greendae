@@ -7,8 +7,13 @@ import kr.co.greenuniversity.repository.CollegeRepository;
 import kr.co.greenuniversity.repository.DepartmentRepository;
 import kr.co.greenuniversity.service.admin.DepartmentService;
 import kr.co.greenuniversity.service.admin.ProfessorService;
+import kr.co.greenuniversity.service.admission.AdmissionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -68,9 +73,24 @@ public class ProfessorController {
         return "redirect:/Management/ManageProfessor";
     }
 
-    @GetMapping("/Management/ProList")
-    public String ProList() {
+    @GetMapping("/Management/ManageProfessorList")
+    public String showProfessorList(Model model, @RequestParam(required = false) String keyword
+    , @RequestParam(required = false) String condition, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        //List<Professor> professors = professorService.findAllProfessors();
 
+        List<Professor> professors;
+        Page<Professor> page;
+
+        if (keyword != null && condition != null && !keyword.isEmpty() && !condition.isEmpty()) {
+            page = professorService.searchProfessor(keyword, condition, pageable);
+        }else {
+            page = professorService.findAllProfessors(pageable);
+        }
+        model.addAttribute("page", page);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("condition", condition);
+
+        model.addAttribute("professors", page);
         return "/Management/ManageProfessorList";
     }
 

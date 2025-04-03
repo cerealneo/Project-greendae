@@ -13,6 +13,8 @@ import kr.co.greenuniversity.service.admin.ProfessorService;
 import kr.co.greenuniversity.service.admin.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,12 +38,12 @@ public class StudentController {
 
 
     @GetMapping("/Management/ManageStdRegister")
-    public String showStudentForm(Model model) {
+    public String showStudentForm(Model model, Pageable pageable) {
 
         List<College> colleges = collegeRepository.findAll();
         model.addAttribute("colleges", colleges);
 
-        List<Professor> professors = professorService.findAllProfessors();
+        Page<Professor> professors = professorService.findAllProfessors(pageable);
         model.addAttribute("professors", professors);
 
         if (!colleges.isEmpty() && !colleges.get(0).getDepartments().isEmpty()) {

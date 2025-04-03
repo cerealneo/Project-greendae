@@ -7,6 +7,9 @@ import kr.co.greenuniversity.repository.ProfessorRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -23,8 +26,8 @@ public class ProfessorService {
     private final DepartmentRepository departmentRepository;
 
 
-    public List<Professor> findAllProfessors(){
-        return professorRepository.findAll();
+    public Page<Professor> findAllProfessors(Pageable pageable) {
+        return professorRepository.findAll(pageable);
     }
 
     public void registerProfessor(Professor professor, String departmentName) {
@@ -56,5 +59,34 @@ public class ProfessorService {
         Department dept = departmentRepository.findByDepartmentName(departmentName)
                 .orElseThrow(() -> new IllegalArgumentException("학과 없음"));
         return generateProfessorId(dept);
+    }
+
+    public Page<Professor> searchProfessor(String keyword, String condition, Pageable pageable) {
+        switch (condition) {
+            case "id":
+                return professorRepository.findByIdContaining(keyword, pageable);
+            case "name":
+                return professorRepository.findByNameContaining(keyword, pageable);
+            case "jumin":
+                return professorRepository.findByJuminContaining(keyword, pageable);
+            case "phone":
+                return professorRepository.findByPhoneContaining(keyword, pageable);
+            case "email":
+                return professorRepository.findByEmailContaining(keyword, pageable);
+            case "department":
+                return professorRepository.findByDepartment_DepartmentNameContaining(keyword, pageable);
+            case "position":
+                return professorRepository.findByPositionContaining(keyword, pageable);
+            case "employStatus":
+                return professorRepository.findByEmployStatusContaining(keyword, pageable);
+            case "appointmentDate":
+                return professorRepository.findByappointmentDateContaining(keyword, pageable);
+            default:
+                return professorRepository.findAll(pageable);
+        }
+    }
+
+    public Page<Professor> findAll(Pageable pageable){
+        return professorRepository.findAll(pageable);
     }
 }
