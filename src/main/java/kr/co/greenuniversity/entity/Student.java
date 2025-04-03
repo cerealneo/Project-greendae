@@ -35,9 +35,11 @@ public class Student {
 
     @Column(name = "department_name")
     private String departmentName;
+
     private String pro_name;
     @Column(name = "reg_grade")
     private String regGrade;
+
     @Column(name = "reg_term")
     private String regTerm;
 
