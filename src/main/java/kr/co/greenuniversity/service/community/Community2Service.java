@@ -16,6 +16,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+/*
+이름: 김소현
+내용: 커뮤니티2 테이블 목록, 검색
+ */
 
 @Slf4j
 @RequiredArgsConstructor

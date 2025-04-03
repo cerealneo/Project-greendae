@@ -16,6 +16,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/*
+이름: 김소현
+내용: community1RepositoryImpl
+ */
+
 @Slf4j
 @RequiredArgsConstructor
 @Repository
