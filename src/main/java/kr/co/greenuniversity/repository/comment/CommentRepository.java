@@ -6,6 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/*
+이름: 김소현
+내용: commentRepository
+ */
+
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 

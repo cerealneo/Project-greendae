@@ -12,6 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+/*
+이름: 김소현
+내용: 커뮤니티2 테이블 목록, 검색
+ */
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller

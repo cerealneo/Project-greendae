@@ -1,10 +1,59 @@
 <!DOCTYPE html>
+<!--
+이름 : 김소현
+내용 : 커뮤니티 검색
+-->
 <html>
 <head>
     <meta charset="UTF-8">
     <title>3조 - 그린대학교</title>
     <link rel="stylesheet" href="/css/Community/qa.css">
     <th:block th:include="/_headerLink"/>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const titles = document.querySelectorAll('.title');
+
+            titles.forEach(function (title) {
+                title.addEventListener('click', function (e) {
+                    const isLocked = title.getAttribute('data-locked') === 'true';
+                    const no = title.getAttribute('data-no');
+                    const url = title.getAttribute('href');
+
+                    // 잠금이 아니면 그대로 진행
+                    if (!isLocked) return;
+
+                    e.preventDefault(); // 기본 이동 막기
+
+                    const inputPassword = prompt("비밀번호를 입력하세요 (숫자 4자리):");
+                    if (!inputPassword || inputPassword.length !== 4) {
+                        alert("비밀번호는 숫자 4자리여야 합니다.");
+                        return;
+                    }
+
+                    fetch('/Community/password-check', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="_csrf"]')?.getAttribute('content')
+                        },
+                        body: JSON.stringify({ no, password: inputPassword })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                window.location.href = url; // 비밀번호 맞으면 이동
+                            } else {
+                                alert("비밀번호가 틀렸습니다.");
+                            }
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            alert("서버 오류가 발생했습니다.");
+                        });
+                });
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -83,22 +132,8 @@
                     </th:block>
                 </table>
 
-                <!-- 로그인한 사용자일 경우: 글쓰기 페이지로 이동 -->
-                <a th:if="${#authorization.expression('isAuthenticated()')}"
-                   th:href="@{/Community/write1(cate=${pageResponseDTO.cate})}"
-                   class="write">
-                    글쓰기
-                </a>
+                <a th:href="@{|/Community/write4?cate=${pageResponseDTO.cate}|}" class="write">글쓰기</a>
 
-                <!-- 로그인하지 않은 사용자일 경우: alert 후 로그인 페이지로 이동 -->
-                <a th:if="${#authorization.expression('!isAuthenticated()')}"
-                   href="#"
-                   onclick="requireLogin(); return false;"
-                   class="write">
-                    글쓰기
-                </a>
-
-                <a th:href="@{|/Community/write2?cate=${pageResponseDTO.cate}|}" class="write">글쓰기</a>
                 <article class="pagebtn">
                     <th:block th:if="${pageResponseDTO.prev}">
                         <a th:href="@{/Community/searchQa(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>

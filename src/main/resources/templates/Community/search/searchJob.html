@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+이름 : 김소현
+내용 : 커뮤니티 검색
+-->
 <html>
 <head>
     <meta charset="UTF-8">
@@ -66,7 +70,7 @@
                         <td>[[${community.hit}]]</td>
                     </tr>
                 </table>
-                <a th:href="@{|/Community/write2?cate=${pageResponseDTO.cate}|}" class="write">글쓰기</a>
+                <a th:href="@{|/Community/write3?cate=${pageResponseDTO.cate}|}" class="write">글쓰기</a>
                 <article class="pagebtn">
                     <th:block th:if="${pageResponseDTO.prev}">
                         <a th:href="@{/Community/searchJob(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>
