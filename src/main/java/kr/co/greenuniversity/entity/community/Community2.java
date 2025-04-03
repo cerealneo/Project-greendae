@@ -49,7 +49,6 @@ public class Community2 {
     @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
     private Boolean locked;
 
-
     @OneToMany(mappedBy = "ano")
     private List<File> files;
 

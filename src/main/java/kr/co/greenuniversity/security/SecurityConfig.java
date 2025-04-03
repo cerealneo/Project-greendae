@@ -24,7 +24,7 @@ public class SecurityConfig {
         //로그인 설정
         http.formLogin(login -> login
                 .loginPage("/user/login")
-                .defaultSuccessUrl("/",true)
+                .defaultSuccessUrl("/",false)
                 .failureUrl("/user/login?code=100")
                 .usernameParameter("id")
                 .passwordParameter("password"));
@@ -50,6 +50,7 @@ public class SecurityConfig {
                 .requestMatchers("/Management/**").hasRole("ADMIN")
                 .requestMatchers("/support/**").hasRole("STUDENT")
                 .requestMatchers("/staff/**").hasAnyRole("ADMIN","MANAGER","STAFF")
+                .requestMatchers("/Community/write**").authenticated()
                 .anyRequest().permitAll());
 
 

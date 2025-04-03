@@ -102,9 +102,9 @@
     </div>
     <main id="article">
         <section class="view">
-            <article class="notice">
-                <div class="noticetop">
-                    <h4>글보기</h4>
+            <article class="notice"  style="padding-left: 0; margin-left: 0">
+                <div class="noticetop" style="width: 1200px;">
+                <h4 style="padding-left: 10px;">글보기</h4>
                 </div>
             </article>
             <table border="0">
@@ -135,7 +135,7 @@
             </table>
 
             <div>
-                <a th:href="@{/Community/delete(cate=${community1DTO.cate}, no=${community1DTO.no})}"
+                <a th:href="@{/Community/delete1(cate=${community1DTO.cate}, no=${community1DTO.no})}"
                    class="btn btnRemove"
                    onclick="return confirm('삭제하시겠습니까?')">삭제</a>
                 <a th:href="@{/Community/modify1(no=${community1DTO.no})}" class="btn btnModify">수정</a>

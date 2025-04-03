@@ -13,11 +13,11 @@
 
     <div class="homebar">
         <article class="inline">
-            <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
+            <a th:href="@{/}"><img src="/images/ico-home.png" alt="homeico"></a>
+            <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+            <a th:href="@{/user/login}">회원</a>
             <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/user/login.html">회원</a>
-            <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/user/login.html">새 비밀번호 설정</a>
+            <a th:href="@{/user/findPass}">비밀번호 찾기</a>
         </article>
     </div>
 
@@ -48,7 +48,6 @@
                 </div>
                 <input type="submit" class="submit-btn" value="비밀번호 변경">
             </form>
-
         </article>
     </main>
 

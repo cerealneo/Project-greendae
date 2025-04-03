@@ -14,11 +14,11 @@
     <th:block th:include="/common/__header"/>
     <div class="homebar">
         <article class="inline">
-            <a href="/static/main.html"><img src="/images/ico-home.png" alt="homeico"></a>
+            <a th:href="@{/}"><img src="/images/ico-home.png" alt="homeico"></a>
+            <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+            <a th:href="@{/user/login}">회원</a>
             <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/user/userRegister.html">회원</a>
-            <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/user/userRegister.html">약관안내</a>
+            <a th:href="@{/user/register}">회원가입</a>
         </article>
     </div>
     <main>

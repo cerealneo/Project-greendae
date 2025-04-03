@@ -8,6 +8,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
@@ -25,22 +30,31 @@ public class Lecture {
     @Column(name = "col_name")
     private String colName;
     @Column(name = "dep_name")
-    private String depName;
+    private String departmentName;
 
-    private int grade;
-    private int credit;
+    private String grade;
+    private String credit;
     private String division;
     private String pro_name;
     private String lec_name;
     private String lec_info;
+
     @Column(name = "start_date")
-    private String startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
+
     @Column(name = "end_date")
-    private String endDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
+
     @Column(name = "start_time")
-    private String startTime;
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime startTime;
+
     @Column(name = "end_time")
-    private String endTime;
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime endTime;
+
     private String day;
     private String evaluation;
     private String book;

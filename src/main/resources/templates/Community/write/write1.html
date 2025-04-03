@@ -26,9 +26,9 @@
     </div>
     <main id="article">
         <section class="view">
-            <article class="notice">
-                <div class="noticetop">
-                    <h4>글쓰기</h4>
+            <article class="notice"  style="padding-left: 0; margin-left: 0">
+                <div class="noticetop" style="width: 1200px;">
+                    <h4 style="padding-left: 10px;">글쓰기</h4>
                 </div>
             </article>
             <form th:action="@{/Community/write1}" method="post" enctype="multipart/form-data">
@@ -57,8 +57,8 @@
                     </tr>
                 </table>
                 <div>
-                    <a th:href="@{/Community/{cate}(cate=${cate})}" class="btn btnCancel">취소</a>
-                    <input type="submit" value="작성완료" class="btn btnComplete"/>
+                    <input type="submit" value="작성완료" class="btn btnComplete" style="margin: 30px 0; float: right;"/>
+                    <a th:href="@{/Community/{cate}(cate=${cate})}" class="btn btnCancel" style="margin: 30px 10px; float: right;">취소</a>
                 </div>
             </form>
         </section>

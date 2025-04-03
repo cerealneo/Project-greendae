@@ -49,10 +49,21 @@ public class StudentService {
 
         String year = String.valueOf(LocalDate.now().getYear());
         String deptNo = String.format("%02d", department.getNo());
-        int count = studentRepository.countByDepartment(department);
-        String seq = String.format("%02d", count + 1);
+        String prefix = year + deptNo;
 
-        return year + deptNo + seq;
+        String lastId = studentRepository.findLastIdStartingWith(prefix);
+
+        int nextSeq;
+        if (lastId == null) {
+            nextSeq = 1;
+        } else {
+            // 🔥 여기에서 정확하게 자르기 (prefix 길이만큼)
+            String seqStr = lastId.substring(prefix.length()); // "01"
+            nextSeq = Integer.parseInt(seqStr) + 1;
+        }
+
+        // 🔐 최종 학번: "20251202"
+        return prefix + String.format("%02d", nextSeq);
 
     }
 

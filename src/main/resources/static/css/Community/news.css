@@ -155,3 +155,15 @@ main .notice .noticemain .pagebtn a:hover {
     color: #fff;
     background-color: #3F97F6;
 }
+
+.write {
+    width:80px;
+    height: 40px;
+    color: #fff;
+    background-color: #3F97F6;
+    text-align: center;
+    line-height: 40px;
+    float: right;
+    font-size: 16px;
+}
+
