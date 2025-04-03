@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>비밀번호 찾기 결과</title>
+    <title>3조 - 그린대학교</title>
     <th:block th:include="/_headerLink"/>
     <link rel="stylesheet" th:href="@{/css/user/find.css}">
     <script th:src="@{/js/user/findPass.js}"></script>
@@ -13,16 +13,13 @@
 
     <div class="homebar">
         <article class="inline">
-            <a href="/static/main.html">
-                <img src="/images/ico-home.png" alt="homeico">
-            </a>
+            <a th:href="@{/}"><img src="/images/ico-home.png" alt="homeico"></a>
+            <img th:src="@{/images/bg-path-arrow.png}" alt="arrowright">
+            <a th:href="@{/user/login}">회원</a>
             <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/user/login.html">회원</a>
-            <img src="/images/bg-path-arrow.png" alt="arrowright">
-            <a href="/static/user/login.html">비밀번호 찾기</a>
+            <a th:href="@{/user/findPass}">비밀번호 찾기</a>
         </article>
     </div>
-
     <main>
         <article class="content">
             <div class="form-header">
@@ -59,7 +56,9 @@
         </article>
     </main>
 
+
     <th:block th:include="/common/__footer"/>
+
 </div>
 </body>
 </html>
