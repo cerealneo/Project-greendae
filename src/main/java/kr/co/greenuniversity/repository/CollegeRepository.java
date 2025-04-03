@@ -11,7 +11,6 @@ import java.util.Optional;
 @Repository
 public interface CollegeRepository extends JpaRepository<College, Integer> {
     Optional<College> findByCollegeName(String collegeName);
-
     List<Professor> findByDepartments_College_CollegeNameAndDepartments_DepartmentName(String collegeName, String departmentName);
 
 }

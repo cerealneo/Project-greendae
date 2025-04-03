@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -21,12 +22,16 @@ public class CollegeService {
     public void registerCollege(CollegeDTO collegeDTO){
 
       College college = modelMapper.map(collegeDTO, College.class);
-        log.info("college : {}", college);
-
+        college.setFile(collegeDTO.getFileName());
+        log.info("Registering college: {}", college);
         collegeRepository.save(college);
 
     }
     public List<College> findAll(){
         return collegeRepository.findAll();
+    }
+
+    public Optional<College> getCollegeByName(String collegeName) {
+        return collegeRepository.findByCollegeName(collegeName);
     }
 }

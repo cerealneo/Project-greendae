@@ -1,8 +1,11 @@
 package kr.co.greenuniversity.controller.admin;
 
 import kr.co.greenuniversity.dto.DepartmentDTO;
+import kr.co.greenuniversity.entity.College;
+import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Professor;
 import kr.co.greenuniversity.repository.CollegeRepository;
+import kr.co.greenuniversity.service.admin.CollegeService;
 import kr.co.greenuniversity.service.admin.DepartmentService;
 import kr.co.greenuniversity.service.admin.ProfessorService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -23,6 +27,7 @@ public class DepartmentController {
     private final DepartmentService departmentService;
     private final CollegeRepository collegeRepository;
     private final ProfessorService professorService;
+    private final CollegeService collegeService;
 
     @PostMapping("/Management/registerDepart")
     public String registerDepartment(@ModelAttribute DepartmentDTO departmentDTO) {
@@ -49,24 +54,53 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/engineering")
-    public String engineering() {
+    public String engineering(Model model) {
+        College college = collegeService.getCollegeByName("공과대학")
+                .orElse(new College());
+        List<Department> departments = departmentService.getDepartmentsByCollegeName("공과대학");
+        model.addAttribute("college", college);
+        model.addAttribute("departments", departments);
         return "/department/engineering";
     }
-    @GetMapping("/department/graduateSchool")
-    public String graduateSchool() {
-        return "/department/graduateSchool";
-    }
-    @GetMapping("/department/humanities")
-    public String humanities() {
-        return "/department/humanities";
-    }
+
     @GetMapping("/department/naturalscience")
-    public String naturalscience() {
-        return "/department/naturalscience";
+    public String naturalscience(Model model) {
+        College college = collegeService.getCollegeByName("자연과학대학")
+                .orElse(new College());
+        List<Department> departments = departmentService.getDepartmentsByCollegeName("자연과학대학");
+        model.addAttribute("college", college);
+        model.addAttribute("departments", departments);
+        return "/department/naturalscience"; // templates/department/naturalscience.html
     }
+
+    @GetMapping("/department/humanities")
+    public String humanities(Model model) {
+        College college = collegeService.getCollegeByName("인문사회대학")
+                .orElse(new College());
+        List<Department> departments = departmentService.getDepartmentsByCollegeName("인문사회대학");
+        model.addAttribute("college", college);
+        model.addAttribute("departments", departments);
+        return "/department/humanities"; // templates/department/humanities.html
+    }
+
     @GetMapping("/department/teacher")
-    public String teacher() {
-        return "/department/teacher";
+    public String teacher(Model model) {
+        College college = collegeService.getCollegeByName("사범대학")
+                .orElse(new College());
+        List<Department> departments = departmentService.getDepartmentsByCollegeName("사범대학");
+        model.addAttribute("college", college);
+        model.addAttribute("departments", departments);
+        return "/department/teacher"; // templates/department/teacher.html
+    }
+
+    @GetMapping("/department/graduateSchool")
+    public String graduateSchool(Model model) {
+        College college = collegeService.getCollegeByName("대학원")
+                .orElse(new College());
+        List<Department> departments = departmentService.getDepartmentsByCollegeName("대학원");
+        model.addAttribute("college", college);
+        model.addAttribute("departments", departments);
+        return "/department/graduateSchool"; // templates/department/graduateSchool.html
     }
 
 }
