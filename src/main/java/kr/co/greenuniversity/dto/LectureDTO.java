@@ -15,8 +15,8 @@ public class LectureDTO {
     private String dep_no;
     private String col_name;
     private String dep_name;
-    private int grade;
-    private int credit;
+    private String grade;
+    private String credit;
     private String division;
     private String pro_name;
     private String lec_name;

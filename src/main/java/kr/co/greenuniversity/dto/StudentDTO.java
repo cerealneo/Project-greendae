@@ -25,7 +25,7 @@ public class StudentDTO {
     private String classification;
     private String end_year;
     private String college_name;
-    private String department_name;
+    private String departmentName;
     private String pro_name;
     private String reg_grade;
     private String reg_term;
