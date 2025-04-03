@@ -11,12 +11,14 @@ import kr.co.greenuniversity.service.admin.ProfessorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -103,6 +105,29 @@ public class DepartmentController {
         model.addAttribute("college", college);
         model.addAttribute("departments", departments);
         return "/department/graduateSchool"; // templates/department/graduateSchool.html
+    }
+
+    @GetMapping("/Management/ManagerDptList")
+    public String listview(Model model, @RequestParam(required = false) String condition,
+                           @RequestParam(required = false) String keyword,
+                           @RequestParam(defaultValue = "0")int page,
+                           @RequestParam(defaultValue = "10")int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Department> departmentPage;
+
+        if (keyword != null && condition != null && !condition.isEmpty() && !keyword.isEmpty()) {
+            departmentPage = departmentService.findAllDepartment(pageable);
+        }else {
+            departmentPage = departmentService.searchDepartment(condition, keyword, pageable);
+        }
+
+        model.addAttribute("departments", departmentPage.getContent());
+        model.addAttribute("condition", condition);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", departmentPage);
+
+        return "/Management/ManagerDptList";
     }
 
 }

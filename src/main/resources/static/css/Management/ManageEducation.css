@@ -135,7 +135,7 @@
         background-color: #1a528e;
         border: 1px solid #1a528e;
     }
-    main .search .searchbtn a {
+    main .search .searchbtn button {
         color: white;
         font-size: 15px;
     }
