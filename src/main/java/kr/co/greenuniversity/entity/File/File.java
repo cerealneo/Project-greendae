@@ -21,7 +21,6 @@ public class File {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int fno;
 
-
     private int ano;
     private String oName;
     private String sName;
