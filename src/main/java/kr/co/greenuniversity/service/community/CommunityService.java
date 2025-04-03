@@ -5,8 +5,10 @@ import kr.co.greenuniversity.dto.community.Community1DTO;
 import kr.co.greenuniversity.entity.community.Community1;
 import kr.co.greenuniversity.entity.community.Community2;
 import kr.co.greenuniversity.entity.user.User;
+import kr.co.greenuniversity.repository.comment.CommentRepository;
 import kr.co.greenuniversity.repository.community.Community1Repository;
 import kr.co.greenuniversity.repository.community.Community2Repository;
+import kr.co.greenuniversity.repository.file.FileRepository;
 import kr.co.greenuniversity.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,8 @@ public class CommunityService {
 
     private final Community1Repository community1Repository;
     private final Community2Repository community2Repository;
+    private final CommentRepository commentRepository;
+    private final FileRepository fileRepository;
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
 
@@ -90,10 +94,18 @@ public class CommunityService {
     }
 
     // 글 삭제
-    public void delete(int no) {
+    public void delete1(int no) {
         community1Repository.deleteById(no);
-        community2Repository.deleteById(no);
+        commentRepository.deleteById(no);
+        fileRepository.deleteById(no);
     }
+
+    public void delete2(int no) {
+        community2Repository.deleteById(no);
+        commentRepository.deleteById(no);
+        fileRepository.deleteById(no);
+    }
+
 
     // 글 수정
     public Community1DTO modify1(int no) {
@@ -107,7 +119,7 @@ public class CommunityService {
     }
 
     @Transactional
-    public void update(Community1DTO communityDTO) {
+    public void update1(Community1DTO communityDTO) {
         Community1 community1 = community1Repository.findById(communityDTO.getNo())
                 .orElseThrow(() -> new RuntimeException("해당 게시글이 존재하지 않습니다."));
 
@@ -117,6 +129,19 @@ public class CommunityService {
 
         modelMapper.map(communityDTO, community1);
         community1.setUser(user);
+    }
+
+    @Transactional
+    public void update2(Community2DTO communityDTO) {
+        Community2 community2 = community2Repository.findById(communityDTO.getNo())
+                .orElseThrow(() -> new RuntimeException("해당 게시글이 존재하지 않습니다."));
+
+        String writerUid = communityDTO.getWriter();
+        User user = userRepository.findById(writerUid)
+                .orElseThrow(() -> new RuntimeException("작성자 정보를 찾을 수 없습니다."));
+
+        modelMapper.map(communityDTO, community2);
+        community2.setUser(user);
     }
 
 

@@ -31,7 +31,7 @@ public class CommunityController {
         Community1DTO communityDTO = communityService.findById1(no);
         model.addAttribute(communityDTO);
         model.addAttribute("cate", cate);
-        return "Community/view/view1";
+        return "/Community/view/view1";
     }
 
     @GetMapping("/Community/view2")
@@ -63,25 +63,25 @@ public class CommunityController {
     @GetMapping("/Community/write1")
     public String write1(@RequestParam("cate") String cate, Model model) {
         model.addAttribute("cate", cate);
-        return "Community/write/write1";
+        return "/Community/write/write1";
     }
 
     @GetMapping("/Community/write2")
     public String write2(@RequestParam("cate") String cate, Model model) {
         model.addAttribute("cate", cate);
-        return "Community/write/write2";
+        return "/Community/write/write2";
     }
 
     @GetMapping("/Community/write3")
     public String write3(@RequestParam("cate") String cate, Model model) {
         model.addAttribute("cate", cate);
-        return "Community/write/write3";
+        return "/Community/write/write3";
     }
 
     @GetMapping("/Community/write4")
     public String write4(@RequestParam("cate") String cate, Model model) {
         model.addAttribute("cate", cate);
-        return "Community/write/write4";
+        return "/Community/write/write4";
     }
 
     @PostMapping("/Community/write1")
@@ -127,9 +127,15 @@ public class CommunityController {
     }
 
     // 글 삭제
-    @GetMapping("/Community/delete")
-    public String delete(@RequestParam("cate") String cate, @RequestParam("no") int no) {
-        communityService.delete(no);
+    @GetMapping("/Community/delete1")
+    public String delete1(@RequestParam("cate") String cate, @RequestParam("no") int no) {
+        communityService.delete1(no);
+        return "redirect:/Community/" + cate;
+    }
+
+    @GetMapping("/Community/delete2")
+    public String delete2(@RequestParam("cate") String cate, @RequestParam("no") int no) {
+        communityService.delete2(no);
         return "redirect:/Community/" + cate;
     }
 
@@ -143,19 +149,29 @@ public class CommunityController {
     }
 
     @GetMapping("/Community/modify2")
-    public String modify2(@RequestParam("no") int no, Model model) {
+    public String modify2(@RequestParam("no") int no, @RequestParam("mode") String mode, Model model) {
+        log.info("mode: " + mode);
+        log.info("no: " + no);
         Community2DTO community2DTO = communityService.modify2(no);
+        log.info("community2DTO: " + community2DTO);
         model.addAttribute(community2DTO);
-        return "redirect:/Community/" + no;
+        return "/Community/modify/" + mode;
     }
 
     @PostMapping("/Community/modify1")
-    public String modify1(Community1DTO communityDTO, HttpServletRequest req) {
-        log.info("communityDTO: " + communityDTO);
-        communityService.update(communityDTO);
+    public String modify1(Community1DTO communityDTO) {
+        communityService.update1(communityDTO);
         String cate = communityDTO.getCate();
         return "redirect:/Community/" + cate;
     }
+
+    @PostMapping("/Community/modify2")
+    public String modify2(Community2DTO communityDTO) {
+        communityService.update2(communityDTO);
+        String cate = communityDTO.getCate();
+        return "redirect:/Community/" + cate;
+    }
+
 
 
 }

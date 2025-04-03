@@ -26,9 +26,9 @@
     </div>
     <main id="article">
         <section class="view">
-            <article class="notice">
-                <div class="noticetop">
-                    <h4>글수정</h4>
+            <article class="notice"  style="padding-left: 0; margin-left: 0">
+                <div class="noticetop" style="width: 1200px;">
+                    <h4 style="padding-left: 10px;">글수정</h4>
                 </div>
             </article>
             <form th:action="@{/Community/modify1}" method="post" enctype="multipart/form-data">
@@ -59,7 +59,7 @@
                 </table>
 
                 <div>
-                    <input type="submit" value="수정완료" class="btn btnList"/>
+                    <input type="submit" value="수정완료" class="btn btnList" style="margin: 30px 0; float:right" />
                 </div>
             </form>
         </section>
