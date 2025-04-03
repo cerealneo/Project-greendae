@@ -65,7 +65,10 @@
                     </tr>
                     <tr th:each="notice : ${noticeDTOList}">
                         <td th:text="${notice.no}"></td>
-                        <td th:text="${notice.title}"></td>
+                        <td>
+                            <a th:href="@{/Admission/view(no=${notice.no})}" th:text="${notice.title}"></a>
+                        </td>
+                        </td>
                         <td th:text="${notice.writer}"></td>
                         <td th:text="${notice.wdate}"></td>
                         <td th:text="${notice.hit}"></td>

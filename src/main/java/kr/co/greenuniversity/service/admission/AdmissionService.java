@@ -1,5 +1,6 @@
 package kr.co.greenuniversity.service.admission;
 
+import jakarta.persistence.EntityNotFoundException;
 import kr.co.greenuniversity.dto.admission.NoticeDTO;
 import kr.co.greenuniversity.entity.admission.Notice;
 import kr.co.greenuniversity.repository.admission.AdmissionRepository;
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -17,16 +19,28 @@ public class AdmissionService {
 
     private final AdmissionRepository admissionRepository;
 
+    // 🔹 공지사항 목록 조회
     public List<NoticeDTO> findAll() {
-
-        // SELECTALLLIST 메서드를 한 번만 호출하여 리스트를 가져옴
         List<Notice> noticeList = admissionRepository.SELECTALLLIST();
 
-        // Notice 엔티티를 NoticeDTO로 변환하여 리턴
         return noticeList.stream()
-                .map(Notice::toDTO)  // Notice 객체에서 toDTO 메서드를 호출
+                .map(Notice::toDTO)  // Notice 엔티티를 NoticeDTO로 변환
                 .collect(Collectors.toList());
     }
-}
 
+    // 🔹 공지사항 상세 조회 (추가됨)
+    public NoticeDTO findById(int no) {
+        Optional<Notice> optNotice = admissionRepository.findById(no);
+
+        if (optNotice.isPresent()) {
+            Notice notice = optNotice.get();
+            return notice.toDTO();
+        }
+        return null;
+    }
+
+    public void delete(int no) {
+        admissionRepository.deleteById(no);
+    }
+}
 
