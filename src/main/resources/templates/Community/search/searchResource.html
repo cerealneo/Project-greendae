@@ -62,6 +62,9 @@
                                 <td>[[${community.hit}]]</td>
                             </tr>
                         </table>
+
+                        <a th:href="@{/Community/write1(cate=${pageResponseDTO.cate})}" class="write">글쓰기</a>
+
                         <article class="pagebtn">
                             <th:block th:if="${pageResponseDTO.prev}">
                                 <a th:href="@{/Community/searchResource(pg=${pageResponseDTO.start-1})}" class="prev">이전</a>

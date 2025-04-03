@@ -110,6 +110,7 @@ public class CommunityController {
 
     @PostMapping("/Community/write2")
     public String write2(Community2DTO communityDTO, HttpServletRequest req) {
+        log.info("communityDTO:{}", communityDTO);
 
         String regip = req.getRemoteAddr();
         communityDTO.setRegip(regip);
