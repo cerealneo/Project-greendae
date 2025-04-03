@@ -11,10 +11,49 @@
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
         <script>
-            function requireLogin() {
-                alert('로그인 후 이용해주세요');
-                window.location.href = '/user/login';
-            }
+            document.addEventListener('DOMContentLoaded', function () {
+                const titles = document.querySelectorAll('.title');
+
+                titles.forEach(function (title) {
+                    title.addEventListener('click', function (e) {
+                        const isLocked = title.getAttribute('data-locked') === 'true';
+                        const no = title.getAttribute('data-no');
+                        const url = title.getAttribute('href');
+
+                        // 잠금이 아니면 그대로 진행
+                        if (!isLocked) return;
+
+                        e.preventDefault(); // 기본 이동 막기
+
+                        const inputPassword = prompt("비밀번호를 입력하세요 (숫자 4자리):");
+                        if (!inputPassword || inputPassword.length !== 4) {
+                            alert("비밀번호는 숫자 4자리여야 합니다.");
+                            return;
+                        }
+
+                        fetch('/Community/password-check', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="_csrf"]')?.getAttribute('content')
+                            },
+                            body: JSON.stringify({ no, password: inputPassword })
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.success) {
+                                    window.location.href = url; // 비밀번호 맞으면 이동
+                                } else {
+                                    alert("비밀번호가 틀렸습니다.");
+                                }
+                            })
+                            .catch(err => {
+                                console.error(err);
+                                alert("서버 오류가 발생했습니다.");
+                            });
+                    });
+                });
+            });
         </script>
 
     </head>
@@ -69,17 +108,20 @@
                                 <tr>
                                     <td>[[${pageResponseDTO.startNo - i.index}]]</td>
                                     <td>
-                                        <a th:href="@{/Community/view4(no=${community.no}, cate=${community.cate})}">
+                                        <a th:href="@{/Community/view4(no=${community.no}, cate=${community.cate})}"
+                                           class="title"
+                                           th:attr="data-no=${community.no}, data-locked=${community.locked}">
                                             <span th:if="${community.locked}">
-                                              <img src="/images/ico-lock.png" alt="잠금" style="width:14px; height:14px; vertical-align:middle; margin-right:4px;">
+                                                <img src="/images/ico-lock.png" alt="잠금" style="width:14px; height:14px; vertical-align:middle; margin-right:4px;">
                                             </span>
                                             [[${community.title}]]&#91;[[${community.comment}]]&#93;
                                         </a>
+
                                     </td>
                                     <td>[[${community.name}]]</td>
                                     <td>[[${community.wdate}]]</td>
-                                    <td th:if="${community.status == 'wait'}" class="wait">답변대기</td>
-                                    <td th:if="${community.status == 'resp'}" class="done">답변완료</td>
+                                    <td th:if="${community != null and community.status == 'wait'}" class="wait">답변대기</td>
+                                    <td th:if="${community != null and community.status == 'resp'}" class="done">답변완료</td>
                                 </tr>
                                 <tr th:if="${community.status == 'resp'}" class="manager">
                                     <td></td>
@@ -94,20 +136,7 @@
                             </th:block>
                         </table>
 
-                        <!-- 로그인한 사용자일 경우: 글쓰기 페이지로 이동 -->
-                        <a th:if="${#authorization.expression('isAuthenticated()')}"
-                           th:href="@{/Community/write4(cate=${pageResponseDTO.cate})}"
-                           class="write">
-                            글쓰기
-                        </a>
-
-                        <!-- 로그인하지 않은 사용자일 경우: alert 후 로그인 페이지로 이동 -->
-                        <a th:if="${#authorization.expression('!isAuthenticated()')}"
-                           href="#"
-                           onclick="requireLogin(); return false;"
-                           class="write">
-                            글쓰기
-                        </a>
+                        <a th:href="@{/Community/write4(cate=${pageResponseDTO.cate})}" class="write">글쓰기</a>
 
                         <article class="pagebtn">
                             <th:block th:if="${pageResponseDTO.prev}">

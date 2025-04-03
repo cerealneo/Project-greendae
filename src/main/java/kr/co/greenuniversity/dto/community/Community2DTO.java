@@ -29,6 +29,7 @@ public class Community2DTO {
     private String regip;
     private String wdate;
     private Boolean locked;
+    private String password;
 
     // 추가 컬럼
     private String name;

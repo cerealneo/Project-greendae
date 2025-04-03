@@ -11,11 +11,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -28,6 +28,7 @@ public class CommunityController {
     // 글 보기
     @GetMapping("/Community/view1")
     public String view1(int no, @RequestParam("cate") String cate, Model model) {
+        communityService.increaseHit1(no);
         Community1DTO communityDTO = communityService.findById1(no);
         model.addAttribute(communityDTO);
         model.addAttribute("cate", cate);
@@ -36,6 +37,7 @@ public class CommunityController {
 
     @GetMapping("/Community/view2")
     public String view2(int no, @RequestParam("cate") String cate, Model model) {
+        communityService.increaseHit2(no);
         Community2DTO communityDTO = communityService.findById2(no);
         model.addAttribute(communityDTO);
         model.addAttribute("cate", cate);
@@ -44,6 +46,7 @@ public class CommunityController {
 
     @GetMapping("/Community/view3")
     public String view3(int no, @RequestParam("cate") String cate, Model model) {
+        communityService.increaseHit2(no);
         Community2DTO communityDTO = communityService.findById2(no);
         model.addAttribute(communityDTO);
         model.addAttribute("cate", cate);
@@ -52,6 +55,7 @@ public class CommunityController {
 
     @GetMapping("/Community/view4")
     public String view4(int no, @RequestParam("cate") String cate, Model model) {
+        communityService.increaseHit2(no);
         Community2DTO communityDTO = communityService.findById2(no);
         model.addAttribute(communityDTO);
         model.addAttribute("cate", cate);
@@ -110,8 +114,6 @@ public class CommunityController {
         String regip = req.getRemoteAddr();
         communityDTO.setRegip(regip);
 
-        log.info("communityDTO: " + communityDTO);
-
         List<FileDTO> files = fileService.uploadFile2(communityDTO);
 
         communityDTO.setFile(files.size());
@@ -150,10 +152,7 @@ public class CommunityController {
 
     @GetMapping("/Community/modify2")
     public String modify2(@RequestParam("no") int no, @RequestParam("mode") String mode, Model model) {
-        log.info("mode: " + mode);
-        log.info("no: " + no);
         Community2DTO community2DTO = communityService.modify2(no);
-        log.info("community2DTO: " + community2DTO);
         model.addAttribute(community2DTO);
         return "/Community/modify/" + mode;
     }
@@ -170,6 +169,21 @@ public class CommunityController {
         communityService.update2(communityDTO);
         String cate = communityDTO.getCate();
         return "redirect:/Community/" + cate;
+    }
+
+
+    // 글 잠금
+    @PostMapping("/Community/password-check")
+    @ResponseBody
+    public Map<String, Object> checkPassword(@RequestBody Map<String, String> request) {
+        int no = Integer.parseInt(request.get("no"));
+        String password = request.get("password");
+
+        boolean isCorrect = communityService.checkPassword(no, password);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", isCorrect);
+        return response;
     }
 
 

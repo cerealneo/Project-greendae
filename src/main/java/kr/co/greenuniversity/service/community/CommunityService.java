@@ -145,5 +145,35 @@ public class CommunityService {
     }
 
 
+    // 글 비밀번호
+    public boolean checkPassword(int no, String password) {
+        // 글 번호로 글 엔티티를 조회
+        Optional<Community2> optionalPost = community2Repository.findById(no);
+        if (optionalPost.isEmpty()) return false;
+
+        Community2 post = optionalPost.get();
+
+        // 비밀번호 비교 (평문 저장이라면 단순 비교, 해시라면 BCrypt 등 사용)
+        return password.equals(post.getPassword());
+    }
+
+    // 글 조회수
+    @Transactional
+    public void increaseHit1(int no) {
+        Community1 community = community1Repository.findById(no)
+                .orElseThrow(() -> new RuntimeException("해당 게시글이 존재하지 않습니다."));
+        community.setHit(community.getHit() + 1);
+    }
+
+    @Transactional
+    public void increaseHit2(int no) {
+        Community2 community = community2Repository.findById(no)
+                .orElseThrow(() -> new RuntimeException("해당 게시글이 존재하지 않습니다."));
+        community.setHit(community.getHit() + 1);
+    }
+
+
+
+
 
 }

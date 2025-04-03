@@ -11,6 +11,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        function togglePassword(isLocked) {
+            const passwordRow = document.getElementById("passwordRow");
+            passwordRow.style.display = isLocked ? "table-row" : "none";
+        }
+
+        function validateForm() {
+            const locked = document.querySelector('input[name="locked"]:checked').value;
+            const passwordInput = document.querySelector('input[name="password"]');
+
+            if (locked === "true") {
+                if (!passwordInput || passwordInput.value.length !== 4 || !/^\d{4}$/.test(passwordInput.value)) {
+                    alert("비밀번호는 숫자 4자리로 입력해주세요.");
+                    passwordInput.focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 <div id="wrapper">
@@ -39,6 +59,21 @@
                     <tr>
                         <th>제목</th>
                         <td><input type="text" name="title" th:value="${community2DTO.title}"/></td>
+                    </tr>
+                    <tr>
+                        <th>잠금</th>
+                        <td>
+                            <input type="radio" name="locked" value="true" onchange="togglePassword(true)"> 예
+                            <input type="radio" name="locked" value="false" onchange="togglePassword(false)"> 아니오
+                        </td>
+                    </tr>
+
+                    <tr id="passwordRow" style="display: none;">
+                        <th>비밀번호</th>
+                        <td>
+                            <input type="password" name="password" maxlength="4" placeholder="숫자 4자리" pattern="\d{4}">
+                            <small style="color:gray;">※ 글을 열람할 때 필요한 비밀번호입니다.</small>
+                        </td>
                     </tr>
                     <tr>
                         <th>파일</th>
