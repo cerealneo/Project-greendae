@@ -40,7 +40,8 @@ public class Professor {
     @Column(name = "department_name")
     private String departmentName;
 
-    private String appointment_date;
+    @Column(name = "appointment_date")
+    private String appointmentDate;
 
     @Column(name = "employ_status")
     private String employStatus;
@@ -50,6 +51,7 @@ public class Professor {
     @JoinColumn(name = "department_id")
     private Department department;
 
+    private String position;
 
 
 }

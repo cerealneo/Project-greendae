@@ -10,6 +10,8 @@ import kr.co.greenuniversity.service.admin.DepartmentService;
 import kr.co.greenuniversity.service.admin.ProfessorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,9 +39,9 @@ public class DepartmentController {
     }
 
     @GetMapping("/Management/ManageDepartRegist")
-    public String showDepartmentForm(Model model) {
+    public String showDepartmentForm(Model model, Pageable pageable) {
 
-        List<Professor> professors = professorService.findAllProfessors();
+        Page<Professor> professors = professorService.findAllProfessors(pageable);
         model.addAttribute("professors", professors);
 
         int nextNo = departmentService.getNextDepartmentNo();

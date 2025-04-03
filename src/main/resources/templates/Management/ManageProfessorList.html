@@ -69,28 +69,29 @@
             </aside>
             <div class="managemain">
                 <article class="managemaintop">
-                    <h4>학생 목록</h4>
-                    <h3>인사관리 ><p>학생 목록</p></h3>
+                    <h4>교수 목록</h4>
+                    <h3>인사관리 ><p>교수 목록</p></h3>
                 </article>
                 <div class="firsttb">
                   <div class="search">
-                        <select class="dropdown">
-                            <option>검색조건</option>
-                            <option>학번</option>
-                            <option>이름</option>
-                            <option>주민번호</option>
-                            <option>휴대폰</option>
-                            <option>이메일</option>
-                            <option>학과</option>
-                            <option>학년</option>
-                            <option>학기</option>
-                            <option>상태</option>
-                        
-                        </select>
-                        <input type="text" placeholder="검색어를 입력해 주세요">
-                        <div class="searchbtn"> 
-                            <a href="">검색</a>
+                      <form th:action="@{/Management/ManageProfessorList}">
+                          <div class="searchbtn">
+                            <select class="dropdown" name="condition">
+                                <option value="">검색조건</option>
+                                <option value="id">교수번호</option>
+                                <option value="name">이름</option>
+                                <option value="jumin">주민번호</option>
+                                <option value="phone">휴대폰</option>
+                                <option value="email">이메일</option>
+                                <option value="departmentName">학과</option>
+                                <option value="position">직위</option>
+                                <option value="employStatus">재직여부</option>
+                                <option value="appointmentDate">임용일</option>
+                            </select>
+                            <input type="text" name="keyword" placeholder="검색어를 입력해 주세요">
+                            <button type="submit">검색</button>
                         </div>
+                      </form>
                     </div>
                     <table>
                             <tr>
@@ -104,141 +105,67 @@
                                <th>재직여부</th>
                                <th>임용일</th>
                             </tr>
-                        
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>정교수</td>
-                                <td class="ing">재직중</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>부교수</td>
-                                <td class="ing">재직중</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>부교수</td>
-                                <td class="ing">재직중</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>조교수</td>
-                                <td class="ing">재직중</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>조교수</td>
-                                <td class="ing">재직중</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>조교수</td>
-                                <td class="ing">재직중</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>정교수</td>
-                                <td class="ing">재직중</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>정교수</td>
-                                <td class="ing">재직중</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>정교수</td>
-                                <td class="rest">휴직</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>정교수</td>
-                                <td class="out">퇴직</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>202001230</td>
-                                <td>홍길동</td>
-                                <td>900103-1234567</td>
-                                <td>010-1234-1001</td>
-                                <td>hong1001@naver.com</td>
-                                <td>컴퓨터공학과</td>
-                                <td>정교수</td>
-                                <td class="out">퇴직</td>
-                                <td>1</td>
-                            </tr>
 
-                            
-                        
+                            <tr th:each="prof : ${professors}">
+                                <td>[[${prof.id}]]</td>
+                                <td>[[${prof.name}]]</td>
+                                <td>[[${prof.jumin}]]</td>
+                                <td>[[${prof.phone}]]</td>
+                                <td>[[${prof.email}]]</td>
+                                <td>[[${prof.departmentName}]]</td>
+                                <td>[[${prof.position}]]</td>
+                                <td>[[${prof.employStatus}]]</td>
+                                <td>[[${prof.appointmentDate}]]</td>
+                            </tr>
                     </table>
                     <article class="pagebtn">
-                        <a href=""><img src="/images/btn-first-page.png" alt="firstarr"></a>
-                        <a href=""><img src="/images/btn-prev-page.png" alt="firstarr"></a>
-                        <a href="">1</a>
-                        <a href="">2</a>
-                        <a href="">3</a>
-                        <a href=""><img src="/images/btn-next-page.png" alt="firstarr"></a>
-                        <a href=""><img src="/images/btn-last-page.png" alt="firstarr"></a>
-                        <button>등록</button>
+                        <!-- 첫 페이지 -->
+                        <a th:href="@{/Management/ManageProfessorList(page=0, size=${page.size}, condition=${condition}, keyword=${keyword})}">
+                            <img src="/images/btn-first-page.png" alt="first">
+                        </a>
+
+                        <!-- 이전 페이지 -->
+                        <a th:href="@{/Management/ManageProfessorList(page=${page.number - 1}, size=${page.size}, condition=${condition}, keyword=${keyword})}"
+                           th:classappend="${!page.hasPrevious()} ? 'disabled'"
+                           th:if="${page.hasPrevious()}">
+                            <img src="/images/btn-prev-page.png" alt="prev">
+                        </a>
+                        <span th:unless="${page.hasPrevious()}">
+                            <img src="/images/btn-prev-page.png" alt="prev">
+                        </span>
+
+                        <!-- 페이지 숫자 -->
+                        <span th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}">
+                            <a th:href="@{/Management/ManageProfessorList(page=${i}, size=${page.size}, condition=${condition}, keyword=${keyword})}"
+                               th:text="${i + 1}"
+                               th:classappend="${page.number == i} ? 'active'">
+                            </a>
+                        </span>
+
+                        <!-- 다음 페이지 -->
+                        <a th:href="@{/Management/ManageProfessorList(page=${page.number + 1}, size=${page.size}, condition=${condition}, keyword=${keyword})}"
+                           th:if="${page.hasNext()}">
+                            <img src="/images/btn-next-page.png" alt="next">
+                        </a>
+                        <span th:unless="${page.hasNext()}">
+                            <img src="/images/btn-next-page.png" alt="next">
+                        </span>
+
+                        <!-- 마지막 페이지 -->
+                        <a th:href="@{/Management/ManageProfessorList(page=${page.totalPages - 1}, size=${page.size}, condition=${condition}, keyword=${keyword})}">
+                            <img src="/images/btn-last-page.png" alt="last">
+                        </a>
+
+                        <!-- 등록 버튼 -->
+                        <a class="button" th:href="@{/Management/ManageProfessor}"
+                           style="padding: 6px 33px;
+              position: relative;
+              left: 355px;
+              background-color: #1A528E;
+              border: 1px solid #08305A;
+              color: white;">
+                            등록
+                        </a>
                     </article>
                 </div> 
             </div>

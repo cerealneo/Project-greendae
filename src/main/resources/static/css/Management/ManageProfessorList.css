@@ -69,7 +69,7 @@
     /* -------------------------------------------------------- */
      /*search*/
      main .search {
-        float: right;
+        justify-content: flex-end;
         display: flex;
         margin-bottom: 14.52px;
         
@@ -92,14 +92,15 @@
         color: #666666;
         font-size: 15px;
     }
-    main .search .searchbtn {
-        padding: 10px 20px;
+
+    main .search .searchbtn button {
+        float: right;
         background-color: #1a528e;
-        border: 1px solid #1a528e;
-    }
-    main .search .searchbtn a {
+        padding: 10px 20px;
         color: white;
         font-size: 15px;
+        border: none;
+        cursor: pointer;
     }
 
     /* -------------------------------------------------------- */
@@ -188,6 +189,21 @@
         text-align: center;
         justify-content: center;
     }
+    /*
+    .pagebtn .button {
+        padding: 6px 33px;
+        background-color: #1A528E;
+        border: 1px solid #08305A;
+        box-sizing: border-box;
+        color: white;
+        font-size: 13px;
+        margin-left: auto;
+        display: block;
+        position: relative;
+        bottom: 27px;
+    }
+
+     */
     .pagebtn a {
         padding: 4px 10px 5px 10px;
         font-size: 15px;
@@ -208,15 +224,4 @@
         color: #fff;
         background-color: #1a528e;
     }
-    .pagebtn button {
-        padding: 6px 33px;
-        background-color: #1A528E;
-        border: 1px solid #08305A;
-        box-sizing: border-box;
-        color: white;
-        font-size: 13px;
-        margin-left: auto;
-        display: block;
-        position: relative;
-        bottom: 27px;
-    }
+
