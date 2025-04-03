@@ -10,13 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <script>
-        function requireLogin() {
-            alert('로그인 후 이용해주세요');
-            window.location.href = '/user/login';
-        }
-    </script>
-
 </head>
 <body>
 <div id="wrapper">
@@ -74,20 +67,7 @@
                     </tr>
                 </table>
 
-                <!-- 로그인한 사용자일 경우: 글쓰기 페이지로 이동 -->
-                <a th:if="${#authorization.expression('isAuthenticated()')}"
-                   th:href="@{/Community/write1(cate=${pageResponseDTO.cate})}"
-                   class="write">
-                    글쓰기
-                </a>
-
-                <!-- 로그인하지 않은 사용자일 경우: alert 후 로그인 페이지로 이동 -->
-                <a th:if="${#authorization.expression('!isAuthenticated()')}"
-                   href="#"
-                   onclick="requireLogin(); return false;"
-                   class="write">
-                    글쓰기
-                </a>
+                <a th:href="@{/Community/write1(cate=${pageResponseDTO.cate})}" class="write">글쓰기</a>
 
                 <article class="pagebtn">
                     <th:block th:if="${pageResponseDTO.prev}">

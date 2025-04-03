@@ -31,9 +31,7 @@ public class Community2Controller {
     @GetMapping("/Community/news")
     public String news(PageRequestDTO pageRequestDTO, Model model) {
         pageRequestDTO.setCate("news");
-        log.info("pageRequestDTO:{}", pageRequestDTO);
         PageResponseDTO pageResponseDTO = communityService.findAll(pageRequestDTO);
-        log.info(pageResponseDTO.toString());
         model.addAttribute(pageResponseDTO);
         return "/Community/news";
     }

@@ -54,15 +54,50 @@
                         <th>작성일</th>
                         <th>상태</th>
                     </tr>
-                    <tr th:each="community, i:${pageResponseDTO.dtoList}">
-                        <td>[[${pageResponseDTO.startNo - i.index}]]</td>
-                        <td><a th:href="@{/Community/view4(no=${community.no}, cate=${community.cate})}">[[${community.title}]]&#91;[[${community.comment}]]&#93;</a></td>
-                        <td>[[${community.name}]]</td>
-                        <td>[[${community.wdate}]]</td>
-                        <td th:if="${community.status == 'wait'}" class="wait">답변대기</td>
-                        <td th:if="${community.status == 'resp'}" class="done">답변완료</td>
-                    </tr>
+                    <th:block th:each="community, i : ${pageResponseDTO.dtoList}">
+                        <tr>
+                            <td>[[${pageResponseDTO.startNo - i.index}]]</td>
+                            <td>
+                                <a th:href="@{/Community/view4(no=${community.no}, cate=${community.cate})}">
+                                            <span th:if="${community.locked}">
+                                              <img src="/images/ico-lock.png" alt="잠금" style="width:14px; height:14px; vertical-align:middle; margin-right:4px;">
+                                            </span>
+                                    [[${community.title}]]&#91;[[${community.comment}]]&#93;
+                                </a>
+                            </td>
+                            <td>[[${community.name}]]</td>
+                            <td>[[${community.wdate}]]</td>
+                            <td th:if="${community != null and community.status == 'wait'}" class="wait">답변대기</td>
+                            <td th:if="${community != null and community.status == 'resp'}" class="done">답변완료</td>
+                        </tr>
+                        <tr th:if="${community.status == 'resp'}" class="manager">
+                            <td></td>
+                            <td>
+                                <img src="/images/ico-reply.png" alt="iconew">
+                                RE : [답변] [[${community.title}]]
+                            </td>
+                            <td>[[${community.name}]]</td>
+                            <td>[[${community.wdate}]]</td>
+                            <td class="done">답변완료</td>
+                        </tr>
+                    </th:block>
                 </table>
+
+                <!-- 로그인한 사용자일 경우: 글쓰기 페이지로 이동 -->
+                <a th:if="${#authorization.expression('isAuthenticated()')}"
+                   th:href="@{/Community/write1(cate=${pageResponseDTO.cate})}"
+                   class="write">
+                    글쓰기
+                </a>
+
+                <!-- 로그인하지 않은 사용자일 경우: alert 후 로그인 페이지로 이동 -->
+                <a th:if="${#authorization.expression('!isAuthenticated()')}"
+                   href="#"
+                   onclick="requireLogin(); return false;"
+                   class="write">
+                    글쓰기
+                </a>
+
                 <a th:href="@{|/Community/write2?cate=${pageResponseDTO.cate}|}" class="write">글쓰기</a>
                 <article class="pagebtn">
                     <th:block th:if="${pageResponseDTO.prev}">

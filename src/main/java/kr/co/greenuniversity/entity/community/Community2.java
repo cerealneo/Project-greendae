@@ -28,6 +28,9 @@ public class Community2 {
     private String type;
     private String deadline;
 
+    @Column(length = 60)
+    private String password;
+
     @Column(nullable = false)
     private String cate;
 

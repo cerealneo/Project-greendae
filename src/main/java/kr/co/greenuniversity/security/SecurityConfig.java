@@ -1,6 +1,7 @@
 
 package kr.co.greenuniversity.security;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableLoadTimeWeaving;
@@ -13,10 +14,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 
+@RequiredArgsConstructor
 @EnableWebSecurity
 @EnableMethodSecurity
 @Configuration
 public class SecurityConfig {
+
+    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
@@ -24,7 +28,7 @@ public class SecurityConfig {
         //로그인 설정
         http.formLogin(login -> login
                 .loginPage("/user/login")
-                .defaultSuccessUrl("/",false)
+                .defaultSuccessUrl("/")
                 .failureUrl("/user/login?code=100")
                 .usernameParameter("id")
                 .passwordParameter("password"));
@@ -51,8 +55,14 @@ public class SecurityConfig {
                 .requestMatchers("/support/**").hasRole("STUDENT")
                 .requestMatchers("/staff/**").hasAnyRole("ADMIN","MANAGER","STAFF")
                 .requestMatchers("/Community/write**").authenticated()
-                .anyRequest().permitAll());
+                .requestMatchers("/Community/modify**").authenticated()
+                .anyRequest().permitAll()
+        );
 
+        // 예외 처리 설정 - 인증 안 된 사용자 접근 시 JS alert로 리다이렉트
+        http.exceptionHandling(ex -> ex
+                .authenticationEntryPoint(customAuthenticationEntryPoint)
+        );
 
         //기타 보안 설정
         http.csrf(AbstractHttpConfigurer::disable);
