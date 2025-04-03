@@ -48,7 +48,6 @@ public class Community1Service {
                 .build();
     }
 
-
     // 검색
     public PageResponseDTO searchAll(PageRequestDTO pageRequestDTO) {
 
@@ -72,5 +71,6 @@ public class Community1Service {
                 .total(total)
                 .build();
     }
+
 
 }

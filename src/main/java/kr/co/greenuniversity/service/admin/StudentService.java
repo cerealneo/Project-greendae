@@ -1,6 +1,9 @@
 package kr.co.greenuniversity.service.admin;
 
+import com.querydsl.core.Tuple;
 import kr.co.greenuniversity.dto.StudentDTO;
+import kr.co.greenuniversity.dto.page.PageRequestDTO;
+import kr.co.greenuniversity.dto.page.PageResponseDTO;
 import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Student;
 import kr.co.greenuniversity.repository.DepartmentRepository;
@@ -8,6 +11,8 @@ import kr.co.greenuniversity.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -73,4 +78,61 @@ public class StudentService {
                 .orElseThrow(() -> new IllegalArgumentException("학과 없음"));
         return generateStudentId(dept);
     }
+
+    public List<StudentDTO> searchStd(String keyword, String condition) {
+
+        List<Student> students;  // 엔티티 리스트 저장할 변수
+
+        switch (condition) {
+            case "id":
+                students = studentRepository.findByIdContaining(keyword);
+                break;
+            case "name":
+                students = studentRepository.findByNameContaining(keyword);
+                break;
+            case "jumin":
+                students = studentRepository.findByJuminContaining(keyword);
+                break;
+            case "phone":
+                students = studentRepository.findByPhoneContaining(keyword);
+                break;
+            case "email":
+                students = studentRepository.findByEmailContaining(keyword);
+                break;
+            case "departmentName":
+                students = studentRepository.findByDepartment_DepartmentNameContaining(keyword);
+                break;
+            case "regGrade":
+                students = studentRepository.findByRegGradeContaining(keyword);
+                break;
+            case "regTerm":
+                students = studentRepository.findByRegTermContaining(keyword);
+                break;
+            case "status":
+                students = studentRepository.findByStatusContaining(keyword);
+                break;
+            default:
+                students = studentRepository.findAll();
+        }
+
+        // **엔티티 → DTO 변환**
+        return students.stream()
+                .map(this::convertToDTO)  // 변환 메서드 사용
+                .collect(Collectors.toList());
+        }
+
+    private StudentDTO convertToDTO(Student student) {
+        return StudentDTO.builder()
+                .id(student.getId())
+                .name(student.getName())
+                .jumin(student.getJumin())
+                .phone(student.getPhone())
+                .email(student.getEmail())
+                .departmentName(student.getDepartmentName())
+                .regGrade(student.getRegGrade())
+                .regTerm(student.getRegTerm())
+                .status(student.getStatus())
+                .build();
+    }
+
 }

@@ -1,5 +1,6 @@
 package kr.co.greenuniversity.controller.admin;
 
+import kr.co.greenuniversity.dto.StudentDTO;
 import kr.co.greenuniversity.entity.College;
 import kr.co.greenuniversity.entity.Department;
 import kr.co.greenuniversity.entity.Professor;

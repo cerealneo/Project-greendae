@@ -1,5 +1,6 @@
 package kr.co.greenuniversity.dto;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StudentDTO {
 
-    private int id;
+    private String id;
     private String name;
     private String jumin;
     private String eng_name;
@@ -25,10 +26,13 @@ public class StudentDTO {
     private String classification;
     private String end_year;
     private String college_name;
+    @Column(name = "department_name")
     private String departmentName;
     private String pro_name;
-    private String reg_grade;
-    private String reg_term;
+    @Column(name = "reg_grade")
+    private String regGrade;
+    @Column(name = "reg_term")
+    private String regTerm;
     private String status;
 
 
