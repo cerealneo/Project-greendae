@@ -52,7 +52,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/Management/**").hasRole("ADMIN")
-                .requestMatchers("/support/**").hasRole("STUDENT")
+                .requestMatchers("/support/**").hasAnyRole("ADMIN","STUDENT")
                 .requestMatchers("/staff/**").hasAnyRole("ADMIN","MANAGER","STAFF")
                 .requestMatchers("/Community/write**").authenticated()
                 .requestMatchers("/Community/modify**").authenticated()
