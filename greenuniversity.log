@@ -165,3 +165,53 @@ kr.co.greenuniversity.controller.admin.CollegeController#ManagerDptList(Model) m
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808) ~[spring-beans-6.2.5.jar:6.2.5]
 	... 75 common frames omitted
 
+2025-04-04T09:11:32.692+09:00  INFO 7604 --- [greenuniversity] [restartedMain] kr.co.greenuniversity.DemoApplication    : Starting DemoApplication v1.0.0-RELEASE using Java 17.0.12 with PID 7604 (C:\Users\lotte06\Desktop\green\build\classes\java\main started by lotte06 in C:\Users\lotte06\Desktop\green)
+2025-04-04T09:11:32.694+09:00  INFO 7604 --- [greenuniversity] [restartedMain] kr.co.greenuniversity.DemoApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-04-04T09:11:32.728+09:00  INFO 7604 --- [greenuniversity] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-04T09:11:32.728+09:00  INFO 7604 --- [greenuniversity] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-04T09:11:33.404+09:00  INFO 7604 --- [greenuniversity] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-04T09:11:33.494+09:00  INFO 7604 --- [greenuniversity] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 14 JPA repository interfaces.
+2025-04-04T09:11:33.615+09:00  WARN 7604 --- [greenuniversity] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[kr.co.greenuniversity]' package. Please check your configuration.
+2025-04-04T09:11:34.044+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-04-04T09:11:34.055+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-04T09:11:34.055+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-04T09:11:34.094+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-04T09:11:34.095+09:00  INFO 7604 --- [greenuniversity] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1366 ms
+2025-04-04T09:11:34.252+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-04T09:11:34.297+09:00  INFO 7604 --- [greenuniversity] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-04T09:11:34.326+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-04T09:11:34.562+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-04T09:11:34.588+09:00  INFO 7604 --- [greenuniversity] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-04T09:11:34.954+09:00  INFO 7604 --- [greenuniversity] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@779fd15
+2025-04-04T09:11:34.957+09:00  INFO 7604 --- [greenuniversity] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-04T09:11:35.020+09:00  WARN 7604 --- [greenuniversity] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-04T09:11:35.039+09:00  INFO 7604 --- [greenuniversity] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.4.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-04T09:11:35.044+09:00 DEBUG 7604 --- [greenuniversity] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@239368a7) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@3ce1966d)
+2025-04-04T09:11:35.045+09:00 DEBUG 7604 --- [greenuniversity] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@320e6ae0) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@68f8e753)
+2025-04-04T09:11:35.045+09:00 DEBUG 7604 --- [greenuniversity] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@50967cbb) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@60f4da3a)
+2025-04-04T09:11:35.045+09:00 DEBUG 7604 --- [greenuniversity] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@21ece5ae) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@e015cbf)
+2025-04-04T09:11:35.045+09:00 DEBUG 7604 --- [greenuniversity] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6d918a60) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@2b72b8e2)
+2025-04-04T09:11:35.046+09:00 DEBUG 7604 --- [greenuniversity] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6df5e9b7) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6915a412)
+2025-04-04T09:11:35.046+09:00 DEBUG 7604 --- [greenuniversity] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@8b6e1da) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@36bdfd86)
+2025-04-04T09:11:35.046+09:00 DEBUG 7604 --- [greenuniversity] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@74c702b7) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@30360d09)
+2025-04-04T09:11:35.046+09:00 DEBUG 7604 --- [greenuniversity] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@f3192e4) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@56390f49)
+2025-04-04T09:11:36.135+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-04T09:11:36.137+09:00  INFO 7604 --- [greenuniversity] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-04T09:11:36.380+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-04T09:11:37.365+09:00  WARN 7604 --- [greenuniversity] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-04T09:11:37.387+09:00  INFO 7604 --- [greenuniversity] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailsService
+2025-04-04T09:11:37.987+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-04-04T09:11:38.015+09:00  INFO 7604 --- [greenuniversity] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-04-04T09:11:38.022+09:00  INFO 7604 --- [greenuniversity] [restartedMain] kr.co.greenuniversity.DemoApplication    : Started DemoApplication in 5.714 seconds (process running for 6.348)
+2025-04-04T09:15:09.340+09:00  INFO 7604 --- [greenuniversity] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-04T09:15:09.403+09:00  INFO 7604 --- [greenuniversity] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-04T09:15:09.408+09:00  INFO 7604 --- [greenuniversity] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-04T09:15:09.410+09:00  INFO 7604 --- [greenuniversity] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-04T09:15:09.550+09:00  INFO 7604 --- [greenuniversity] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
