@@ -64,7 +64,7 @@ public class StudentController {
         studentService.registerStudent(student, departmentName);
         log.info("Student {}", student);
 
-        return "redirect:/Management/ManageStdRegister";
+        return "redirect:/Management/StdList";
     }
 
     @GetMapping("/Management/StdList")
@@ -72,12 +72,6 @@ public class StudentController {
             , @RequestParam(required = false) String condition) {
         log.info("keyword {}", keyword);
         log.info("condition {}", condition);
-       /* List<StudentDTO> stdList = studentService.StdfindAll();
-        log.info("stdList {}", stdList);
-        model.addAttribute("stdList", stdList);
-
-        return "/Management/ManageStdList";
-        */
 
         List<StudentDTO> student;
 

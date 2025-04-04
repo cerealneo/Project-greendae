@@ -34,7 +34,10 @@ public class Professor {
     private String major;
     private String end_date;
     private String degree;
+
+
     private String spot;
+
     private String college_name;
 
     @Column(name = "department_name")
@@ -52,6 +55,17 @@ public class Professor {
     private Department department;
 
     private String position;
+
+    @PrePersist
+    public void prePersist(){
+        if(this.spot == null){
+            this.spot = "정교수";
+        }
+        if(this.employStatus == null){
+            this.employStatus = "재직중";
+        }
+
+    }
 
 
 }

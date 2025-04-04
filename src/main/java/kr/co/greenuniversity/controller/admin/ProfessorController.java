@@ -71,7 +71,7 @@ public class ProfessorController {
     public String registerProfessor(@ModelAttribute Professor professor,
                                     @RequestParam String departmentName) {
         professorService.registerProfessor(professor, departmentName);
-        return "redirect:/Management/ManageProfessor";
+        return "redirect:/Management/ManageProfessorList";
     }
 
     @GetMapping("/Management/ManageProfessorList")
