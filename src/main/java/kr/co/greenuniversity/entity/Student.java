@@ -57,7 +57,10 @@ public class Student {
     @PrePersist
     public void prePersist(){
         if(this.role == null){
-            this.role = "PRO";
+            this.role = "STUDENT";
+        }
+        if(this.status == null){
+            this.status = "재학중";
         }
     }
 
