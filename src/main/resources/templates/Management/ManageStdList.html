@@ -92,6 +92,38 @@
             </main>
         <th:block th:include="/common/_adminFooter"/>
         </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const rows = document.querySelectorAll("table tr");
+
+            rows.forEach((row) => {
+                const statusCell = row.cells[row.cells.length - 1]; // 마지막 셀 = 상태
+                if (!statusCell) return;
+
+                const status = statusCell.innerText.trim();
+
+                // 상태에 따라 색상 변경
+                switch (status) {
+                    case "재학중":
+                        statusCell.style.color = "green";
+                        break;
+                    case "휴학중":
+                        statusCell.style.color = "orange";
+                        break;
+                    case "졸업":
+                        statusCell.style.color = "blue";
+                        break;
+                    case "자퇴":
+                        statusCell.style.color = "red";
+                        break;
+                    case "제적":
+                        statusCell.style.color = "red";
+                        break;
+                }
+            });
+        });
+    </script>
     </body>
 
     </html>

@@ -65,7 +65,7 @@
                                 <td>[[${prof.email}]]</td>
                                 <td>[[${prof.departmentName}]]</td>
                                 <td>[[${prof.spot}]]</td>
-                                <td>[[${prof.employStatus}]]</td>
+                                <td class="status">[[${prof.employStatus}]]</td>
                                 <td>[[${prof.appointmentDate}]]</td>
                             </tr>
                     </table>
@@ -123,6 +123,31 @@
             </main>
         <th:block th:include="/common/_adminFooter"/>
         </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const rows = document.querySelectorAll("table tr");
+
+            rows.forEach((row) => {
+                const statusCell = row.querySelector('.status'); // ✔ 해당 row 안에서 상태 셀 찾기
+                if (!statusCell) return;
+
+                const status = statusCell.innerText.trim();
+
+                // 상태에 따라 색상 변경
+                switch (status) {
+                    case "재직중":
+                        statusCell.style.color = "green";
+                        break;
+                    case "휴직중":
+                        statusCell.style.color = "orange";
+                        break;
+                    case "퇴직":
+                        statusCell.style.color = "blue";
+                        break;
+                }
+            });
+        });
+    </script>
     </body>
 
     </html>
