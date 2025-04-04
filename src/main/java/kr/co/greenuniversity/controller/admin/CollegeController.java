@@ -27,10 +27,6 @@ public class CollegeController {
     private final DepartmentService departmentService;
     private final CollegeRepository collegeRepository;
 
-    @GetMapping("/Management/ManagerDptList")
-    public String ManagerDptList(Model model) {
-        return "/Management/ManagerDptList";
-    }
 
 
     @PostMapping("/Management/registerCollege")
